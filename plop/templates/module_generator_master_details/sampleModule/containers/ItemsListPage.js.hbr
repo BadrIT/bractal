@@ -1,0 +1,51 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  QueryRenderer,
+  graphql,
+} from 'react-relay';
+import { Container } from 'semantic-ui-react';
+
+import { withRelayEnvironment } from '../../core/utils/relayInitializer';
+
+import {{uiItemName}}sList from './{{uiItemName}}sList';
+
+const {{uiItemName}}sListPageQuery = graphql`
+    query {{uiItemName}}sListPageQuery {  
+    {{#if graphQLRootEntry}}
+      {{graphQLRootEntry}} {
+        ...{{uiItemName}}sList_query
+      }
+    {{else}}
+      ...{{uiItemName}}sList_query
+    {{/if}}          
+    }
+`;
+
+const {{uiItemName}}sListPage = ({ environment }) => (
+  <QueryRenderer
+    environment={environment}
+    // eslint-disable-next-line react/jsx-curly-spacing
+    query={ {{uiItemName}}sListPageQuery }
+    render={({ error, props }) => {
+      // eslint-disable-next-line react/prop-types
+    {{#if graphQLRootEntry}}
+      const queryRoot = props ? props.{{graphQLRootEntry}} : null;
+    {{else}}
+      const queryRoot = props;
+    {{/if}}        
+      if (error) {
+          return <Container>{error.message}</Container>;
+      } else if (props) {
+          return <{{uiItemName}}sList query={queryRoot} />;
+      }
+      return <Container>Loading ...</Container>;
+    }}
+  />
+);
+
+{{uiItemName}}sListPage.propTypes = {
+  environment: PropTypes.shape({}).isRequired,
+};
+
+export default withRelayEnvironment({{uiItemName}}sListPage);

@@ -1,0 +1,19 @@
+@import "NavProductsSearch";
+@import "NavProductsItems";
+@import "NavWishList";
+@import "NavNotification";
+@import "NavUserProfile";
+@import "SocialMedia";
+
+
+@media screen and (min-width: 1201px) {
+  @import "TopNav";
+  @import "NavDepartment";
+  @import "NavDepartmentTab";
+  @import "NavLanguage";
+  @import "NavCurrency";
+}
+@media screen and (max-width:1201px){
+    @import "NavMenu";
+    @import "SideMenu";
+}

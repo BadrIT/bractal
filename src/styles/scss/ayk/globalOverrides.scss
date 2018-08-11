@@ -1,0 +1,34 @@
+html ,body{
+  overflow-x: hidden;
+}
+#root{
+  transition: all 1.5s;
+}
+#side-menu{
+  transition: transform .2s ease;
+}
+.root-animation{
+  transform: translateX(88%);
+}
+.ReactModal__Body--open {
+  overflow: hidden; 
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  border: none;
+  border-radius: 0px;
+  z-index: 2;
+}
+fieldset{
+  border: none;
+  padding: 0px;
+}
+.icon-down-open{
+  font-size: 16px !important;
+}
+
+html, body {
+  height: unset;
+}

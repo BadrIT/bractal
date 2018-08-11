@@ -1,0 +1,51 @@
+.nav-mobile {
+  .menu-btn.item {
+    i.icon {
+      font-size: 2em;
+      color: #33a8ff;
+    }
+  }
+  .ui.button.logo {
+    background-color: #33a8ff;
+    color: #fff;
+    font-size: 17.5px;
+  }
+  .ui.menu {
+    border: none;
+    box-shadow: none;
+    height: 100px;
+    .item {
+      &:before {
+        content: initial;
+      }
+      > i.icon {
+        margin: 0;
+      }
+    }
+    .right .item {
+      padding-left: 0;
+    }
+  }
+  .ui.segment {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .top-nav.ui.segment {
+    padding: 0;
+  }
+  .ui.action.input:not([class*="left action"]) > .button:last-child,
+  .ui.action.input:not([class*="left action"]) > .buttons:last-child > .button,
+  .ui.action.input:not([class*="left action"]) > .dropdown:last-child {
+    background: #33a8ff;
+    color: #fff;
+    width: 70px;
+    text-align: center;
+    display: inline-block;
+    font-size: 21px;
+  }
+  .ui.huge.input {
+    width: 70%;
+  }
+}

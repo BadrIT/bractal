@@ -1,0 +1,31 @@
+const SignUpTrans = {
+  En: {
+    ArrowBack: '<',
+    Back: 'Back',
+    Gender: 'Gender :',
+    AfterRegisteringyouwillrecieveanemail: ' * After Registering, you will recieve an email with a verification Code to verify your account.',
+    RegisterFornewsLetter: 'Register For newsLetter',
+    FirstName: 'First Name',
+    LastName: 'Last Name',
+    Nationality: 'Nationality',
+    Email: 'E-mail',
+    Phone: 'Phone',
+    AlreadyHaveanaccount: 'Already Have an account',
+    JoinOurCommunity: 'Join Our Community',
+  },
+  Ar: {
+    ArrowBack: '>',
+    Back: 'Back',
+    Gender: 'Gender :',
+    AfterRegisteringyouwillrecieveanemail: ' * After Registering, you will recieve an email with a verification Code to verify your account.',
+    RegisterFornewsLetter: 'Register For newsLetter',
+    FirstName: 'First Name',
+    LastName: 'Last Name',
+    Nationality: 'Nationality',
+    Email: 'E-mail',
+    Phone: 'Phone',
+    AlreadyHaveanaccount: 'Already Have an account',
+    JoinOurCommunity: 'Join Our Community',
+  },
+};
+export default SignUpTrans;

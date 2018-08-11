@@ -1,0 +1,18 @@
+import i18next from 'i18next';
+
+const loadLocales = () => {
+  i18next.addResourceBundle('en', '{{moduleName}}', {
+    metadata: {
+      name: '{{moduleName}}',
+      displayName: '{{titleCase moduleName}} Module',
+      description: '{{moduleDescription}}',
+    },
+    home: {
+      menuTitle: '{{titleCase moduleShortUniqueName}}',
+    },
+  }, true, true);
+
+  i18next.loadNamespaces('{{moduleName}}');
+};
+
+export default loadLocales;

@@ -1,0 +1,69 @@
+/* eslint-disable jsx-a11y/anchor-is-valid, react/jsx-boolean-value */
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  QueryRenderer,
+  graphql,
+} from 'react-relay';
+import { Container, Segment } from 'semantic-ui-react';
+
+import { withRelayEnvironment } from '../../core/utils/relayInitializer';
+
+import {{uiItemName}}Details from './{{uiItemName}}Details';
+
+const {{uiItemName}}DetailsPageQuery = graphql`
+    query {{uiItemName}}DetailsPageQuery ($filter: {{modelName}}WhereUniqueInput!) {  
+      {{graphQLSingleItemQueryName}}(where: $filter) {
+        ...{{uiItemName}}Details_{{camelCase uiItemName}}Info
+      }
+    }
+`;
+
+const {{uiItemName}}DetailsPage = ({ environment, match }) => {
+  const {{camelCase uiItemName}}ID = match && match.params && match.params.id;
+
+  return (
+    <Container>
+      <Link to="/{{dashCase moduleShortUniqueName}}" >
+        <h1> {'< {{uiItemName}} List'} </h1>
+      </Link>
+      <br />
+      <br />
+      <QueryRenderer
+        environment={environment}
+        // eslint-disable-next-line react/jsx-curly-spacing
+        query={ {{uiItemName}}DetailsPageQuery }
+        variables=\{{
+          filter: {
+            id: {{camelCase uiItemName}}ID,
+          },
+        }}
+        render={({ error, props }) => {
+          if (error) {
+              return <Container>{error.message}</Container>;
+          // eslint-disable-next-line react/prop-types
+          } else if (props && props.{{graphQLSingleItemQueryName}}) {
+              return (
+                <Segment>
+                  <{{uiItemName}}Details
+                    hideHeaderAndAuthor={false}
+                    // eslint-disable-next-line react/jsx-curly-spacing
+                    {{camelCase uiItemName}}Info={props.{{graphQLSingleItemQueryName}} }
+                  />
+                </Segment>
+              );
+          }
+          return <Container>Loading ...</Container>;
+        }}
+      />
+    </Container>
+  );
+};
+
+{{uiItemName}}DetailsPage.propTypes = {
+  environment: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({}).isRequired,
+};
+
+export default withRelayEnvironment({{uiItemName}}DetailsPage);

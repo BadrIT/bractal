@@ -1,0 +1,16 @@
+.ui.segment.product-card {
+  box-shadow: none;  
+  .img-preview {
+    height: 268px;
+    line-height: 268px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 15px;
+    img {
+      max-height: 87%;
+      margin: auto !important;
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "path-intellisense.mappings": {
+    "~": "${workspaceRoot}/src"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+  "editor.tabSize": 2,
+  "LineCount.includes": [     
+    "**/src/**" 
+  ],
+  "LineCount.excludes": [ 
+    "**/src/assets/**",
+    "**/node_modules/**",
+    "**/__generated__/**",
+    "**/src/styles/css/**",
+  ],
+}

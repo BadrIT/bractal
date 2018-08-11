@@ -1,0 +1,619 @@
+.content {
+    padding: 0px !important;
+}
+
+.CreateAccContainer {
+    padding: 21px;
+    padding-bottom: 0px;
+}
+
+.LoginContainer {
+    padding: 17px;
+    padding-bottom: 20px;
+}
+
+.svgBg {
+    position: absolute;
+    top: 0px;
+    right: -16%;
+    height: 100%;
+}
+
+.nationalitySelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    line-height: 1.2 !important;
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #fff, #fff) !important;
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em !important;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em !important;
+    background-repeat: no-repeat !important;
+}
+
+.AllRegCont {
+    padding: 20px 5px 4px 5px;
+
+    .RegisterHdrCont {
+        padding-bottom: 80px;
+
+        .bkBtn {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            color: rgba(38, 38, 38, 0.3);
+            float: left;
+            cursor: pointer;
+
+            .BkTxt {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+
+        .hdrCont {
+            h3 {
+                margin: 0;
+                text-align: center;
+                color: #262626;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 12px;
+                line-height: 1.58;
+                text-align: center;
+                color: #7c7a71;
+                margin-right: -36px;
+            }
+        }
+    }
+
+    .TwoSides {
+        padding: 0px 30px;
+
+        .codeSelected {
+            position: relative;
+            top: -3px;
+            left: 3px;
+        }
+
+        #borderrBtom {
+            border-bottom: 1px solid #d9d9d9;
+            padding-bottom: 15px !important;
+
+            .phoneSlctCont {
+                width: 40% !important;
+                padding: 0px !important;
+
+                .phoneSelect {
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 0;
+                }
+            }
+
+            .phoneInpCont {
+                width: 60% !important;
+                padding-right: 0px !important;
+            }
+
+            .padd4 {
+                padding-left: 4px !important;
+            }
+
+            .GenderData {
+                text-align: left;
+
+                input {
+                    display: none;
+                }
+
+                img {
+                    cursor: pointer;
+                    position: relative;
+                    top: 1px;
+                }
+
+                .genderLblCont {
+                    display: inline-block;
+                    position: relative;
+                    top: -14px;
+                    margin-right: 17px;
+                }
+
+                .GenderTypes {
+                    display: inline-block;
+                }
+
+                .MaleSvg {
+                    margin-right: 11px;
+                }
+            }
+
+            .phoneInp {
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
+            .CountriesData {
+                img {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    position: relative;
+                    top: 0px;
+                }
+
+                ul {
+                    height: 100px;
+                    overflow: auto;
+                }
+
+                .dropdown {
+                    display: inline-block;
+                    position: relative;
+                    margin: 0px;
+                    font-size: 16px;
+                    width: 100%;
+                }
+
+                .dropdown-button {
+                    margin: 0;
+                    outline: 0;
+                    line-height: 0.9914286em;
+                    padding: 0.37857143em 1em;
+                    font-size: 12px;
+                    background: #fff;
+                    border: 1px solid rgba(34, 36, 38, 0.15);
+                    color: rgba(0, 0, 0, 0.87);
+                    border-radius: 1.8571429rem;
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 0;
+                    position: relative;
+                    cursor: pointer;
+                    text-align: left;
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    width: 100%;
+                    white-space: nowrap;
+                    padding-left: 9px;
+                    height: 37px;
+                    max-height: 37px;
+
+                    img {
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+
+                .triangle {
+                    font-size: 50%;
+                    position: absolute;
+                    right: 10px;
+                    top: -17px;
+                    bottom: 0;
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    height: 5px;
+                    color: black;
+                    cursor: pointer;
+                }
+
+                .dropdown ul {
+                    visibility: visible;
+                    transition: all 0.3s ease;
+                    transform: scaleY(1);
+                    color: #333;
+                    height: 200px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    z-index: 100;
+                    transform-origin: top;
+                    padding: 0;
+                    list-style: none;
+                    background-color: white;
+                    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+                    position: absolute;
+                    left: 0;
+                    margin-top: 0px;
+                    top: 100%;
+                    width: 100%;
+                }
+
+                .Arrowul {
+                    content: "";
+                    height: 11px;
+                    width: 11px;
+                    background: #fff;
+                    position: absolute;
+                    top: 42px;
+                    left: 50px;
+                    -webkit-transform: rotate(134deg);
+                    -ms-transform: rotate(134deg);
+                    transform: rotate(134deg);
+                    border-left: 1px solid #d4d4d5bd;
+                    border-bottom: 1px solid #d4d4d5bd;
+                    z-index: 1000;
+                }
+
+                .dropdown li {
+                    background: #fff;
+                    padding: 8px 5px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    transition: background 0.2s ease;
+                    position: relative;
+                    font-size: 13px;
+                    border-bottom: 1px solid #f5f5f5;
+                    min-height: 40px;
+
+                    .imgCountry {
+                        position: relative;
+                        top: 0px;
+                        width: 10%;
+                        float: left;
+                    }
+
+                    .countryName {
+                        width: 67%;
+                        float: right;
+                        display: inherit;
+                    }
+
+                    .codeLbl {
+                        float: right;
+                        padding-top: 0px;
+                        width: 20%;
+                        display: inherit;
+                    }
+                }
+
+                .dropdown li.check {
+                    background: #f6f6f6;
+                }
+
+                .dropdown li.check:after {
+                    content: "";
+                    position: absolute;
+                    height: 15px;
+                    width: 3px;
+                    background: #ccc;
+                    top: 0;
+                    bottom: 0;
+                    margin-top: auto;
+                    transform: rotate(40deg);
+                    margin-bottom: auto;
+                    right: 15px;
+                }
+
+                .dropdown li.check:before {
+                    content: "";
+                    position: absolute;
+                    height: 3px;
+                    width: 9px;
+                    background: #ccc;
+                    top: 6px;
+                    bottom: 0;
+                    margin-top: auto;
+                    transform: rotate(40deg);
+                    margin-bottom: auto;
+                    right: 19px;
+                }
+
+                .dropdown li:hover {
+                    background: #f6f6f6;
+                    transition: background 0.2s ease;
+                }
+            }
+
+            .eye.icon {
+                position: absolute;
+                right: 24px;
+                top: 7px;
+                cursor: pointer;
+            }
+
+            #SecondSide {
+                text-align: center;
+                width: 35% !important;
+                padding: 20px;
+
+                .RegisterBtn {
+                    background-color: #309de0;
+                    width: 97%;
+                    border-radius: 5px;
+                    border: none;
+                    line-height: 2.89;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: bold;
+                    float: right;
+                    margin-top: 11px;
+                }
+
+                .chlBxCont {
+                    margin-left: 13px;
+                    margin-top: 45px;
+                    text-align: left;
+                    label{
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                }
+
+                h3 {
+                    margin: 0;
+                    margin-top: 11px;
+                    font-size: 14px;
+                    text-align: left;
+                    color: #808285;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-size: 11px;
+                    text-align: left;
+                    color: rgba(128, 130, 133, 0.7);
+                    width: 95%;
+                    margin-left: 10px;
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+}
+
+#input {
+    border-radius: 0px;
+    margin: 7px;
+    width: 93%;
+    padding: 7px;
+}
+
+.AllRegCont
+.TwoSides
+#borderrBtom
+.CountriesData
+.dropdown
+li:first-child:hover {
+    background: white;
+}
+
+.FooterTxt {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #808285;
+    padding-bottom: 16px;
+    padding-top: 15px;
+    background-color: #faf9f9;
+
+    .LoginLbl {
+        color: #309de0;
+        font-weight: bold;
+        cursor: pointer;
+        border-bottom: 1px solid #309de0;
+        margin-left: 6px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .bkBtn {
+        display: inline-block;
+    }
+
+    .CreateVeriCont {
+        background-image: url("../../assets/images/BackGroundImgs/-e-Ellipse-popup-bg@1x.png");
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .TwoSides {
+        height: 280px;
+        max-height: 280px;
+    }
+
+    #firstSide {
+        width: 65% !important;
+        padding: 20px;
+
+        .column {
+            padding: 0px 6px;
+        }
+    }
+
+    #firstSide:after {
+        content: "";
+        background-color: #d9d9d9;
+        position: absolute;
+        width: 1px;
+        height: 94%;
+        top: 4%;
+        left: 100%;
+        display: block;
+    }
+
+    .dropdown {
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .CreateAccContainer {
+        padding: 17px;
+        padding-bottom: 0px;
+
+        .bkBtn {
+            display: none;
+        }
+
+        .hdrCont {
+            padding-right: 0px;
+        }
+
+        .AllRegCont {
+            padding: 6px 15px;
+            margin: 0px 22.5px;
+
+            .RegisterHdrCont {
+                padding-bottom: 47px;
+
+                .hdrCont p {
+                    margin-right: 0px;
+                }
+            }
+
+            .TwoSides {
+                padding: 0 !important;
+                width: 85%;
+                margin: 0 auto !important;
+
+                #firstSide {
+                    padding: 0px !important;
+                }
+
+                #borderrBtom {
+                    padding-bottom: 38px !important;
+
+                    .GenderData {
+                        text-align: left !important;
+                    }
+
+                    #SecondSide {
+                        text-align: left;
+                        width: 104% !important;
+                        padding: 0px;
+                        position: relative;
+                        left: -2%;
+                        padding-left: 14px;
+
+                        p {
+                            margin-left: 0px;
+                            width: 100%;
+                            margin-top: 10px;
+                        }
+
+                        .chlBxCont {
+                            margin-left: 0px;
+                            margin-top: 25px;
+                            text-align: left;
+                        }
+
+                        .RegisterBtn {
+                            width: 100%;
+                            margin-top: 33px;
+                        }
+                    }
+
+                    .CountriesData {
+                        .dropdown {
+                            ul {
+                                width: 100%;
+                                overflow-x: hidden;
+
+                                li {
+                                    .countryName {
+                                        width: 80%;
+                                    }
+
+                                    .codeLbl {
+                                        width: 12%;
+                                    }
+
+                                    .imgCountry {
+                                        width: 8%;
+                                    }
+                                }
+                            }
+                        }
+
+                        .Arrowul {
+                            top: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .FooterTxt {
+        margin-top: 16px;
+    }
+
+    .AllRegCont .TwoSides #borderrBtom .eye.icon {
+        position: absolute;
+        right: 11px;
+        top: 8px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 1199px) {
+    .mobPadd0 {
+        padding: 0px !important;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .CreateAccContainer {
+        .TwoSides {
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .CreateAccContainer {
+        .AllRegCont {
+            padding: 3px 1px;
+            margin: 0px;
+
+            .TwoSides {
+                width: 100%;
+
+                .GenderData {
+                    .genderLblCont {
+                        // width: 21% !important;
+                        // float: left;
+                        // padding-top: 9px;
+                   
+                    }
+                }
+
+                #borderrBtom {
+                    .CountriesData {
+                        .dropdown {
+                            ul {
+                                width: 100%;
+
+                                li {
+                                    .countryName {
+                                        width: 75%;
+                                    }
+
+                                    .codeLbl {
+                                        width: 15%;
+                                    }
+
+                                    .imgCountry {
+                                        width: 8%;
+                                    }
+                                }
+                            }
+                        }
+
+                        .Arrowul {
+                            top: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .mobPadd0 {
+        padding: 0px 6px !important;
+    }
+}

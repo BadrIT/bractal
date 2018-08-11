@@ -1,0 +1,54 @@
+.ui.menu .set-language {
+  span {
+    color: #000000;
+    font-size: 12px;
+  }
+  .ui.avatar.image,
+  .ui.avatar.image img,
+  .ui.avatar.image svg,
+  .ui.avatar.images .image,
+  .ui.avatar.images img,
+  .ui.avatar.images svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .menu > .item > img {
+    margin-right: 8px;
+  }
+  .visible.menu.transition {
+    padding: 8px;
+    .active.item {
+      padding-right: 20px !important;
+      color: #34a8ff !important;
+      position: relative;
+      background-color: transparent !important;
+      font-weight: 300 !important;
+      &:after {
+        content: "\F058";
+        font-family: Icons;
+        position: absolute;
+        right: 0;
+        color: #34a8ff;
+      }
+    }
+  }
+
+  &.ui.dropdown .menu > .item {
+    padding: 8px 3px !important;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 11px !important;
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0 !important;
+    }
+  }
+  i.icon.chevron {
+    font-size: 8px;
+    margin-left: 8px;
+    color: #666666;
+  }
+  .ui.image {
+    vertical-align: middle;
+  }
+}
