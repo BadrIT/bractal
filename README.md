@@ -20,6 +20,7 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Release 1
 
+- [ ] Document how to GetStarted using the plop generators
 - [ ] Initialize the documentation using gitBooks Or StoryBooks
 - [ ] Finalizing the theming approach
 - [ ] Investigate using FusionJS for managing the pluggable architecture (Security, SSR, Theming...etc)
