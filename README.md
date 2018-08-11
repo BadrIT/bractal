@@ -36,6 +36,10 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 - [ ] Module's API readiness validator
 - [ ] eCommerce Module (Simple UI based on Spree, with GraphQL proxy)
  
+# Contribution 
+
+Create an issue on github, and let's discuss what you have in mind, then submit a pull request, after reading thoroughly the [Code Guidelines](StyleGuidelines.md)
+
 # Why the name 'Bractal' ?
 
 It stands for (BADR Fractal). Fractal is a known phenomenon in nature, which refer to expanding symmetry. It's a lovely mathematical/natural concept : https://en.wikipedia.org/wiki/Fractal).
