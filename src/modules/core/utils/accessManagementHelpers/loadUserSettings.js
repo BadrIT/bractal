@@ -3,7 +3,7 @@ import { fetchQuery, graphql } from 'relay-runtime';
 const query = graphql`
   query loadUserSettingsQuery {
     system_configuration_settings {
-      currecnt_location_country_code
+      current_location_country_code
     }
   }
 `;
@@ -11,6 +11,10 @@ const query = graphql`
 export default (environment, callback) => {
   fetchQuery(environment, query)
     .then((data) => {
-      callback(data.system_configuration_settings);
+      if (data) {
+        callback(data.system_configuration_settings);
+      } else {
+        throw new Error("Couldn't load user's configuration settings");
+      }
     });
 };

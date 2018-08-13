@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import { translate, Trans } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import LanguageSelector from '../../components/common/LanguageSelector';
@@ -39,4 +39,4 @@ DesktopMenu.propTypes = {
   })).isRequired,
 };
 
-export default translate('core')(withModules(DesktopMenu));
+export default withModules(DesktopMenu);

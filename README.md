@@ -20,6 +20,7 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Release 1
 
+- [ ] Remove dependency on GraphQL Backend (Unless requested explicitly)
 - [ ] Document how to GetStarted using the plop generators
 - [ ] Initialize the documentation using gitBooks Or StoryBooks
 - [ ] Finalizing the theming approach

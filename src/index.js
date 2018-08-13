@@ -1,9 +1,10 @@
 import BractalCore from './modules/core/containers/main';
+import modulesConfig from './modulesConfig';
 
 import './styles/css/App.css';
 // import theme from './Theme';
 // import modulesConfig from './modulesConfig';
-import APIMonitoring from './modules/apiMonitoring/containers/Home';
+// import APIMonitoring from './modules/apiMonitoring/containers/Home';
 
 // import Layout from './modules/core/layouts/simple/Layout';
 // import Layout from './modules/AykLayout/layouts/AykLayout';
@@ -12,6 +13,6 @@ import APIMonitoring from './modules/apiMonitoring/containers/Home';
 
 
 export const { renderApp } = BractalCore;
-BractalCore.renderApp(APIMonitoring);
+BractalCore.renderApp(modulesConfig);
 
 export default BractalCore;
