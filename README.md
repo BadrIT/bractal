@@ -28,13 +28,41 @@ cd bractal
 
 npm install
 npm start
+
+npm run refetch-schema
+npm run compile-relay
 ```
 
 By now you should be able to see the welcome screen (Welcome !):
 
 ![Welcome Screen](docs/assets/getting_started/welcome.png)
 
+## Your first module
 
+### Premise
+
+We want to create a CRUD(create, update, delete) module for posts. Where the user can create a post, update a post or delete a post.
+
+### Backend
+
+To start, let's create a GraphQL using a Prisma hosted service. 
+
+   1. Start a basic prisma demo service, by following the guide [Here](https://www.prisma.io/docs/quickstart/).
+   2. Change the file 'datamodel.graphql' contents, to be exactly like [(this file)](docs/assets/getting_started/sample.datamodel.graphql)
+   3. Deploy to prisma
+   ```bash
+    prisma deploy
+   ```
+   4. Now you should be able to explore your updated schema, and the following query should succeed (It would return empty results but that's fine for now) :
+   ```graphql
+    query {
+      posts {
+        id
+        title
+        description
+      }
+    }
+   ```
 
 
 # Roadmap
