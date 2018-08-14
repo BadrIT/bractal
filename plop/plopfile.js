@@ -70,7 +70,7 @@ module.exports = (plop) => {
       }, {
         type: 'input',
         name: 'itemsListEntryFields',
-        message: 'What fields should we ask GraphQL endpoint for the List view ? (itemsListEntryFields) ?',
+        message: 'What fields should we ask GraphQL endpoint for the List view (separatated by spaces, for example "id name title") ? (itemsListEntryFields) ?',
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'itemsListEntryFields is required';
@@ -78,7 +78,7 @@ module.exports = (plop) => {
       }, {
         type: 'input',
         name: 'itemDetailsEntryFields',
-        message: 'What fields should we ask GraphQL endpoint for the Details view ? (itemDetailEntryFields) ?',
+        message: 'What fields should we ask GraphQL endpoint for the Details view (separatated by spaces, for example "id name title") ? (itemDetailEntryFields) ?',
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'itemDetailsEntryFields is required';

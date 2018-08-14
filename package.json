@@ -85,20 +85,16 @@
   },
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
-    "build-dev": "REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk-test.badrit.com/graphql node scripts/build.js",
-    "build-test": "REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk-test.badrit.com/graphql node scripts/build.js",
-    "build-stagging": "REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk.badrit.com/graphql node scripts/build.js",
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ node scripts/build.js",    
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint": "npm run lint:css && npm run lint:es",
-    "refetch-schema-dev": "graphql-fetch-schema http://portal.ayk-test.badrit.com/graphql",
-    "refetch-schema-test": "graphql-fetch-schema http://portal.ayk-test.badrit.com/graphql",
-    "refetch-schema-stagging": "graphql-fetch-schema http://portal.ayk.badrit.com/graphql",
+    "lint": "npm run lint:css && npm run lint:es",    
+    "refetch-schema": "graphql-fetch-schema __ENDPOINT__",
     "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
-    "start": "npm run lint:css && REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk-test.badrit.com/graphql npm run start-internal"
+    "start": "npm run lint:css && REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ npm run start-internal"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",

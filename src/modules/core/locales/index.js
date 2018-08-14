@@ -3,7 +3,7 @@ import i18next from 'i18next';
 const loadLocales = () => {
   i18next.addResourceBundle('en', 'core', {
     metadata: {
-      appName: 'BADR Archetype',
+      appName: 'Bractal',
       displayName: 'Core Module',
       description: 'An examplar usage of React for all of our React-Relay projects. It shows how the ideal project would look like, and thus maximum care was taken when writing this code to be of high quality',
     },

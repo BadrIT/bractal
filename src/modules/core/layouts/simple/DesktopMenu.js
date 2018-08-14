@@ -1,7 +1,7 @@
 import React from 'react';
-import { Input, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import { translate, Trans } from 'react-i18next';
+import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import LanguageSelector from '../../components/common/LanguageSelector';
@@ -22,12 +22,8 @@ const DesktopMenu = ({ modules }) => (
 
     <Menu.Menu position="right">
       <Menu.Item>
-        <Input icon="search" placeholder="Search..." />
-      </Menu.Item>
-      <Menu.Item>
         <LanguageSelector />
       </Menu.Item>
-      <Menu.Item name="logout" />
     </Menu.Menu>
   </Menu>
 );
@@ -39,4 +35,4 @@ DesktopMenu.propTypes = {
   })).isRequired,
 };
 
-export default translate('core')(withModules(DesktopMenu));
+export default withModules(DesktopMenu);

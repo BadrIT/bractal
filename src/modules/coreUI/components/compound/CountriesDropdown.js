@@ -1,22 +1,22 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-relay';
 
 import InputSelect from '~/modules/coreUI/components/basic/select/InputSelect';
-import withRootQuery from '~/modules/core/utils/relayHelpers/withRootQuery';
+
+import AllCountries from './AllCountries.json';
 
 class CountriesDropdown extends React.Component {
   getSortedCountries = () =>
-    this.props.queryResult.list_countries.slice().sort((c1, c2) =>
+    AllCountries.slice().sort((c1, c2) =>
       c1.name.localeCompare(c2.name));
 
-  getCountriesOptions = () => this.getSortedCountries().map(country => ({
+  getCountriesOptions = () => AllCountries.map(country => ({
     label: country.name,
     image: <Image src={country.flag} alt={country.flag} />,
-    value: country.ref_id,
+    value: country.alpha3Code,
     attrs: {
-      callingCodes: country.phone_code,
+      callingCodes: country.callingCodes[0],
     },
   }));
 
@@ -28,7 +28,6 @@ class CountriesDropdown extends React.Component {
       <InputSelect
         showInput={false}
         value={value}
-        isLoading={this.props.isLoading}
         onChange={newValue => onChange(newValue)}
         showImageOnButton={false}
         getSelectedItemLabel={entry => `${entry.label}`}
@@ -42,39 +41,11 @@ class CountriesDropdown extends React.Component {
 
 CountriesDropdown.defaultProps = {
   value: '',
-  isLoading: false,
-  queryResult: {
-    list_countries: [],
-  },
 };
 
 CountriesDropdown.propTypes = {
   value: PropTypes.string,
-  isLoading: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  queryResult: PropTypes.shape({
-    list_countries: PropTypes.arrayOf(PropTypes.shape({
-      iso3: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      ref_id: PropTypes.string.isRequired,
-      flag: PropTypes.string.isRequired,
-      phone_code: PropTypes.string.isRequired,
-    })),
-  }),
 };
 
-export default withRootQuery(
-  CountriesDropdown,
-  graphql`
-    query CountriesDropdownQuery {    
-      list_countries {
-        iso3
-        name
-        ref_id
-        flag
-        phone_code
-      }
-    }
-  `,
-  CountriesDropdown,
-);
+export default CountriesDropdown;
