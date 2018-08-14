@@ -12,7 +12,7 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Pre-requisites
 
-This guide assumes that you've at least some basic knowledge about the following topics :
+This guide assumes that you've at least some basic knowledge about the following technologies :
 
    1. [React](https://reactjs.org/docs/getting-started.html)
    2. [GraphQL](https://www.howtographql.com)
@@ -27,10 +27,8 @@ git clone https://github.com/BadrIT/bractal.git
 cd bractal
 
 npm install
+npm install -g sass
 npm start
-
-npm run refetch-schema
-npm run compile-relay
 ```
 
 By now you should be able to see the welcome screen (Welcome !):
