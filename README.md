@@ -10,22 +10,22 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 # Getting started
 
-1. Pre-requisites
+## Pre-requisites
 
 This guide assumes that you've at least some basic knowlede about the following topics :
 
-  1. [React] ()
-  2. [GraphQL] ()
-  3. [Prisma] ()
-  4. [Relay] ()
+   1. [React] ()
+   2. [GraphQL] ()
+   3. [Prisma] ()
+   4. [Relay] ()
 
-2. Clone the repo :
+## Clone the repo :
 
 ```bash
 git clone https://github.com/BadrIT/bractal.git
 ```
 
-3. Install dependencies
+## Install dependencies
 
 ```bash
 npm install
