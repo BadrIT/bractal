@@ -8,44 +8,34 @@ import { Container } from 'semantic-ui-react';
 
 import { withRelayEnvironment } from '~/modules/core/utils/relayHelpers/RelayInitializer';
 
-import {{uiItemName}}sList from './{{uiItemName}}sList';
+import PostsList from './PostsList';
 
-const {{uiItemName}}sListPageQuery = graphql`
-    query {{uiItemName}}sListPageQuery {  
-    {{#if graphQLRootEntry}}
-      {{graphQLRootEntry}} {
-        ...{{uiItemName}}sList_query
-      }
-    {{else}}
-      ...{{uiItemName}}sList_query
-    {{/if}}          
+const PostsListPageQuery = graphql`
+    query PostsListPageQuery {  
+      ...PostsList_query
     }
 `;
 
-const {{uiItemName}}sListPage = ({ environment }) => (
+const PostsListPage = ({ environment }) => (
   <QueryRenderer
     environment={environment}
     // eslint-disable-next-line react/jsx-curly-spacing
-    query={ {{uiItemName}}sListPageQuery }
+    query={ PostsListPageQuery }
     render={({ error, props }) => {
       // eslint-disable-next-line react/prop-types
-    {{#if graphQLRootEntry}}
-      const queryRoot = props ? props.{{graphQLRootEntry}} : null;
-    {{else}}
       const queryRoot = props;
-    {{/if}}        
       if (error) {
           return <Container>{error.message}</Container>;
       } else if (props) {
-          return <{{uiItemName}}sList query={queryRoot} />;
+          return <PostsList query={queryRoot} />;
       }
       return <Container>Loading ...</Container>;
     }}
   />
 );
 
-{{uiItemName}}sListPage.propTypes = {
+PostsListPage.propTypes = {
   environment: PropTypes.shape({}).isRequired,
 };
 
-export default withRelayEnvironment({{uiItemName}}sListPage);
+export default withRelayEnvironment(PostsListPage);

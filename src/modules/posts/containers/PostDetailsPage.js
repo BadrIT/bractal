@@ -10,46 +10,46 @@ import { Container, Segment } from 'semantic-ui-react';
 
 import { withRelayEnvironment } from '~/modules/core/utils/relayHelpers/RelayInitializer';
 
-import {{uiItemName}}Details from './{{uiItemName}}Details';
+import PostDetails from './PostDetails';
 
-const {{uiItemName}}DetailsPageQuery = graphql`
-    query {{uiItemName}}DetailsPageQuery ($filter: {{modelName}}WhereUniqueInput!) {  
-      {{graphQLSingleItemQueryName}}(where: $filter) {
-        ...{{uiItemName}}Details_{{camelCase uiItemName}}Info
+const PostDetailsPageQuery = graphql`
+    query PostDetailsPageQuery ($filter: PostWhereUniqueInput!) {  
+      post(where: $filter) {
+        ...PostDetails_postInfo
       }
     }
 `;
 
-const {{uiItemName}}DetailsPage = ({ environment, match }) => {
-  const {{camelCase uiItemName}}ID = match && match.params && match.params.id;
+const PostDetailsPage = ({ environment, match }) => {
+  const postID = match && match.params && match.params.id;
 
   return (
     <Container>
-      <Link to="/{{dashCase moduleShortUniqueName}}" >
-        <h1> {'< {{uiItemName}} List'} </h1>
+      <Link to="/posts" >
+        <h1> {'< Post List'} </h1>
       </Link>
       <br />
       <br />
       <QueryRenderer
         environment={environment}
         // eslint-disable-next-line react/jsx-curly-spacing
-        query={ {{uiItemName}}DetailsPageQuery }
-        variables=\{{
+        query={ PostDetailsPageQuery }
+        variables={{
           filter: {
-            id: {{camelCase uiItemName}}ID,
+            id: postID,
           },
         }}
         render={({ error, props }) => {
           if (error) {
               return <Container>{error.message}</Container>;
           // eslint-disable-next-line react/prop-types
-          } else if (props && props.{{graphQLSingleItemQueryName}}) {
+          } else if (props && props.post) {
               return (
                 <Segment>
-                  <{{uiItemName}}Details
+                  <PostDetails
                     hideHeaderAndAuthor={false}
                     // eslint-disable-next-line react/jsx-curly-spacing
-                    {{camelCase uiItemName}}Info={props.{{graphQLSingleItemQueryName}} }
+                    postInfo={props.post }
                   />
                 </Segment>
               );
@@ -61,9 +61,9 @@ const {{uiItemName}}DetailsPage = ({ environment, match }) => {
   );
 };
 
-{{uiItemName}}DetailsPage.propTypes = {
+PostDetailsPage.propTypes = {
   environment: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({}).isRequired,
 };
 
-export default withRelayEnvironment({{uiItemName}}DetailsPage);
+export default withRelayEnvironment(PostDetailsPage);

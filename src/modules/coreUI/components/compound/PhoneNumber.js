@@ -1,32 +1,32 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-relay';
 
 import InputSelect from '~/modules/coreUI/components/basic/select/InputSelect';
-import withRootQuery from '~/modules/core/utils/relayHelpers/withRootQuery';
+
+import AllCountries from './AllCountries.json';
 
 class PhoneNumber extends React.Component {
   getSortedCountries = () =>
-    this.props.queryResult.list_countries.slice().sort((c1, c2) =>
+    AllCountries.sort((c1, c2) =>
       c1.name.localeCompare(c2.name));
 
-  getCountryWithId = refId => this.props.queryResult.list_countries
-    .find(c => c.ref_id === refId);
+  getCountryWithId = alpha3Code =>
+    AllCountries.find(c => c.alpha3Code === alpha3Code);
 
-  getCountryWithCallingCode = phoneCode => this.props.queryResult.list_countries
-    .find(c => c.phone_code === phoneCode);
+  getCountryWithCallingCode = phoneCode =>
+    AllCountries.find(c => c.callingCodes[0] === phoneCode);
 
-  getFullPhoneNumber = (countryCode, phone) =>
-    `(+${this.getCountryWithId(countryCode).phone_code}) ${phone}`;
+  getFullPhoneNumber = (alpha3Code, phone) =>
+    `(+${this.getCountryWithId(alpha3Code).callingCodes[0]}) ${phone}`;
 
   getCountriesOptions = () => this.getSortedCountries().map(country => ({
     label: country.name,
     image: <Image src={country.flag} alt={country.flag} />,
-    value: country.ref_id,
-    rightPulledLabel: `+${country.phone_code}`,
+    value: country.alpha3Code,
+    rightPulledLabel: `+${country.callingCodes[0]}`,
     attrs: {
-      callingCodes: country.phone_code,
+      callingCodes: country.callingCodes[0],
     },
   }));
 
@@ -49,7 +49,6 @@ class PhoneNumber extends React.Component {
   render = () => (
     <InputSelect
       showInput
-      isLoading={this.props.isLoading}
       value={this.transformValue(this.props.value)}
       selectButtonRatio={40}
       onChange={(countryCode, phone) =>
@@ -65,39 +64,11 @@ class PhoneNumber extends React.Component {
 
 PhoneNumber.defaultProps = {
   value: '',
-  isLoading: false,
-  queryResult: {
-    list_countries: [],
-  },
 };
 
 PhoneNumber.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
-  isLoading: PropTypes.bool,
-  queryResult: PropTypes.shape({
-    list_countries: PropTypes.arrayOf(PropTypes.shape({
-      iso3: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      ref_id: PropTypes.string.isRequired,
-      flag: PropTypes.string.isRequired,
-      phone_code: PropTypes.string.isRequired,
-    })),
-  }),
 };
 
-export default withRootQuery(
-  PhoneNumber,
-  graphql`
-    query PhoneNumberQuery {    
-      list_countries {
-        iso3
-        name
-        ref_id
-        flag
-        phone_code
-      }
-    }
-  `,
-  PhoneNumber,
-);
+export default PhoneNumber;
