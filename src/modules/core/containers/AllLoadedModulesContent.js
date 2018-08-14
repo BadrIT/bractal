@@ -11,7 +11,13 @@ function PageContent({ modules }) {
   return (
     <Switch>
       { modules.map(module => (
-        <Route exact key={module.name} path={module.homePath} component={module.HomePage} />
+        <Route
+          // Only home page should be exact
+          exact={module.homePath === '/'}
+          key={module.name}
+          path={module.homePath}
+          component={module.HomePage}
+        />
       )) }
     </Switch>
   );

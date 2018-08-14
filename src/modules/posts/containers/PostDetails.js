@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 
 const PostDetails = ({ postInfo }) => {
-  const fieldsNames = 'title description';
+  const fieldsNames = 'id title description';
   const fields = fieldsNames.split(' ').filter(field => field && field.length > 0 && field !== 'id');
 
   return (
@@ -25,6 +25,6 @@ PostDetails.propTypes = PropTypes.shape({
 
 export default createFragmentContainer(PostDetails, graphql`
   fragment PostDetails_postInfo on Post {    
-    title description
+    id title description
   }
 `);

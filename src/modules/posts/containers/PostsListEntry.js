@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 const itemDetailsLink = itemID => `/posts/${itemID}`;
 
 const PostsListEntry = ({ postInfo }) => {
-  const fieldsNames = 'title';
+  const fieldsNames = 'id title';
   const fields = fieldsNames.split(' ').filter(field => field && field.length > 0 && field !== 'id');
 
   return (
@@ -38,6 +38,6 @@ PostsListEntry.propTypes = {
 
 export default createFragmentContainer(PostsListEntry, graphql`
   fragment PostsListEntry_postInfo on Post {
-    title
+    id title
   }
 `);
