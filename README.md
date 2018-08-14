@@ -14,22 +14,19 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 This guide assumes that you've at least some basic knowlede about the following topics :
 
-   1. [React] ()
-   2. [GraphQL] ()
-   3. [Prisma] ()
-   4. [Relay] ()
+   1. [React](https://reactjs.org/docs/getting-started.html)
+   2. [GraphQL](https://www.howtographql.com)
+   3. [Prisma](https://www.prisma.io/docs/quickstart/)
+   4. [Relay](https://facebook.github.io/relay/docs/en/introduction-to-relay.html)
 
-## Clone the repo :
+## Install
 
 ```bash
 git clone https://github.com/BadrIT/bractal.git
-```
 
-## Install dependencies
-
-```bash
+cd bractal
 npm install
-npm install -g plop
+npm start
 ```
 
 
