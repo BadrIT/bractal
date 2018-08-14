@@ -8,6 +8,31 @@ It differs from libraries like Bootsrap and SemanticUI, that Bractal not only pr
 
 AND, if your app, is beyond a simple handful pages, then Bractal would be very handy to modularize your system.
 
+# Getting started
+
+1. Pre-requisites
+
+This guide assumes that you've at least some basic knowlede about the following topics :
+
+  1. [React] ()
+  2. [GraphQL] ()
+  3. [Prisma] ()
+  4. [Relay] ()
+
+2. Clone the repo :
+
+```bash
+git clone https://github.com/BadrIT/bractal.git
+```
+
+3. Install dependencies
+
+```bash
+npm install
+npm install -g plop
+```
+
+
 # Roadmap
 
 ## Release 0 
