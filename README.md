@@ -25,9 +25,16 @@ This guide assumes that you've at least some basic knowlede about the following 
 git clone https://github.com/BadrIT/bractal.git
 
 cd bractal
+
 npm install
 npm start
 ```
+
+By now you should be able to see the welcome screen (Welcome !):
+
+![Welcome Screen](docs/assets/getting_started/welcome.png)
+
+
 
 
 # Roadmap
