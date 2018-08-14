@@ -12,7 +12,7 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Pre-requisites
 
-This guide assumes that you've at least some basic knowlede about the following topics :
+This guide assumes that you've at least some basic knowledge about the following topics :
 
    1. [React](https://reactjs.org/docs/getting-started.html)
    2. [GraphQL](https://www.howtographql.com)
@@ -84,7 +84,7 @@ Now that we have fully functional GraphQL backend, let's move on to setup our Br
 
 Now let's add some exciting stuff. We'll create a bunch of views, with just few lines.
 
-   1. Install plop ```npm install -g react-generator-templates```. Plop is a cool template generation tool [More details](https://github.com/bernabe9/react-generator).
+   1. Install plop ```npm install -g react-generator-templates plop```. Plop is a cool template generation tool [More details](https://github.com/bernabe9/react-generator).
    2. Now got to bractal's plop file and start creating your module. 
   ```bash
     cd {AppRoot}/plop
@@ -95,13 +95,14 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
   4. If the everything went fine, you should see something like :
   ![Plop Input](docs/assets/getting_started/plop_result.png)
   5. Now you should see the newly created module in the path ```{AppRoot}/src/modules/posts```
-  6. Now you can run the app to see your new module 
+  6. Now add the newly created modules to module configurations. To do so, change the contents of ```{AppRoot}/src/modulesConfig.js```. To be the same as [(This file)](docs/assets/getting_started/sample.moduleConfig.js)
+  7. Now you can run the app to see your new module 
   ```
   cd {AppRoot}
   npm start
   ```
-  7. You should now see 'Posts' as a new entry in the top menu of the App.
-  6. Voila` !!! , Hello Bractal World !
+  8. You should now see 'Posts' as a new entry in the top menu of the App.
+  9. Voila` !!! , Hello Bractal World !
 
 ### Viewing the data
 
