@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 const getJustifyContent = (props) => {
@@ -39,7 +38,7 @@ const getAlignItems = (props) => {
   return null;
 };
 
-export const LinearLayout = styled.div`
+export default styled.div`
   width: ${props => (props.fullWidth ? '100%' : null)};
   height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;
