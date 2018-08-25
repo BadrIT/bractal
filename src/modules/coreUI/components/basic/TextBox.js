@@ -90,7 +90,7 @@ class TextBox extends Component {
         <Wraper
           fullWidth
           row
-          centerAlign
+          centerAligned
           topJustified
           focused={this.state.focused}
           {...this.props}

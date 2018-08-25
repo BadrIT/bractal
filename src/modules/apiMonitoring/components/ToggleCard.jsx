@@ -7,7 +7,6 @@ import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { StepStatus } from '~/modules/apiMonitoring/utils/TestRunner';
 import { MediumSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 

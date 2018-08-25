@@ -12,7 +12,7 @@ import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Ro
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
 import { XSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import Icon from '~/modules/coreUI/components/basic/Icon';
+import Icon from '~/modules/coreUI/atoms/Icon';
 
 const getBorderColor = (props, forceFocusMode) => {
   if (forceFocusMode || props.actAsInFocus) {

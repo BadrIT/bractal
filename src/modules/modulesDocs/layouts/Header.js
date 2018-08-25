@@ -6,6 +6,7 @@ import { withModules } from '~/modules/core/utils/modulesLoader';
 
 import SiteHeader from '~/modules/coreUI/containers/siteHeader';
 import BractalLogo from '~/modules/modulesDocs/atoms/BractalLogo';
+import BractalLogoMobile from '~/modules/modulesDocs/atoms/BractalLogoMobile';
 
 import LanguageSelector from '~/modules/modulesDocs/atoms/LanguageSelector';
 
@@ -71,15 +72,10 @@ const Header = ({ modules }) => {
     },
     mobile: {
       top: {
-        left: [
-          {
-            itemRenderer: <BractalLogo />,
-            targetURL: '/',
-          },
-        ],
         right: [
           {
-            itemRenderer: <LanguageSelector />,
+            itemRenderer: <BractalLogoMobile />,
+            targetURL: '/',
           },
         ],
       },
