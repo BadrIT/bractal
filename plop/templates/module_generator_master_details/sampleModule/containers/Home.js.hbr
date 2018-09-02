@@ -1,13 +1,15 @@
 import React from 'react';
 import { translate, Trans } from 'react-i18next';
 import { Header, Container } from 'semantic-ui-react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import {{uiItemName}}sListPage from './{{uiItemName}}sListPage';
 import {{uiItemName}}DetailsPage from './{{uiItemName}}DetailsPage';
+import {{uiItemName}}CreatePage from './{{uiItemName}}CreatePage';
 
 const ItemsListPage = () => {{uiItemName}}sListPage;
 const ItemDetailsPage = () => {{uiItemName}}DetailsPage;
+const ItemCreatePage = () => {{uiItemName}}CreatePage;
 
 const HomePage = () =>
   (
@@ -24,8 +26,11 @@ const HomePage = () =>
         <br />
         <br />
       </Container>
-      <Route path="/{{dashCase moduleShortUniqueName}}" exact component={ItemsListPage()} />
-      <Route path="/{{dashCase moduleShortUniqueName}}/:id" exact component={ItemDetailsPage()} />
+      <Switch>
+        <Route path="/{{dashCase moduleShortUniqueName}}" exact component={ItemsListPage()} />
+        <Route path="/{{dashCase moduleShortUniqueName}}/create" exact component={ItemCreatePage()} />
+        <Route path="/{{dashCase moduleShortUniqueName}}/:id" exact component={ItemDetailsPage()} />
+      </Switch>
     </React.Fragment>
   );
 
