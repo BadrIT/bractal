@@ -85,6 +85,14 @@ module.exports = (plop) => {
         },
       }, {
         type: 'input',
+        name: 'itemCreateEntryFields',
+        message: 'What fields should we ask GraphQL endpoint for the Create view (separatated by spaces, for example "id name title") ? (itemCreateEntryFields) ?',
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'itemCreateEntryFields is required';
+        },
+      }, {
+        type: 'input',
         name: 'graphQLRootEntry',
         message: "Are you using viewer or me, as a root entry point ? if yes, write it's name, else leave this empty ...",
       },
@@ -125,6 +133,11 @@ module.exports = (plop) => {
         type: 'add',
         path: '../src/modules/{{moduleName}}/containers/Home.js',
         templateFile: 'templates/module_generator_master_details/sampleModule/containers/Home.js.hbr',
+        abortOnFail: true,
+      }, {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/containers/{{uiItemName}}CreatePage.js',
+        templateFile: 'templates/module_generator_master_details/sampleModule/containers/ItemCreatePage.js.hbr',
         abortOnFail: true,
       }, {
         type: 'add',
