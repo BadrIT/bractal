@@ -9,13 +9,13 @@ import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 
 const FormMutation = graphql`
   mutation {{uiItemName}}CreatePageMutation (
-   $data : {{uiItemName}}CreateInput!
+    $data : {{uiItemName}}CreateInput!
   ) {
-    create{{uiItemName}}(
-     data : $data
-    ) {
-        {{itemCreateEntryFields}}
-    }
+      create{{uiItemName}} (
+        data : $data
+      ) {
+          {{itemCreateEntryFields}}
+      }
   }
 `;
 
