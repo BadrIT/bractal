@@ -23,7 +23,7 @@ const RelayFormFields = {
   fields: [],
 };
 
-class  {{uiItemName}}CreatePage extends Component {
+class {{uiItemName}}CreatePage extends Component {
   state = {
     panelError: null,
     isLoading: false,
@@ -71,5 +71,4 @@ class  {{uiItemName}}CreatePage extends Component {
   }
 }
 
-
-export default  {{uiItemName}}CreatePage;
+export default {{uiItemName}}CreatePage;
