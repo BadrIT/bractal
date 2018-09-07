@@ -77,6 +77,7 @@ Now that we have fully functional GraphQL backend, let's move on to setup our Br
    npm run compile-relay
    ```
    5. if the above commands succeeded, and you got no errors, then at least now, we can start talking with our newly created prisma backend
+   6. Note: if you have the app already running, you will need to restart it ```npm start``` because we have changed some environment variables after replacing ```__ENDPOINT__```
 
 ### Creating Frontend Views
 
@@ -140,7 +141,7 @@ Now you're supposed to see an empty view, since we haven't added any posts yet. 
     }
    ``` 
    4. Create as many posts as you wish, to get a nice view
-   5. Goto your App in the browswer and refresh it to see the List of posts that you've just created !
+   5. Goto your App in the browswer and refresh it to see the List of posts that you've just created !e
    6. Now you can click on one of the posts to see it's details or go back to the list of posts.
    6. That's it, you just got your first Bractal's module up and running, congrats !!
 
