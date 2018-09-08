@@ -86,7 +86,7 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
    2. Now got to bractal's plop file and start creating your module. 
   ```bash
     cd {AppRoot}/plop
-    plop plop generate_master_details_module
+    plop generate_master_details_module
   ```
   3. You would be prompted with a number of questions, give it exactly the following answers : (You should experiment with different variations later, as appropriate) :
   ![Plop Input](docs/assets/getting_started/plop_input.png)
