@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
 import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTrackerProvider';
+import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';
 
 import ModulesLoader from '~/modules/core/utils/modulesLoader';
 import RelayInitializer from '~/modules/core/utils/relayHelpers/RelayInitializer';
@@ -30,7 +31,9 @@ const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
           <ThemeProvider theme={theme}>
             <UserInfoProvider>
               <ModalTrackerProvider>
-                {AppComponent}
+                <SideMenuTrackerProvider>
+                  { AppComponent }
+                </SideMenuTrackerProvider>
               </ModalTrackerProvider>
             </UserInfoProvider>
           </ThemeProvider>

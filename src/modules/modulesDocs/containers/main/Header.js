@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { withModules } from '~/modules/core/utils/modulesLoader';
 
-import SiteHeader from '~/modules/coreUI/containers/siteHeader';
+import SiteHeader from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader';
 import BractalLogo from '~/modules/modulesDocs/atoms/BractalLogo';
 import BractalLogoMobile from '~/modules/modulesDocs/atoms/BractalLogoMobile';
 
@@ -13,7 +13,9 @@ import LanguageSelector from '~/modules/modulesDocs/atoms/LanguageSelector';
 import { MediumLabel } from '~/modules/coreUI/components/basic/Labels';
 import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
 
-import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from '~/modules/coreUI/containers/siteHeader/HeaderRowContainers';
+import SideMenuToggler from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader/SideMenuToggler';
+
+import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader/HeaderRowContainers';
 
 
 const HeaderTopRowContainer = styled(DefaultHeaderTopRowContainer)`
@@ -72,16 +74,17 @@ const Header = ({ modules }) => {
     },
     mobile: {
       top: {
+        left: [
+          {
+            itemRenderer: <SideMenuToggler />,
+          },
+        ],
         right: [
           {
             itemRenderer: <BractalLogoMobile />,
             targetURL: '/',
           },
         ],
-      },
-      bottom: {
-        left: [],
-        right: [],
       },
     },
   };

@@ -24,17 +24,17 @@ const HeaderRow = ({
   return (
     <HeaderRowContainer>
       <SubMenuContainer>
-        {menuInfo.left && menuInfo.left.map(item => (
+        {menuInfo && menuInfo.left && menuInfo.left.map(item => (
           <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
       </SubMenuContainer>
       <CenteredSubMenuContainer>
-        {menuInfo.center && menuInfo.center.map(item => (
+        {menuInfo && menuInfo.center && menuInfo.center.map(item => (
           <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
       </CenteredSubMenuContainer>
       <SubMenuContainer>
-        {menuInfo.right && menuInfo.right.map(item => (
+        {menuInfo && menuInfo.right && menuInfo.right.map(item => (
           <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
       </SubMenuContainer>

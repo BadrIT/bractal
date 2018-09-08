@@ -7,7 +7,7 @@ import Media from 'react-media';
 import { withRouter } from 'react-router-dom';
 
 import withModalTracker from '~/modules/core/utils/modalHelpers/withModalTracker';
-import Icon from '~/modules/coreUI/atoms/Icon';
+import Icon from '~/modules/coreUI/components/basic/Icon';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Image from '~/modules/coreUI/components/basic/Image';

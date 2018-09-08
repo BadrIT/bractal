@@ -12,11 +12,13 @@ import DropdownContentTracker from './DropdownContentTracker';
 
 const FlexLink = styled(ExternalLink)`
   display: flex;
+
+  ${props => props.customStyle}
 `;
 
 const renderMenuItem = (itemInfo) => {
   const {
-    targetURL, linkLabelText, itemRenderer, iconImageSrc, dropdownContent,
+    targetURL, linkLabelText, itemRenderer, iconImageSrc, dropdownContent, customStyle,
   } = itemInfo;
 
   let content = null;
@@ -24,7 +26,7 @@ const renderMenuItem = (itemInfo) => {
   if (linkLabelText) {
     content = <span>{linkLabelText}</span>;
   } else if (iconImageSrc) {
-    content = <Image src={iconImageSrc} srcSet={iconImageSrc} />;
+    content = <Image src={iconImageSrc} srcSet={iconImageSrc} customStyle={customStyle} />;
   } else if (itemRenderer) {
     content = itemRenderer;
   }
@@ -32,7 +34,7 @@ const renderMenuItem = (itemInfo) => {
   let menuItem = null;
 
   if (targetURL) {
-    menuItem = <FlexLink url={targetURL}> { content } </FlexLink>;
+    menuItem = <FlexLink url={targetURL} customStyle={customStyle}> { content } </FlexLink>;
   } else {
     menuItem = content;
   }
@@ -78,6 +80,10 @@ const MenuItemRenderer = ({ itemInfo }) =>
       .and_if_hasAnyOf(['horizontalSpacer'])
         .thenProhibitAllOf([
           'separatorWeight', 'separatorLength', 'separatorColorTone',
+        ])
+      .and_if_hasAnyOf(['customStyle'])
+        .thenRequireOneOf([
+          'iconImageSrc', 'targetURL',
         ])
     .then()
       .if_has('verticalSeparator')
