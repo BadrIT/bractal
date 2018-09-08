@@ -30,6 +30,7 @@ const Input = styled.input`
   }
 `;
 // Should take same height as text inputs
+// TODO : Use the 'Icon' component instead
 const Icon = styled.i`
   color: ${props => props.theme.inputs.borderColor};
   font-size: ${props => ((2 * props.theme.inputs.padding.top) + props.theme.inputs.fontSize + 4)}px;

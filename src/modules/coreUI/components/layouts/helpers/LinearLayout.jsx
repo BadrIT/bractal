@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+import React from 'react';
 import styled from 'styled-components';
 
 const getJustifyContent = (props) => {
@@ -23,9 +23,9 @@ const getJustifyContent = (props) => {
 };
 
 const getAlignItems = (props) => {
-  if (props.stretchAlign) {
+  if (props.stretchAligned) {
     return 'stretch';
-  } else if (props.centerAlign) {
+  } else if (props.centerAligned) {
     return 'center';
   } else if (props.topAligned) {
     return 'flex-start';
@@ -39,7 +39,8 @@ const getAlignItems = (props) => {
   return null;
 };
 
-export const LinearLayout = styled.div`
+
+const LinearLayout = styled.div`
   width: ${props => (props.fullWidth ? '100%' : null)};
   height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;
@@ -48,3 +49,14 @@ export const LinearLayout = styled.div`
   justify-content: ${props => getJustifyContent(props) || 'space-around'};
   align-items: ${props => getAlignItems(props) || 'center'};  
 `;
+
+export const Column = props => (
+  <LinearLayout column {...props} />
+);
+
+export const Row = props => (
+  <LinearLayout row {...props} />
+);
+
+export default LinearLayout;
+

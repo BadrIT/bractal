@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ExternalLink = props => <a href={props.url} target={props.target}>{props.children}</a>;
+const ExternalLink = props => (
+  <a href={props.url} target={props.target} {...props}>
+    {props.children}
+  </a>
+);
 
 export default ExternalLink;
 
