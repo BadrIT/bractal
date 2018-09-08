@@ -141,7 +141,7 @@ Now you're supposed to see an empty view, since we haven't added any posts yet. 
     }
    ``` 
    4. Create as many posts as you wish, to get a nice view
-   5. Goto your App in the browswer and refresh it to see the List of posts that you've just created !e
+   5. Goto your App in the browswer and refresh it to see the List of posts that you've just created !
    6. Now you can click on one of the posts to see it's details or go back to the list of posts.
    6. That's it, you just got your first Bractal's module up and running, congrats !!
 
