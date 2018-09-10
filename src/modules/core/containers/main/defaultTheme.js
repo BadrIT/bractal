@@ -1,4 +1,35 @@
 const Theme = {
+  new: {
+    fonts: {
+      sizes: {
+        header: 36,
+        xLarge: 25,
+        large: 21,
+        medium: 16,
+        small: 14,
+        xSmall: 12,
+      },
+    },
+    paddings: {
+      xLarge: 20,
+      large: 18,
+      medium: 14,
+      small: 12,
+      xSmall: 10,
+    },
+    distances: {
+      s1: 1,
+      s2: 2,
+      s3: 5,
+      s4: 10,
+      s5: 15,
+      s6: 20,
+      s7: 25,
+      s8: 30,
+      s9: 35,
+      s10: 40,
+    },
+  },
   colors: {
     primary: '#33a8ff',
     primaryHover: '#63b8ff',
@@ -41,7 +72,7 @@ const Theme = {
       xxxSmall: 9.5,
     },
   },
-  paddings: {
+  distances: {
     xxSmall: 1,
     xSmall: 2,
     small: 5,

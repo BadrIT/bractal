@@ -10,7 +10,7 @@ import createTests from '~/modules/apiMonitoring/utils/createAccountMgmtApiTests
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 
 import { XXXXLargeSpacer, MediumSpacer, LargeSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import { MediumLabel, XXLargeLabel } from '~/modules/coreUI/components/basic/Labels';
+import { MediumLabel, Header } from '~/modules/coreUI/components/basic/Labels';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
@@ -111,9 +111,9 @@ class HomePage extends React.Component {
         <XXXXLargeSpacer />
 
         <Column fullWidth stretchAligned>
-          <XXLargeLabel color={this.state.failed ? 'red' : 'black'} >
+          <Header color={this.state.failed ? 'red' : 'black'} >
             GraphQL Constructs :
-          </XXLargeLabel>
+          </Header>
           <LargeSpacer />
           {Object.keys(GraphQlConstructs).map((constructKey) => {
             const construct = GraphQlConstructs[constructKey];
@@ -146,9 +146,9 @@ class HomePage extends React.Component {
         <XXXXLargeSpacer />
 
         <Row leftJustified>
-          <XXLargeLabel color={this.state.failed ? 'red' : 'black'} >
+          <Header color={this.state.failed ? 'red' : 'black'} >
             Test Suites
-          </XXLargeLabel>
+          </Header>
           <LargeSpacer />
           <BasicButton width="100px" primary onClicked={() => this.startTest()}>
             RUN
