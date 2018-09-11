@@ -1,13 +1,14 @@
 const Theme = {
   new: {
+    spacer: 10,
     fonts: {
       sizes: {
         header: 36,
-        xLarge: 25,
-        large: 21,
-        medium: 16,
-        small: 14,
-        xSmall: 12,
+        xl: 25,
+        lg: 21,
+        md: 16,
+        sm: 14,
+        xs: 12,
       },
     },
     paddings: {
@@ -17,17 +18,29 @@ const Theme = {
       small: 12,
       xSmall: 10,
     },
-    distances: {
-      s1: 1,
-      s2: 2,
-      s3: 5,
-      s4: 10,
-      s5: 15,
-      s6: 20,
-      s7: 25,
-      s8: 30,
-      s9: 35,
-      s10: 40,
+    buttons: {
+      sizes: {
+        xl: {
+          fontSize: 18,
+          padding: 16,
+        },
+        lg: {
+          fontSize: 16,
+          padding: 14,
+        },
+        md: {
+          fontSize: 16,
+          padding: 7,
+        },
+        sm: {
+          fontSize: 14,
+          padding: 5,
+        },
+        xs: {
+          fontSize: 12,
+          padding: 5,
+        },
+      },
     },
   },
   colors: {
@@ -72,7 +85,7 @@ const Theme = {
       xxxSmall: 9.5,
     },
   },
-  distances: {
+  paddings: {
     xxSmall: 1,
     xSmall: 2,
     small: 5,

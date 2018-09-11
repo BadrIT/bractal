@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
 
-import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import HeaderRow from './HeaderRow';
@@ -33,7 +33,7 @@ const Header = ({
     <PositionedDiv>
       <HeaderRow menuInfo={menuInfo.top} headerRowContainer={topRowContainer} />
     </PositionedDiv>
-    <LargeSpacer />
+    <Spacer />
     <PositionedDiv>
       <HeaderRow menuInfo={menuInfo.bottom} headerRowContainer={bottomRowContainer} />
     </PositionedDiv>

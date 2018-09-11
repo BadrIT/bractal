@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Spacer } from './Spacers';
+import Spacer from './Spacer';
 
 const lengths = {
   small: '30%',
@@ -55,14 +55,14 @@ const SeparatorRenderer = styled.div`
 const VerticalSeparator = props => (
   <VerticalSeparatorContainer {...props}>
     {/* TODO : Use PropTypes default value instead */}
-    <Spacer spacerSize={props.spacerWidth || 'medium'} />
+    <Spacer s_size={props.spacerSize} />
     <SeparatorRenderer {...props} />
-    <Spacer spacerSize={props.spacerWidth || 'medium'} />
+    <Spacer s_size={props.spacerSize} />
   </VerticalSeparatorContainer>
 );
 
 VerticalSeparator.propTypes = PropTypes.shape({
-  spacerWidth: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
+  spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
   separatorWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
   separatorLength: PropTypes.oneOf(['short', 'normal', 'long', 'full']),
   separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),

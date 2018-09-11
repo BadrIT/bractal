@@ -1,5 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
+import { parsePropertyValue } from '~/modules/coreUI/utils/infereStyle';
+import Spacer from './Spacer';
+
+const getIntraItemsSpacer = (props) => {
+  let sizeProp = null;
+  sizeProp = parsePropertyValue(props, 's_spaceBetween');
+  if (!sizeProp) {
+    return null;
+  }
+  return <Spacer s_size={sizeProp} />;
+};
 
 const getJustifyContent = (props) => {
   if (props.spaceAroundJustified) {
@@ -40,7 +52,7 @@ const getAlignItems = (props) => {
 };
 
 
-const LinearLayout = styled.div`
+const StyledLinearLayout = styled.div`
   width: ${props => (props.fullWidth ? '100%' : null)};
   height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;
@@ -49,6 +61,17 @@ const LinearLayout = styled.div`
   justify-content: ${props => getJustifyContent(props) || 'space-around'};
   align-items: ${props => getAlignItems(props) || 'center'};  
 `;
+
+const LinearLayout = props => (
+  <StyledLinearLayout {...props}>
+    {[
+      ...injectElementBetweenArrayItems(
+        props.children, // eslint-disable-line react/prop-types
+        getIntraItemsSpacer(props),
+      ),
+    ]}
+  </StyledLinearLayout>
+);
 
 export const Column = props => (
   <LinearLayout column {...props} />
@@ -59,4 +82,3 @@ export const Row = props => (
 );
 
 export default LinearLayout;
-

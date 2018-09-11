@@ -13,8 +13,6 @@ import _ from 'lodash';
 import Header from './Header';
 
 import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from './HeaderRowContainers';
-import { setRoleAsLayoutPageContent, setRoleAsLayoutHeader, setRoleAsLayoutSideMenu } from './componentsRoles';
-
 
 // TODO : Move to JS Helpers
 const generateRandomKeys = (current) => {
@@ -80,15 +78,3 @@ SiteHeader.propTypes = {
 };
 
 export default SiteHeader;
-
-export const LayoutHeader = props => <React.Fragment>{props.children}</React.Fragment>;
-LayoutHeader.propTypes = { children: PropTypes.element.isRequired };
-setRoleAsLayoutHeader(LayoutHeader);
-
-export const LayoutPageContent = props => <React.Fragment>{props.children}</React.Fragment>;
-LayoutPageContent.propTypes = { children: PropTypes.element.isRequired };
-setRoleAsLayoutPageContent(LayoutPageContent);
-
-export const LayoutSideMenu = props => <React.Fragment>{props.children}</React.Fragment>;
-LayoutSideMenu.propTypes = { children: PropTypes.element.isRequired };
-setRoleAsLayoutSideMenu(LayoutSideMenu);

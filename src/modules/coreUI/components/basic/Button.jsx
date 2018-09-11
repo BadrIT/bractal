@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { MediumLabel } from '~/modules/coreUI/components/basic/Labels';
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
-import { getFontSize, getPaddingSize } from '~/modules/coreUI/utils/infereStyle';
+import { infereFontSize, inferePaddingSize, infereBorderRadius } from '~/modules/coreUI/utils/infereStyle';
+import Icon from '~/modules/coreUI/components/basic/Icon';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
 const getBackgroundColor = (props) => {
   if (props.s_disabled) {
@@ -23,7 +25,7 @@ const getBackgroundColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primary : props.theme.colors.secondary;
+  return props.s_secondary ? props.theme.colors.secondary : props.theme.colors.primary;
 };
 
 const getColor = (props) => {
@@ -31,7 +33,7 @@ const getColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primary : props.theme.colors.secondary;
+  return props.s_secondary ? props.theme.colors.secondary : props.theme.colors.primary;
 };
 
 const getHoverColor = (props) => {
@@ -39,7 +41,7 @@ const getHoverColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primaryHover : props.theme.colors.secondaryHover;
+  return props.s_secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
 };
 
 const getClickedColor = (props) => {
@@ -47,7 +49,9 @@ const getClickedColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primaryClicked : props.theme.colors.secondaryClicked;
+  return props.s_secondary
+    ? props.theme.colors.secondaryClicked
+    : props.theme.colors.primaryClicked;
 };
 
 const getHoverBackgroundColor = (props) => {
@@ -62,7 +66,7 @@ const getHoverBackgroundColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primaryHover : props.theme.colors.secondaryHover;
+  return props.s_secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
 };
 
 const getClickedBackgorundColor = (props) => {
@@ -77,11 +81,23 @@ const getClickedBackgorundColor = (props) => {
     return props.theme.colors.named.white;
   }
 
-  return props.s_primary ? props.theme.colors.primaryClicked : props.theme.colors.secondaryClicked;
+  return props.s_secondary
+    ? props.theme.colors.secondaryClicked
+    : props.theme.colors.primaryClicked;
 };
 
+const getBorderRadius = (props) => {
+  if (props.s_fullRound) {
+    return 1000;
+  }
+
+  return props.s_radius ? props.s_radius : infereBorderRadius(props);
+};
+
+
 const ButtonLabelStyle = css`
-  font-size: ${props => getFontSize(props)}px;
+  font-size: ${props => infereFontSize(props)}px;
+  font-weight: ${props => (props.s_bold ? 'bold' : 'normal')};
 
   color: ${props => getColor(props)};
 
@@ -95,17 +111,17 @@ const ButtonLabelStyle = css`
 `;
 
 // Must be of relative position for the loading icon to be drawn correctly
-const Button = styled(Column)`
-  width: '100%';
+const StyledButton = styled(Column)`
+  width: 100%;
   position: relative;  
 
-  padding: ${props => getPaddingSize(props)}px;
+  padding: ${props => inferePaddingSize(props)}px;
     
   background-color: ${props => getBackgroundColor(props)};
   
-  border: ${props => (props.s_inverted ? props.theme.buttons.border : 0)}px solid;
+  border: ${props => (props.s_borderLess ? 0 : (props.theme.buttons.border || 1))}px solid;
   border-color: ${props => getColor(props)};
-  border-radius: ${props => props.radius || props.theme.buttons.radius}px;
+  border-radius: ${props => getBorderRadius(props)}px;
   
   cursor: pointer;
   
@@ -144,10 +160,10 @@ const ButtonLoadingIcon = styled(FontAwesomeIcon)`
 `;
 
 const ButtonContainer = styled.div`
-  width: ${props => props.width || '100%'};
+  width: ${props => (props.block ? '100%' : props.width)};
 `;
 
-export class BasicButton extends React.Component {
+export class Button extends React.Component {
   componentDidMount = () => {
     // FIXME : The reason for the following work around, is that onClick would be called on the
     //         External component first, and thus causes the onClick being called twice
@@ -163,7 +179,7 @@ export class BasicButton extends React.Component {
   render = () => (
     <ButtonContainer {...this.props}>
       <HiddenActualButton {...this.props} />
-      <Button
+      <StyledButton
         {...this.props}
         onClick={e => this.onClick(e)}
         centerAligned
@@ -173,15 +189,22 @@ export class BasicButton extends React.Component {
         {this.props.loading &&
           <ButtonLoadingIcon icon={faSpinner} spin />
         }
+        {this.props.iconName &&
+          <React.Fragment>
+            <Icon className={this.props.iconName} />
+            <Spacer />
+          </React.Fragment>
+        }
         <MediumLabel {...this.props} customStyle={ButtonLabelStyle}>
           {this.props.children}
         </MediumLabel>
-      </Button>
+      </StyledButton>
     </ButtonContainer>
   );
 }
 
-BasicButton.propTypes = PropTypes.shape({
-  iconName: PropTypes.string.isRequired,
-  size: PropTypes.number,
+Button.propTypes = PropTypes.shape({
+  s_iconName: PropTypes.string.isRequired,
 }).isRequired;
+
+export default Button;
