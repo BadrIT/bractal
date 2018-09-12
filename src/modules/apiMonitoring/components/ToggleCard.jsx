@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Label } from '~/modules/coreUI/components/basic/Labels';
-import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { StepStatus } from '~/modules/apiMonitoring/utils/TestRunner';
-import { MediumSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -129,7 +128,7 @@ export default class ToggleCard extends Component {
         onClick={() => this.toggleVisibility()}
       >
         <FontAwesomeIcon icon={this.state.contentVisible ? faCaretDown : faCaretRight} />
-        <MediumSpacer />
+        <Spacer />
         <Label
           color={this.props.colorizeTitle ? getStatusColor(this.props.mode) : 'important'}
           size={this.props.titleSize}

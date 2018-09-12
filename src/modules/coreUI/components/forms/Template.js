@@ -3,8 +3,8 @@ import t from 'tcomb-form';
 import React from 'react';
 import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
 import { XSmallLabel } from '~/modules/coreUI/components/basic/Labels';
-import { XSmallSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import PhoneNumber from '~/modules/coreUI/components/compound/PhoneNumber';
 import CountriesDropdown from '~/modules/coreUI/components/compound/CountriesDropdown';
 
@@ -95,13 +95,13 @@ export default {
           />
           {attrs.checkboxNote &&
             <React.Fragment>
-              <SmallSpacer />
-              <TopAlignedRow>
-                <XSmallSpacer />
+              <Spacer />
+              <Row topAligned>
+                <Spacer />
                 <XSmallLabel color="subtle" paragraph>
                   {attrs.checkboxNote}
                 </XSmallLabel>
-              </TopAlignedRow>
+              </Row>
             </React.Fragment>
           }
         </React.Fragment>

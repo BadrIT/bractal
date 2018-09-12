@@ -1,8 +1,4 @@
-/*Here you will import the scss files*/
 
-// @import './base/base-dir';
-// @import './pages/pages-dir';
-// @import './components/components-dir';
-// @import './layouts/layouts-dir';
-
-@import './simpleOverride';
+@import "base/fontIcons";
+@import "base/FontFamily";
+@import 'ayk/globalOverrides';

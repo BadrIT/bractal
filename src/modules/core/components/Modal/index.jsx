@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 import withModalTracker from '~/modules/core/utils/modalHelpers/withModalTracker';
 import Icon from '~/modules/coreUI/components/basic/Icon';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Image from '~/modules/coreUI/components/basic/Image';
 
@@ -89,7 +89,7 @@ const ModalContainer = styled.div`
   `}
 `;
 
-const ModalContent = styled(CenterAlignedColumn)`
+const ModalContent = styled(Column)`
   ${cssMediaMax.tablet`
     align-self: flex-start;
     width: 100%;
@@ -117,7 +117,7 @@ class Modal extends React.Component {
     }
   }
   renderContent = () => (
-    <ModalContent >
+    <ModalContent centerAligned>
       <Media query={mediaQueryMax('tablet')}>
         {matches => (
           matches ? (

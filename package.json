@@ -1,5 +1,5 @@
 {
-  "name": "ayk",
+  "name": "Bractal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,6 +41,7 @@
     "html-webpack-plugin": "2.29.0",
     "i18next": "^11.3.2",
     "jest": "20.0.4",
+    "lodash": "^4.17.10",
     "module-resolver": "^1.0.0",
     "moment": "^2.22.2",
     "object-assign": "4.1.1",
@@ -85,11 +86,11 @@
   },
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
-    "build": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ node scripts/build.js",    
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint": "npm run lint:css && npm run lint:es",    
+    "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema __ENDPOINT__",
     "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",

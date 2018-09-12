@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
-import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 const handleDefault = (input, default_) => input || default_;
 
@@ -90,7 +90,7 @@ class TextBox extends Component {
         <Wraper
           fullWidth
           row
-          centerAlign
+          centerAligned
           topJustified
           focused={this.state.focused}
           {...this.props}

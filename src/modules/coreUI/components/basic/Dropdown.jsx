@@ -3,9 +3,9 @@ import { Dropdown as SemanticDropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { CenterAlignedRow } from '../layouts/helpers/Rows';
-import { SmallSpacer } from '../layouts/helpers/Spacers';
-import { SmallLabel } from '../basic/Labels';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { SmallLabel } from '~/modules/coreUI/components/basic/Labels';
 
 const DropdownImage = styled.img`
   width: ${props => props.theme.fonts.sizes.large}px;
@@ -66,19 +66,19 @@ class Dropdown extends React.Component {
     }
 
     return (
-      <CenterAlignedRow>
+      <Row centerAligned>
         {selectedOption.image &&
           <React.Fragment>
             <DropdownImage
               src={selectedOption.image && selectedOption.image.src}
             />
-            <SmallSpacer />
+            <Spacer />
           </React.Fragment>
         }
         <TriggerLabel customStyles={customTriggerLabelStyles}>
           {selectedOption.text}
         </TriggerLabel>
-      </CenterAlignedRow>
+      </Row>
     );
   }
 
