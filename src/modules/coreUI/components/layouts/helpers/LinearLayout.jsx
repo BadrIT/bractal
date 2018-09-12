@@ -1,20 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
-import { parsePropertyValue } from '~/modules/coreUI/utils/infereStyle';
+import { parseFloatProperty } from '~/modules/coreUI/utils/infereStyle';
 import Spacer from './Spacer';
 
 const getIntraItemsSpacer = (props) => {
   let sizeProp = null;
-  sizeProp = parsePropertyValue(props, 's_spaceBetween');
+  sizeProp = parseFloatProperty(props, 'spaceBetween');
   if (!sizeProp) {
     return null;
   }
-  return <Spacer s_size={sizeProp} />;
+  return <Spacer size={sizeProp} />;
 };
 
 const getJustifyContent = (props) => {
-  if (props.spaceAroundJustified) {
+  if (props.spaceEvenlyJustified) {
+    return 'space-evenly';
+  } else if (props.spaceAroundJustified) {
     return 'space-around';
   } else if (props.spaceBetweenJustified) {
     return 'space-between';

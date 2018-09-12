@@ -14,90 +14,90 @@ import Icon from '~/modules/coreUI/components/basic/Icon';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
 const getBackgroundColor = (props) => {
-  if (props.s_disabled) {
-    if (props.s_inverted) {
+  if (props.disabled) {
+    if (props.inverted) {
       return props.theme.buttons.disabled.backgroundColor.inverted;
     }
     return props.theme.buttons.disabled.backgroundColor.normal;
   }
 
-  if (props.s_inverted) {
+  if (props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary ? props.theme.colors.secondary : props.theme.colors.primary;
+  return props.secondary ? props.theme.colors.secondary : props.theme.colors.primary;
 };
 
 const getColor = (props) => {
-  if (!props.s_inverted) {
+  if (!props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary ? props.theme.colors.secondary : props.theme.colors.primary;
+  return props.secondary ? props.theme.colors.secondary : props.theme.colors.primary;
 };
 
 const getHoverColor = (props) => {
-  if (!props.s_inverted) {
+  if (!props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
+  return props.secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
 };
 
 const getClickedColor = (props) => {
-  if (!props.s_inverted) {
+  if (!props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary
+  return props.secondary
     ? props.theme.colors.secondaryClicked
     : props.theme.colors.primaryClicked;
 };
 
 const getHoverBackgroundColor = (props) => {
-  if (props.s_disabled) {
-    if (props.s_inverted) {
+  if (props.disabled) {
+    if (props.inverted) {
       return props.theme.buttons.disabled.backgroundColor.inverted;
     }
     return props.theme.buttons.disabled.backgroundColor.normal;
   }
 
-  if (props.s_inverted) {
+  if (props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
+  return props.secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
 };
 
 const getClickedBackgorundColor = (props) => {
-  if (props.s_disabled) {
-    if (props.s_inverted) {
+  if (props.disabled) {
+    if (props.inverted) {
       return props.theme.buttons.disabled.backgroundColor.inverted;
     }
     return props.theme.buttons.disabled.backgroundColor.normal;
   }
 
-  if (props.s_inverted) {
+  if (props.inverted) {
     return props.theme.colors.named.white;
   }
 
-  return props.s_secondary
+  return props.secondary
     ? props.theme.colors.secondaryClicked
     : props.theme.colors.primaryClicked;
 };
 
 const getBorderRadius = (props) => {
-  if (props.s_fullRound) {
+  if (props.fullRound) {
     return 1000;
   }
 
-  return props.s_radius ? props.s_radius : infereBorderRadius(props);
+  return props.radius ? props.radius : infereBorderRadius(props);
 };
 
 
 const ButtonLabelStyle = css`
   font-size: ${props => infereFontSize(props)}px;
-  font-weight: ${props => (props.s_bold ? 'bold' : 'normal')};
+  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
 
   color: ${props => getColor(props)};
 
@@ -119,7 +119,7 @@ const StyledButton = styled(Column)`
     
   background-color: ${props => getBackgroundColor(props)};
   
-  border: ${props => (props.s_borderLess ? 0 : (props.theme.buttons.border || 1))}px solid;
+  border: ${props => (props.borderLess ? 0 : (props.theme.buttons.border || 1))}px solid;
   border-color: ${props => getColor(props)};
   border-radius: ${props => getBorderRadius(props)}px;
   
@@ -163,7 +163,7 @@ const ButtonContainer = styled.div`
   width: ${props => (props.block ? '100%' : props.width)};
 `;
 
-export class Button extends React.Component {
+class Button extends React.Component {
   componentDidMount = () => {
     // FIXME : The reason for the following work around, is that onClick would be called on the
     //         External component first, and thus causes the onClick being called twice
@@ -184,7 +184,6 @@ export class Button extends React.Component {
         onClick={e => this.onClick(e)}
         centerAligned
         centerJustify
-        width={this.props.width}
       >
         {this.props.loading &&
           <ButtonLoadingIcon icon={faSpinner} spin />
@@ -204,7 +203,7 @@ export class Button extends React.Component {
 }
 
 Button.propTypes = PropTypes.shape({
-  s_iconName: PropTypes.string.isRequired,
+  iconName: PropTypes.string.isRequired,
 }).isRequired;
 
 export default Button;

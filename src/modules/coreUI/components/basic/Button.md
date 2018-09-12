@@ -8,11 +8,11 @@
 
 ```js
     <Examples>        
-        <Button s_xl>Click This</Button>
-        <Button s_lg>Click This</Button>
+        <Button xl>Click This</Button>
+        <Button lg>Click This</Button>
         <Button>Click This</Button>
-        <Button s_sm>Click This</Button>
-        <Button s_xs>Click This</Button>    
+        <Button sm>Click This</Button>
+        <Button xs>Click This</Button>    
     </Examples>
 ```
 
@@ -21,17 +21,17 @@ Two modes are supported, `Primary` &amp; `Secondary`
 ```js
     <Examples>
         <Button>Click This</Button>
-        <Button s_secondary>Click This</Button>
+        <Button secondary>Click This</Button>
     </Examples>
 ```
 
-### Filling
+### Fill
 You can go with the normal version, or inverted one
 ```js
     <Examples>
         <Button>Click This</Button>
-        <Button s_inverted>Click This</Button>
-        <Button s_inverted s_secondary>Click This</Button>
+        <Button inverted>Click This</Button>
+        <Button inverted secondary>Click This</Button>
     </Examples>
 ```
 
@@ -39,8 +39,8 @@ You can go with the normal version, or inverted one
 You can go for a full circle corner
 ```js
     <Examples>
-        <Button s_fullRound>Click This</Button>
-        <Button s_fullRound s_inverted>Click This</Button>
+        <Button fullRound>Click This</Button>
+        <Button fullRound inverted>Click This</Button>
     </Examples>
 ```
 
@@ -48,7 +48,7 @@ You can go for a full circle corner
 Only bold is supported
 ```js
     <Examples>
-        <Button s_bold>Click This</Button>
-        <Button s_bold s_inverted>Click This</Button>
+        <Button bold>Click This</Button>
+        <Button bold inverted>Click This</Button>
     </Examples>
 ```

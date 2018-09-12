@@ -61,7 +61,7 @@ const renderVerticalSeparator = itemInfo => (
 );
 
 const renderHorizontalSpacer = itemInfo => (
-  <Spacer s_size={itemInfo.spacerSize || 1} >
+  <Spacer size={itemInfo.spacerSize || 1} >
     hello
   </Spacer>
 );

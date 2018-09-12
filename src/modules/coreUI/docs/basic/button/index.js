@@ -6,34 +6,34 @@ import Button from '~/modules/coreUI/components/basic/Button';
 const ButtonDocs = () => (
   <Column leftAligned>
     <Header>Buttons</Header>
-    <Row s_spaceBetween_2>
-      <Column leftAligned s_spaceBetween_2>
-        <Button s_xl>Click This</Button>
-        <Button s_lg>Click This</Button>
+    <Row spaceBetween="1">
+      <Column leftAligned spaceBetween="1">
+        <Button xl>Click This</Button>
+        <Button lg>Click This</Button>
         <Button>Click This</Button>
-        <Button s_sm>Click This</Button>
-        <Button s_xs>Click This</Button>
+        <Button sm>Click This</Button>
+        <Button xs>Click This</Button>
       </Column>
-      <Column leftAligned s_spaceBetween_2>
-        <Button s_inverted s_xl>Click This</Button>
-        <Button s_inverted s_lg>Click This</Button>
-        <Button s_inverted>Click This</Button>
-        <Button s_inverted s_sm>Click This</Button>
-        <Button s_inverted s_xs>Click This</Button>
+      <Column leftAligned spaceBetween="1">
+        <Button inverted xl>Click This</Button>
+        <Button inverted lg>Click This</Button>
+        <Button inverted>Click This</Button>
+        <Button inverted sm>Click This</Button>
+        <Button inverted xs>Click This</Button>
       </Column>
-      <Column leftAligned s_spaceBetween_2>
-        <Button s_primary s_xl>Click This</Button>
-        <Button s_primary s_lg>Click This</Button>
-        <Button s_primary>Click This</Button>
-        <Button s_primary s_sm>Click This</Button>
-        <Button s_primary s_xs>Click This</Button>
+      <Column leftAligned spaceBetween="1">
+        <Button primary xl>Click This</Button>
+        <Button primary lg>Click This</Button>
+        <Button primary>Click This</Button>
+        <Button primary sm>Click This</Button>
+        <Button primary xs>Click This</Button>
       </Column>
-      <Column leftAligned s_spaceBetween_2>
-        <Button s_inverted s_primary s_xl>Click This</Button>
-        <Button s_inverted s_primary s_lg>Click This</Button>
-        <Button s_inverted s_primary>Click This</Button>
-        <Button s_inverted s_primary s_sm>Click This</Button>
-        <Button s_inverted s_primary s_xs>Click This</Button>
+      <Column leftAligned spaceBetween="1">
+        <Button inverted primary xl>Click This</Button>
+        <Button inverted primary lg>Click This</Button>
+        <Button inverted primary>Click This</Button>
+        <Button inverted primary sm>Click This</Button>
+        <Button inverted primary xs>Click This</Button>
       </Column>
     </Row>
   </Column>

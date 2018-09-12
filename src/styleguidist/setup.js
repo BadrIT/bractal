@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import LinearLayout, { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
-global.Column = Column;
+global.Box = props => (
+  <Spacer size={props.size || 6} style={{ backgroundColor: props.color || 'gray' }} />
+);
 global.Row = Row;
+global.Column = Column;
 global.Examples = props => (
-  <LinearLayout row topAligned s_spaceBetween_1>
+  <Row topAligned spaceBetween="0.5">
     {props.children}
-  </LinearLayout>
+  </Row>
 );

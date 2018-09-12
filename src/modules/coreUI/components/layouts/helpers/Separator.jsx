@@ -75,9 +75,9 @@ const SeparatorRenderer = styled.div`
 const Separator = props => (
   <SeparatorContainer {...props}>
     {/* TODO : Use PropTypes default value instead */}
-    <Spacer s_size={props.spacerSize} />
+    <Spacer size={props.spacerSize} />
     <SeparatorRenderer {...props} />
-    <Spacer s_size={props.spacerSize} />
+    <Spacer size={props.spacerSize} />
   </SeparatorContainer>
 );
 

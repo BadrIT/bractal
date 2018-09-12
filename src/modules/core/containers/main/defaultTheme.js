@@ -4,8 +4,8 @@ const Theme = {
     fonts: {
       sizes: {
         header: 36,
-        xl: 25,
-        lg: 21,
+        xl: 20,
+        lg: 18,
         md: 16,
         sm: 14,
         xs: 12,
@@ -17,30 +17,6 @@ const Theme = {
       medium: 14,
       small: 12,
       xSmall: 10,
-    },
-    buttons: {
-      sizes: {
-        xl: {
-          fontSize: 18,
-          padding: 16,
-        },
-        lg: {
-          fontSize: 16,
-          padding: 14,
-        },
-        md: {
-          fontSize: 16,
-          padding: 7,
-        },
-        sm: {
-          fontSize: 14,
-          padding: 5,
-        },
-        xs: {
-          fontSize: 12,
-          padding: 5,
-        },
-      },
     },
   },
   colors: {
