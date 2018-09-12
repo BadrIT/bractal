@@ -7,12 +7,12 @@ import { Container } from 'semantic-ui-react';
 
 import TestRunner, { StepStatus, getTestSuitePath, getTestPath, getStepPath } from '~/modules/apiMonitoring/utils/TestRunner';
 import createTests from '~/modules/apiMonitoring/utils/createAccountMgmtApiTests';
-import { BasicButton } from '~/modules/coreUI/components/basic/Button';
+import Button from '~/modules/coreUI/components/basic/Button';
 
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { MediumLabel, Header } from '~/modules/coreUI/components/basic/Labels';
-import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
-import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+
+import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 import ToggleCard from '~/modules/apiMonitoring/components/ToggleCard';
 
@@ -150,9 +150,9 @@ class HomePage extends React.Component {
             Test Suites
           </Header>
           <Spacer />
-          <BasicButton width="100px" primary onClicked={() => this.startTest()}>
+          <Button width="100px" primary onClicked={() => this.startTest()}>
             RUN
-          </BasicButton>
+          </Button>
         </Row>
 
         <Spacer />
