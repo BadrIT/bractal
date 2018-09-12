@@ -12,7 +12,8 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Pre-requisites
 
-This guide assumes that you've at least some basic knowledge about the following topics :
+
+This guide assumes that you've at least some basic knowledge about the following technologies :
 
    1. [React](https://reactjs.org/docs/getting-started.html)
    2. [GraphQL](https://www.howtographql.com)
@@ -27,10 +28,8 @@ git clone https://github.com/BadrIT/bractal.git
 cd bractal
 
 npm install
+npm install -g sass
 npm start
-
-npm run refetch-schema
-npm run compile-relay
 ```
 
 By now you should be able to see the welcome screen (Welcome !):
@@ -79,6 +78,7 @@ Now that we have fully functional GraphQL backend, let's move on to setup our Br
    npm run compile-relay
    ```
    5. if the above commands succeeded, and you got no errors, then at least now, we can start talking with our newly created prisma backend
+   6. Note: if you have the app already running, you will need to restart it ```npm start``` because we have changed some environment variables after replacing ```__ENDPOINT__```
 
 ### Creating Frontend Views
 
@@ -88,7 +88,7 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
    2. Now got to bractal's plop file and start creating your module. 
   ```bash
     cd {AppRoot}/plop
-    plop plop generate_master_details_module
+    plop generate_master_details_module
   ```
   3. You would be prompted with a number of questions, give it exactly the following answers : (You should experiment with different variations later, as appropriate) :
   ![Plop Input](docs/assets/getting_started/plop_input.png)

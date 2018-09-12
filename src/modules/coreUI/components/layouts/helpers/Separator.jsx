@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Spacer } from './Spacers';
+import Spacer from './Spacer';
 
 const lengths = {
   small: '30%',
@@ -75,9 +75,9 @@ const SeparatorRenderer = styled.div`
 const Separator = props => (
   <SeparatorContainer {...props}>
     {/* TODO : Use PropTypes default value instead */}
-    <Spacer spacerSize={props.spacerSize || 'medium'} />
+    <Spacer size={props.spacerSize} />
     <SeparatorRenderer {...props} />
-    <Spacer spacerSize={props.spacerSize || 'medium'} />
+    <Spacer size={props.spacerSize} />
   </SeparatorContainer>
 );
 

@@ -1,4 +1,24 @@
 const Theme = {
+  new: {
+    spacer: 10,
+    fonts: {
+      sizes: {
+        header: 36,
+        xl: 20,
+        lg: 18,
+        md: 16,
+        sm: 14,
+        xs: 12,
+      },
+    },
+    paddings: {
+      xLarge: 20,
+      large: 18,
+      medium: 14,
+      small: 12,
+      xSmall: 10,
+    },
+  },
   colors: {
     primary: '#33a8ff',
     primaryHover: '#63b8ff',
