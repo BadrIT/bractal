@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 const ToastMessage = ({ icon, alertData }) => (

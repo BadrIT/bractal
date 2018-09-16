@@ -64,6 +64,7 @@
     "react-relay": "^1.6.0",
     "react-router-dom": "^4.2.2",
     "react-slick": "^0.23.1",
+    "react-toastify": "^4.3.1",
     "react-tooltip": "^3.6.1",
     "relay-compiler": "^1.6.0",
     "relay-runtime": "^1.6.0",

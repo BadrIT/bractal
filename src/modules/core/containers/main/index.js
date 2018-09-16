@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
 import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTrackerProvider';
 import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';
-import AlertProvider from '/modules/core/utils/alertHelpers/AlertProvider';
+import AlertProvider from '~/modules/core/utils/alertHelpers/AlertProvider';
 import ModulesLoader from '~/modules/core/utils/modulesLoader';
 import RelayInitializer from '~/modules/core/utils/relayHelpers/RelayInitializer';
 
@@ -25,11 +25,11 @@ assert(portalEndPoint, "Backend endpoint isn't set correctly, call the npm build
 
 const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
   <Router>
-    <AlertProvider>
-      <RelayInitializer.Context.Provider value={environment}>
-        <ModulesLoader.Context.Provider value={modules} >
-          <I18nextProvider i18n={i18next}>
-            <ThemeProvider theme={theme}>
+    <RelayInitializer.Context.Provider value={environment}>
+      <ModulesLoader.Context.Provider value={modules} >
+        <I18nextProvider i18n={i18next}>
+          <ThemeProvider theme={theme}>
+            <AlertProvider>
               <UserInfoProvider>
                 <ModalTrackerProvider>
                   <SideMenuTrackerProvider>
@@ -37,11 +37,11 @@ const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
                   </SideMenuTrackerProvider>
                 </ModalTrackerProvider>
               </UserInfoProvider>
-            </ThemeProvider>
-          </I18nextProvider>
-        </ModulesLoader.Context.Provider>
-      </RelayInitializer.Context.Provider>
-    </AlertProvider>
+            </AlertProvider>
+          </ThemeProvider>
+        </I18nextProvider>
+      </ModulesLoader.Context.Provider>
+    </RelayInitializer.Context.Provider>
   </Router>
 );
 

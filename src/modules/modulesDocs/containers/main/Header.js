@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -17,6 +18,8 @@ import SideMenuToggler from '~/modules/coreUI/components/layouts/defaultSiteLayo
 
 import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader/HeaderRowContainers';
 
+import withAlertContainer from '~/modules/core/utils/alertHelpers/withAlertContainer';
+import AlertTypes from '~/modules/core/utils/alertHelpers/alertComponent/AlertTypes';
 
 const HeaderTopRowContainer = styled(DefaultHeaderTopRowContainer)`
   margin-top: ${props => props.theme.paddings.xLarge}px;
@@ -43,8 +46,7 @@ const loadedModulesHeaderEntries = modules => modules.map(module => ({
   targetURL: module.homePath,
 }));
 
-
-const Header = ({ modules }) => {
+const Header = ({ modules, notifyAlert }) => {
   const menuInfo = {
     desktop: {
       top: {
@@ -88,6 +90,8 @@ const Header = ({ modules }) => {
       },
     },
   };
+  
+  notifyAlert({ messageText: 'Hi Sarah1!', type: AlertTypes.info, buttonAction: () => console.log('Horray!!') });
 
   return (
     <SiteHeader
@@ -105,6 +109,7 @@ Header.propTypes = {
     menuItemTitle: PropTypes.string.isRequired,
     targetURL: PropTypes.string.isRequired,
   })).isRequired,
+  notifyAlert: PropTypes.func.isRequired,
 };
 
-export default withModules(Header);
+export default withAlertContainer(withModules(Header));
