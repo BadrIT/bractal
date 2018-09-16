@@ -7,12 +7,12 @@ import { Container } from 'semantic-ui-react';
 
 import TestRunner, { StepStatus, getTestSuitePath, getTestPath, getStepPath } from '~/modules/apiMonitoring/utils/TestRunner';
 import createTests from '~/modules/apiMonitoring/utils/createAccountMgmtApiTests';
-import { BasicButton } from '~/modules/coreUI/components/basic/Button';
+import Button from '~/modules/coreUI/components/basic/Button';
 
-import { XXXXLargeSpacer, MediumSpacer, LargeSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import { MediumLabel, XXLargeLabel } from '~/modules/coreUI/components/basic/Labels';
-import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { MediumLabel, Header } from '~/modules/coreUI/components/basic/Labels';
+
+import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 import ToggleCard from '~/modules/apiMonitoring/components/ToggleCard';
 
@@ -108,18 +108,18 @@ class HomePage extends React.Component {
   render = () => (
     <React.Fragment>
       <Container>
-        <XXXXLargeSpacer />
+        <Spacer />
 
         <Column fullWidth stretchAligned>
-          <XXLargeLabel color={this.state.failed ? 'red' : 'black'} >
+          <Header color={this.state.failed ? 'red' : 'black'} >
             GraphQL Constructs :
-          </XXLargeLabel>
-          <LargeSpacer />
+          </Header>
+          <Spacer />
           {Object.keys(GraphQlConstructs).map((constructKey) => {
             const construct = GraphQlConstructs[constructKey];
             return (
               <React.Fragment key={construct.displayName}>
-                <MediumSpacer />
+                <Spacer />
                 <ToggleCard
                   title={construct.displayName}
                 >
@@ -143,26 +143,26 @@ class HomePage extends React.Component {
           })}
         </Column>
 
-        <XXXXLargeSpacer />
+        <Spacer />
 
         <Row leftJustified>
-          <XXLargeLabel color={this.state.failed ? 'red' : 'black'} >
+          <Header color={this.state.failed ? 'red' : 'black'} >
             Test Suites
-          </XXLargeLabel>
-          <LargeSpacer />
-          <BasicButton width="100px" primary onClicked={() => this.startTest()}>
+          </Header>
+          <Spacer />
+          <Button width="100px" primary onClicked={() => this.startTest()}>
             RUN
-          </BasicButton>
+          </Button>
         </Row>
 
-        <XLargeSpacer />
+        <Spacer />
 
         {this.state.testStuies.map((testSuite) => {
           const suiteCardStatus = this.getTestSuiteStatus(testSuite.name);
 
           return (
             <React.Fragment key={testSuite.name}>
-              <MediumSpacer />
+              <Spacer />
               <ToggleCard
                 title={testSuite.name}
                 titleSize="large"
@@ -176,9 +176,9 @@ class HomePage extends React.Component {
                       const testCardStatus = this.getTestStatus(testSuite.name, test.name);
                       return (
                         <React.Fragment key={`${testSuite.name}-${test.name}`}>
-                          <MediumSpacer />
+                          <Spacer />
                           <Row fullWidth stretchJustified>
-                            <MediumSpacer />
+                            <Spacer />
                             <ToggleCard
                               title={test.name}
                               mode={testCardStatus}
@@ -203,9 +203,9 @@ class HomePage extends React.Component {
                                       <MediumLabel color="important">
                                         <b>Steps :</b>
                                       </MediumLabel>
-                                      <MediumSpacer />
+                                      <Spacer />
                                       <Row fullWidth stretchJustified>
-                                        <MediumSpacer />
+                                        <Spacer />
                                         <ToggleCard
                                           title={step.name}
                                           mode={stepStatus}
@@ -284,7 +284,7 @@ class HomePage extends React.Component {
             </React.Fragment>
           );
         })}
-        <XXXXLargeSpacer />
+        <Spacer />
       </Container>
     </React.Fragment>
   );

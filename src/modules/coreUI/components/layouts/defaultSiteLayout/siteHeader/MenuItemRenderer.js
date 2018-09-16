@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ValidateAndResolve from '~/modules/core/utils/jsHelpers/ValidateAndResolve';
 import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/VerticalSeparator';
-import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
 import DropdownContentTracker from './DropdownContentTracker';
 
@@ -53,7 +53,7 @@ const renderMenuItem = (itemInfo) => {
 
 const renderVerticalSeparator = itemInfo => (
   <VerticalSeparator
-    spacerWidth={itemInfo.spacerWidth}
+    spacerSize={itemInfo.spacerSize}
     separatorColorTone={itemInfo.separatorColorTone}
     separatorLength={itemInfo.separatorLength || 'large'}
     separatorWeight={itemInfo.separatorWeight}
@@ -61,7 +61,7 @@ const renderVerticalSeparator = itemInfo => (
 );
 
 const renderHorizontalSpacer = itemInfo => (
-  <Spacer spacerSize={itemInfo.spacerWidth || 'xxLarge'} >
+  <Spacer size={itemInfo.spacerSize || 1} >
     hello
   </Spacer>
 );
@@ -106,7 +106,7 @@ MenuItemRenderer.ItemInfoPropTypes = {
   targetURL: PropTypes.string,
   dropdownContent: PropTypes.element,
   styleClass: PropTypes.string,
-  spacerWidth: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
+  spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
   separatorWeight: PropTypes.oneOf(['thin', 'normal', 'thick']),
   separatorLength: PropTypes.oneOf(['shorn', 'normal', 'full']),
   separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),

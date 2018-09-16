@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import withSideMenuTracker from '~/modules/core/utils/sideMenuHelpers/withSideMenuTracker';
-import { getLayoutHeader, getLayoutPageContent, getLayoutSideMenu } from './siteHeader/componentsRoles';
+import { setRoleAsLayoutPageContent, setRoleAsLayoutHeader, setRoleAsLayoutSideMenu, getLayoutHeader, getLayoutPageContent, getLayoutSideMenu } from './componentsRoles';
 
 const SIDE_MENU_WIDTH = 280;
 
@@ -60,3 +60,15 @@ Layout.propTypes = {
 };
 
 export default translate('core')(withSideMenuTracker(Layout));
+
+export const LayoutHeader = props => <React.Fragment>{props.children}</React.Fragment>;
+LayoutHeader.propTypes = { children: PropTypes.element.isRequired };
+setRoleAsLayoutHeader(LayoutHeader);
+
+export const LayoutPageContent = props => <React.Fragment>{props.children}</React.Fragment>;
+LayoutPageContent.propTypes = { children: PropTypes.element.isRequired };
+setRoleAsLayoutPageContent(LayoutPageContent);
+
+export const LayoutSideMenu = props => <React.Fragment>{props.children}</React.Fragment>;
+LayoutSideMenu.propTypes = { children: PropTypes.element.isRequired };
+setRoleAsLayoutSideMenu(LayoutSideMenu);

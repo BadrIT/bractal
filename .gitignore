@@ -28,4 +28,5 @@ yarn-error.log*
 *schema.json*
 *schema.graphql*
 
+/src/styles/css/*
 /src/styles/css

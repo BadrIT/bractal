@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { SmallLabel } from './Labels';
 
 const StylableCheckbox = styled.input`
@@ -49,14 +49,14 @@ const StylableCheckbox = styled.input`
 `;
 
 const Checkbox = props => (
-  <CenterAlignedRow>
+  <Row centerAligned>
     <StylableCheckbox type="checkbox" id={props.elemID} {...props} />
     <label htmlFor={props.elemID}>
       <SmallLabel bold={props.bold}>
         {props.label}
       </SmallLabel>
     </label>
-  </CenterAlignedRow>
+  </Row>
 );
 
 Checkbox.propTypes = PropTypes.shape({

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 
 const CardHeader = styled.div`
@@ -36,7 +36,7 @@ const CardImageContainer = styled.div`
   }
 `;
 
-const ContentContainer = styled(LeftAlignedColumn)`
+const ContentContainer = styled(Column)`
   height: 62px;
 `;
 
@@ -61,13 +61,13 @@ const Card = ({
     <CardImageContainer>
       {imageRenderer}
     </CardImageContainer>
-    <ContentContainer>
+    <ContentContainer leftAligned>
       {contentSectionRenderer}
     </ContentContainer>
     <CardFooter>
-      <LeftAlignedColumn>
+      <Column leftAligned>
         {footerLeftRenderer}
-      </LeftAlignedColumn>
+      </Column>
       {footerRightRenderer}
     </CardFooter>
   </StyledCard>
