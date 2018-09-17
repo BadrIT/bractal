@@ -1,10 +1,10 @@
-/*eslint-disable*/
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import createToast from './ToastFactory';
 import AlertTypes from './AlertTypes';
+import ToastMessage from './ToastMessage';
 
 const slidein = keyframes`
   from {
@@ -24,16 +24,24 @@ const slideout = keyframes`
     visibility: visible;
   }
 `;
+
 const ToastStyle = styled.div`
 .Toastify__toast-container {
   z-index: 9999;
-  position: absolute;
+  position: fixed;
   width: 100%;
+  ${props => !props.topFullWidth && `
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0;
+  `}
   box-sizing: border-box;
-  color: #fff;
+  color: ${props => props.theme.colors.named.white};
+  opacity: ${props => props.opacity || '0.85'};
   animation-duration: 1s;
   animation-name: ${slidein};
 }
+
 .Toastify__toast.exit {
   animation-duration: 1s;
   animation-name: ${slideout};
@@ -41,32 +49,28 @@ const ToastStyle = styled.div`
 
 .Toastify__toast {
   position: relative;
-  min-height: 64px;
-  box-sizing: border-box;
-  margin-bottom: 1rem;
-  padding: 8px;
-  border-radius: 1px;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  min-height: ${props => 5 * props.theme.new.spacer}px;
+  padding: ${props => props.theme.new.paddings.xSmall}px;
+  ${props => !props.topFullWidth && `
+    margin: ${2 * props.theme.new.spacer}px;
+  `}
   display: flex;
   justify-content: space-between;
-  max-height: 800px;
   overflow: hidden;
-  font-family: sans-serif;
   cursor: pointer;
-  direction: ltr;
 }
 
 .Toastify__toast-body {
-  margin: auto 0;
+  margin: auto ${props => props.theme.new.paddings.medium}px;
   flex: 1;
+  font-size: ${props => props.fontSize || props.theme.new.fonts.sizes.md}px;
 }
 .Toastify__close-button {
   display: flex;
   position: relative;
   align-self: flex-start;
-  color: #fff;
+  color: ${props => props.theme.colors.named.white};
   font-weight: bold;
-  font-size: 14px;
   background: transparent;
   outline: none;
   border: none;
@@ -74,38 +78,29 @@ const ToastStyle = styled.div`
   cursor: pointer;
   opacity: 0.7;
   transition: 0.3s ease;
-}
-.Toastify__close-button--default {
-  color: #000;
-  opacity: 0.3;
+  font-size: ${props => 1.2 * props.fontSize || 18}px;
 }
 .Toastify__close-button:hover, .Toastify__close-button:focus {
   opacity: 1;
 }
 
 .Toastify__toast--default {
-  background: #fff;
-  color: #aaa;
-  height: 40px;
+  background: ${props => props.color || props.theme.new.alertTypes.colors.default};
 }
 .Toastify__toast--info {
-  background: #3498db;
-  height: 40px;
+  background: ${props => props.color || props.theme.new.alertTypes.colors.info};
 }
 .Toastify__toast--success {
-  background: #07bc0c;
-  height: 40px;
+  background: ${props => props.color || props.theme.new.alertTypes.colors.success};
 }
 .Toastify__toast--warning {
-  background: #f1c40f;
-  height: 40px;
+  background: ${props => props.color || props.theme.new.alertTypes.colors.warning};
 }
 .Toastify__toast--error {
-  background: #e74c3c;
-  height: 40px;
+  background: ${props => props.color || props.theme.new.alertTypes.colors.error};
 }
 `;
-
+// TODO Sarah test acceptance of component in props to have alert content
 const AlertToast = (props) => {
   const alertData = {
     messageText: props.messageText,
@@ -113,15 +108,19 @@ const AlertToast = (props) => {
     icon: props.icon,
     buttonText: props.buttonText,
     buttonAction: props.buttonAction,
+    color: props.color,
     fontSize: props.fontSize,
-    spacerSize: props.spacerSize,
   };
-  createToast(alertData);
+  createToast(alertData, props.component || ToastMessage);
 
   return (
-    <ToastStyle>
+    <ToastStyle
+      topFullWidth={props.topFullWidth}
+      color={props.color}
+      fontSize={props.fontSize}
+      opacity={props.opacity}
+    >
       <ToastContainer
-        position="top-center"
         autoClose={props.autoClose}
         newestOnTop={false}
         closeOnClick={false}

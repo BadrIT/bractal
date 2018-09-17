@@ -6,7 +6,6 @@ import assert from '~/modules/core/utils/jsHelpers/assert';
 import AlertContext from './AlertContext';
 import AlertToast from './alertComponent/AlertToast';
 
-// TODO Sarah: add spacer prop
 class AlertProvider extends React.Component {
   state = {
     messageText: null,
@@ -15,7 +14,7 @@ class AlertProvider extends React.Component {
     type: null,
     icon: null,
     hidden: true,
-    fontSize: null,
+    topFullWidth: false,
   };
 
   startAlert = (args) => {
@@ -27,7 +26,8 @@ class AlertProvider extends React.Component {
       type: args.type,
       icon: args.icon,
       hidden: false,
-      fontSize: this.props.fontSize,
+      topFullWidth: args.topFullWidth,
+      color: args.color,
     });
   }
 
@@ -41,7 +41,10 @@ class AlertProvider extends React.Component {
           icon={this.state.icon}
           buttonText={this.state.buttonText}
           buttonAction={this.state.buttonAction}
-          fontSize={this.state.fontSize}
+          fontSize={this.props.fontSize}
+          topFullWidth={this.state.topFullWidth}
+          color={this.state.color || this.props.color}
+          opacity={this.props.opacity}
         />}
       {this.props.children}
     </AlertContext.Provider>

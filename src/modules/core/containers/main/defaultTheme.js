@@ -18,6 +18,15 @@ const Theme = {
       small: 12,
       xSmall: 10,
     },
+    alertTypes: {
+      colors: {
+        error: '#E64A19',
+        info: '#5c9ec0',
+        success: '#7CB342',
+        warning: '#FFB300',
+        default: '#708090',
+      },
+    },
   },
   colors: {
     primary: '#33a8ff',

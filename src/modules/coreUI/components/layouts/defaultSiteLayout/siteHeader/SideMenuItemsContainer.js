@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'styled-components';
 
-<<<<<<< HEAD
-import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { XXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-=======
 import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
->>>>>>> develop
 
 import MenuItemRenderer from './MenuItemRenderer';
 
@@ -44,11 +39,7 @@ const SideMenuItemsContainer = ({
   menuInfo,
 }) => (
   <Column leftAligned>
-<<<<<<< HEAD
-    <XXXLargeSpacer />
-=======
     <Spacer />
->>>>>>> develop
     {menuInfo && menuInfo.top && menuInfo.top.map(item => (
       <MenuItemRenderer
         key={item.key}

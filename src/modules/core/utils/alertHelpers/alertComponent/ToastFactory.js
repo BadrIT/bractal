@@ -2,9 +2,8 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes from './AlertTypes';
-import ToastMessage from './ToastMessage';
 
-export default function createToast(alertData) {
+export default function createToast(alertData, TargetComponent) {
   const ToastTypes = {
     [AlertTypes.error]: {
       iconClassName: 'fas fa-exclamation-circle',
@@ -26,7 +25,7 @@ export default function createToast(alertData) {
 
   const choosenConfig = ToastTypes[alertData.type] || { renderMethod: toast };
 
-  return choosenConfig.renderMethod(<ToastMessage
+  return choosenConfig.renderMethod(<TargetComponent
     icon={<Icon className={choosenConfig.iconClassName} />}
     alertData={alertData}
   />);
