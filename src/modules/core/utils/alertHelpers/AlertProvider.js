@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
 import AlertContext from './AlertContext';
-import AlertToast from './alertComponent/AlertToast';
+import AlertToast from './alertComponent/AlertToastExample';
 
 class AlertProvider extends React.Component {
   state = {

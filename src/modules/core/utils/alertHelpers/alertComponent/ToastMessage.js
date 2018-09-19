@@ -35,7 +35,7 @@ const ToastMessage = ({ icon, alertData, closeToast }) => (
     {alertData.messageText}
     <LargeSpacer />
     {alertData.buttonAction &&
-      <ButtonStyled inverted sm
+      <ButtonStyled inverted lg
         color={alertData.color}
         onClicked={() => { alertData.buttonAction(); closeToast(); }}
         type={alertData.type}

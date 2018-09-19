@@ -1,0 +1,6 @@
+### Basic Example
+
+```js
+    <AlertToastExample 
+    />     
+```
