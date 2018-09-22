@@ -1,3 +1,5 @@
+import Color from 'color';
+
 const SIZE_PROP_NAMES = [
   'xs',
   'sm',
@@ -7,6 +9,68 @@ const SIZE_PROP_NAMES = [
 ];
 
 const themeProp = propName => propName.replace('s_', '');
+
+const Colors = {
+  primary: {
+    normal: '#33a8ff',
+    inverted: '#FFFFFF',
+  },
+  secondary: {
+    normal: '#fb9410',
+    inverted: '#FFFFFF',
+  },
+  disabled: {
+    normal: '#aaaaaa',
+    inverted: '#FFFFFF',
+  },
+};
+
+const modesColors = type => ({
+  normal: {
+    lineColor: Colors[type].inverted,
+    backgroundColor: Colors[type].normal,
+  },
+  inverted: {
+    lineColor: Colors[type].normal,
+    backgroundColor: Colors[type].inverted,
+  },
+});
+
+export const infereControlType = (props) => {
+  if (props.disabled) {
+    return 'disabled';
+  } else if (props.secondary) {
+    return 'secondary';
+  }
+  return 'primary';
+};
+
+export const infereControlMode = (props) => {
+  if (props.inverted) {
+    return 'inverted';
+  }
+  return 'normal';
+};
+
+export const infereColors = (props) => {
+  const type = infereControlType(props);
+  const mode = infereControlMode(props);
+
+  return modesColors(type)[mode];
+};
+
+export const infereDarkerColors = (props, darkenRatio) => {
+  const color = infereColors(props);
+
+  if (props.disabled) {
+    return color;
+  }
+
+  return {
+    lineColor: Color(color.lineColor).darken(darkenRatio).string(),
+    backgroundColor: Color(color.backgroundColor).darken(darkenRatio).string(),
+  };
+};
 
 export const findPropValue = (props, propName) => {
   const foundProp = Object.keys(props).find(prop =>
@@ -23,6 +87,12 @@ export const infereFontSize = (props) => {
 };
 
 export const infereBorderRadius = (props) => {
+  if (props.fullRound) {
+    return 1000;
+  } else if (props.radius) {
+    return props.radius;
+  }
+
   const size = infereFontSize(props);
   return size / 2.5;
 };

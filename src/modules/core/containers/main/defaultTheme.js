@@ -11,13 +11,6 @@ const Theme = {
         xs: 12,
       },
     },
-    paddings: {
-      xLarge: 20,
-      large: 18,
-      medium: 14,
-      small: 12,
-      xSmall: 10,
-    },
   },
   colors: {
     primary: '#33a8ff',
