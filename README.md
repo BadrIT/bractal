@@ -163,15 +163,15 @@ In this step you'll create a form and a mutation to allow the user to add a post
 
 ## Release 1
 
-- [ ] Remove dependency on GraphQL Backend (Unless requested explicitly)
-- [ ] Document how to GetStarted using the plop generators
-- [ ] Initialize the documentation using gitBooks Or StoryBooks
-- [ ] Finalizing the theming approach
+- [x] Document how to GetStarted using the plop generators
+- [x] Initialize the documentation using styleguidits
+- [x] Finalizing the theming approach
 - [ ] Investigate using FusionJS for managing the pluggable architecture (Security, SSR, Theming...etc)
 - [ ] Polish the initial set of components according to the finalized theming approach (Labels, Headers, Textbox, Layouts (Linear & Card),         Checkbox, Modal, Cropped Label, Tooltips)
 - [ ] Create advanced components (Accordion, Menus, Advanced Select (Country, Phone, Date, Color...etc))
 - [ ] Account Management Module (Polish and generalize, Create simple graphql backend service)
 - [ ] Integrate Account Management with Auth0
+- [ ] Remove dependency on GraphQL Backend (Unless requested explicitly)
   
 ## Release 2
 
