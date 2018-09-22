@@ -26,7 +26,6 @@ export const Label = styled.span`
   color: ${props => getColor(props)};
   font-size: ${props => getSize(props)}px;
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  line-height: ${props => (props.paragraph ? 1.3 : 1)};
 
   text-align: ${props => props.align || 'left'};
 

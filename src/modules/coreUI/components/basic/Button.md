@@ -35,6 +35,29 @@ You can go with the normal version, or inverted one
     </Examples>
 ```
 
+### Disabled State
+You can go with the disabled version, or normal one
+```js
+    <Examples>
+        <Column spaceBetween={1}>
+            <Button>Click This</Button>
+            <Button disabled>Click This</Button>
+        </Column>
+        <Column spaceBetween={1}>
+            <Button inverted>Click This</Button>
+            <Button disabled inverted>Click This</Button>
+        </Column>
+        <Column spaceBetween={1}>
+            <Button secondary>Click This</Button>
+            <Button disabled secondary>Click This</Button>
+        </Column>        
+        <Column spaceBetween={1}>
+            <Button inverted secondary>Click This</Button>
+            <Button disabled inverted secondary>Click This</Button>
+        </Column>
+    </Examples>
+```
+
 ### Corners
 You can go for a full circle corner
 ```js
