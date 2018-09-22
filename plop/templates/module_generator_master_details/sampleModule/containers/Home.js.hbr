@@ -1,0 +1,32 @@
+import React from 'react';
+import { translate, Trans } from 'react-i18next';
+import { Header, Container } from 'semantic-ui-react';
+import { Route } from 'react-router-dom';
+
+import {{uiItemName}}sListPage from './{{uiItemName}}sListPage';
+import {{uiItemName}}DetailsPage from './{{uiItemName}}DetailsPage';
+
+const ItemsListPage = () => {{uiItemName}}sListPage;
+const ItemDetailsPage = () => {{uiItemName}}DetailsPage;
+
+const HomePage = () =>
+  (
+    <React.Fragment>
+      <Container>
+        <br />
+        <Header size="huge">
+          <Trans i18nKey="metadata.displayName" />
+        </Header>
+        <Header.Subheader>
+          <Trans i18nKey="metadata.description" />
+        </Header.Subheader>
+        <br />
+        <br />
+        <br />
+      </Container>
+      <Route path="/{{dashCase moduleShortUniqueName}}" exact component={ItemsListPage()} />
+      <Route path="/{{dashCase moduleShortUniqueName}}/:id" exact component={ItemDetailsPage()} />
+    </React.Fragment>
+  );
+
+export default translate('{{moduleName}}')(HomePage);

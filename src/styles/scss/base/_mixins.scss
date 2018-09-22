@@ -1,0 +1,8 @@
+// prefixes
+@mixin prefix($attr, $val) {
+  -webkit-#{$attr}: $val;
+  -moz-#{$attr}: $val;
+  -ms-#{$attr}: $val;
+  -o-#{$attr}: $val;
+  #{$attr}: $val;
+}
