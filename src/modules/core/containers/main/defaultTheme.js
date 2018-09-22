@@ -19,6 +19,22 @@ const Theme = {
         normal: '#aaaaaa',
         inverted: '#FFFFFF',
       },
+      labels: {
+        normal: {
+          important: '#000000',
+          emphasized: 'rgba(0, 0, 0, 0.7)',
+          normal: 'rgba(0, 0, 0, 0.5)',
+          subtle: 'rgba(0, 0, 0, 0.35)',
+          hint: 'rgba(0, 0, 0, 0.22)',
+        },
+        inverted: {
+          important: 'white',
+          emphasized: 'rgba(255, 255, 255, 0.7)',
+          normal: 'rgba(255, 255, 255, 0.5)',
+          subtle: 'rgba(255, 255, 255, 0.4)',
+          hint: 'rgba(255, 255, 255, 0.3)',
+        },
+      },
     },
     spacer: 10,
     fonts: {
@@ -29,6 +45,10 @@ const Theme = {
         md: 16,
         sm: 14,
         xs: 12,
+      },
+      weights: {
+        bold: 900,
+        semiBold: 600,
       },
     },
   },

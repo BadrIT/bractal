@@ -14,12 +14,12 @@ global.Box = props => (
 global.Row = Row;
 global.Column = Column;
 global.Examples = props => (
-  <Row topAligned spaceBetween="0.5">
+  <Row topAligned spaceBetween="0.5" {...props} >
     {props.children}
   </Row>
 );
 global.VerticalExamples = props => (
-  <Column leftAligned spaceBetween="0.5">
+  <Column leftAligned spaceBetween="0.5" {...props} >
     {props.children}
   </Column>
 );

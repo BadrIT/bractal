@@ -9,6 +9,14 @@ const SIZE_PROP_NAMES = [
   'xl',
 ];
 
+const FONT_COLORS = [
+  'important',
+  'normal',
+  'emphasized',
+  'subtle',
+  'hint',
+];
+
 const themeProp = propName => propName.replace('s_', '');
 
 const modesColors = (type, theme) => ({
@@ -84,9 +92,28 @@ export const colorStyles = css`
 export const infereSize = props =>
   SIZE_PROP_NAMES.find(sizeProp => props[sizeProp]) || 'md';
 
+export const infereFontColor = (props) => {
+  if (props.color) {
+    return props.color;
+  }
+  const color = FONT_COLORS.find(sizeProp => props[sizeProp]) || 'normal';
+  const mode = infereControlMode(props);
+
+  return props.theme.new.colors.labels[mode][color];
+};
+
 export const infereFontSize = (props) => {
   const size = infereSize(props);
   return props.theme.new.fonts.sizes[themeProp(size)];
+};
+
+export const infereFontWeight = (props) => {
+  if (props.bold) {
+    return props.theme.new.fonts.weights.bold;
+  } else if (props.semiBold) {
+    return props.theme.new.fonts.weights.semiBold;
+  }
+  return null; // Normal
 };
 
 export const infereBorderRadius = (props) => {
