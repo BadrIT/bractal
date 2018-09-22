@@ -8,10 +8,9 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
-import { XSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 
 const getBorderColor = (props, forceFocusMode) => {
@@ -22,7 +21,7 @@ const getBorderColor = (props, forceFocusMode) => {
   return props.theme.inputs.borderColor;
 };
 
-const DropdownIconContainer = styled(CenterAlignedColumn)`
+const DropdownIconContainer = styled(Column)`
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -89,14 +88,14 @@ const Button = styled.button`
   }
 `;
 
-const ButtonLoadingIcon = styled(CenterAlignedRow)`
+const ButtonLoadingIcon = styled(Row)`
   height: 100%;
   position: absolute;
 
   right: ${props => 2.5 * (props.dropIconDistanceFromRight || props.theme.paddings.xLarge)}px;
 `;
 
-const ButtonContainer = styled(CenterAlignedRow)`
+const ButtonContainer = styled(Row)`
   position: relative;  
   width:${props => (props.width ? props.width : '100%')};  
 
@@ -127,6 +126,7 @@ class CustomButton extends React.Component {
 
     return (
       <ButtonContainer
+        centerAligned
         width={width}
         onMouseDown={e => (isLoading ? null : onMouseDown(e))}
         onKeyDown={onKeyDown}
@@ -141,14 +141,15 @@ class CustomButton extends React.Component {
           actAsInFocus={actAsInFocus}
         >
           {this.props.isLoading &&
-            <ButtonLoadingIcon dropIconDistanceFromRight={dropIconDistanceFromRight} >
+            <ButtonLoadingIcon centerAligned dropIconDistanceFromRight={dropIconDistanceFromRight} >
               <FontAwesomeIcon icon={faSpinner} spin />
             </ButtonLoadingIcon>
           }
           {image}
-          <XSmallSpacer />
+          <Spacer />
           {label || placeholder}
           <DropdownIconContainer
+            centerAligned
             dropIconDistanceFromRight={dropIconDistanceFromRight}
             actAsInFocus={actAsInFocus}
           >

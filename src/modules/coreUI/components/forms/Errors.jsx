@@ -3,10 +3,10 @@ import styled, { withTheme } from 'styled-components';
 import changeCase from 'change-case';
 
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
-import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import EllipsisWithTooltip from '~/modules/coreUI/components/basic/EllipsisWithToolitp';
 
-const InputsIntraSpace = styled(LeftAlignedColumn)`
+const InputsIntraSpace = styled(Column)`
   width: 100%;
   height: ${props => props.theme.paddings.xxxLarge}px;
   padding-left: ${props => props.theme.inputs.padding.left + 1}px;
@@ -45,7 +45,7 @@ const renderError = (locals, customErrorTextStyle) => {
   errorMessage = errorMessage || <span>&nbsp;</span>;
 
   const ErrorComponent = (
-    <InputsIntraSpace>
+    <InputsIntraSpace leftAligned>
       <FullWidthErrorLabel>
         <ErrorEllipsisWithTooltip customTextStyle={customErrorTextStyle}>
           {errorMessage}

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import styled, { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import { SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
 import SelectButton from './CustomSelectButton';
 import SelectList from './SelectList';
 
-const RelativePosition = styled(CenterAlignedRow)`
+const RelativePosition = styled(Row)`
   width: ${props => props.width || '100%'};
 
   position:relative;
@@ -190,7 +190,7 @@ class InputSelect extends Component {
 
     return (
       <React.Fragment>
-        <RelativePosition width={width}>
+        <RelativePosition centerAligned width={width}>
           <SelectButton
             ref={(ref) => { this.buttonRef = ref; }}
             isLoading={this.props.isLoading}
@@ -207,7 +207,7 @@ class InputSelect extends Component {
           />
           {showInput &&
             <React.Fragment>
-              <SmallSpacer />
+              <Spacer />
               <Input
                 type="text"
                 value={inputValue}
