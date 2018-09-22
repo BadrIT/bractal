@@ -12,7 +12,6 @@ AND, if your app, is beyond a simple handful pages, then Bractal would be very h
 
 ## Pre-requisites
 
-
 This guide assumes that you've at least some basic knowledge about the following technologies :
 
    1. [React](https://reactjs.org/docs/getting-started.html)

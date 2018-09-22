@@ -81,10 +81,8 @@ export const findPropValue = (props, propName) => {
   return props[foundProp];
 };
 
-export const infereFontSize = (props, defaultSize) => {
-  let size = SIZE_PROP_NAMES.find(sizeProp => findPropValue(props, sizeProp));
-  size = size || defaultSize || 'md';
-
+export const infereFontSize = (props) => {
+  const size = SIZE_PROP_NAMES.find(sizeProp => findPropValue(props, sizeProp)) || 'md';
   return props.theme.new.fonts.sizes[themeProp(size)];
 };
 
