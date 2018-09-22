@@ -1,4 +1,5 @@
 import Color from 'color';
+import { css } from 'styled-components';
 
 const SIZE_PROP_NAMES = [
   'xs',
@@ -10,29 +11,14 @@ const SIZE_PROP_NAMES = [
 
 const themeProp = propName => propName.replace('s_', '');
 
-const Colors = {
-  primary: {
-    normal: '#33a8ff',
-    inverted: '#FFFFFF',
-  },
-  secondary: {
-    normal: '#fb9410',
-    inverted: '#FFFFFF',
-  },
-  disabled: {
-    normal: '#aaaaaa',
-    inverted: '#FFFFFF',
-  },
-};
-
-const modesColors = type => ({
+const modesColors = (type, theme) => ({
   normal: {
-    lineColor: Colors[type].inverted,
-    backgroundColor: Colors[type].normal,
+    lineColor: theme.new.colors[type].inverted,
+    backgroundColor: theme.new.colors[type].normal,
   },
   inverted: {
-    lineColor: Colors[type].normal,
-    backgroundColor: Colors[type].inverted,
+    lineColor: theme.new.colors[type].normal,
+    backgroundColor: theme.new.colors[type].inverted,
   },
 });
 
@@ -56,7 +42,7 @@ export const infereColors = (props) => {
   const type = infereControlType(props);
   const mode = infereControlMode(props);
 
-  return modesColors(type)[mode];
+  return modesColors(type, props.theme)[mode];
 };
 
 export const infereDarkerColors = (props, darkenRatio) => {
@@ -72,17 +58,34 @@ export const infereDarkerColors = (props, darkenRatio) => {
   };
 };
 
-export const findPropValue = (props, propName) => {
-  const foundProp = Object.keys(props).find(prop =>
-    prop === propName || prop.indexOf(`s_${propName}`) >= 0);
-  if (!foundProp) {
-    return null;
+
+export const colorStyles = css`
+  color: ${props => infereColors(props).lineColor};
+  background-color: ${props => infereColors(props).backgroundColor};
+  border-color: ${props => infereColors(props).lineColor};
+
+  &:hover {
+    color: ${props => infereDarkerColors(props, 0.05).lineColor};
+    background-color: ${props => infereDarkerColors(props, 0.05).backgroundColor};
+    border-color: ${props => infereDarkerColors(props, 0.05).lineColor};    
+  }  
+
+  &:active {
+    color: ${props => infereDarkerColors(props, 0.1).lineColor};
+    background-color: ${props => infereDarkerColors(props, 0.1).backgroundColor};
+    border-color: ${props => infereDarkerColors(props, 0.1).lineColor};
   }
-  return props[foundProp];
-};
+
+  &:focus {
+    border-color: ${props => props.theme.new.inputs.focusBorderColor[infereControlType(props)]};
+  }
+`;
+
+export const infereSize = props =>
+  SIZE_PROP_NAMES.find(sizeProp => props[sizeProp]) || 'md';
 
 export const infereFontSize = (props) => {
-  const size = SIZE_PROP_NAMES.find(sizeProp => findPropValue(props, sizeProp)) || 'md';
+  const size = infereSize(props);
   return props.theme.new.fonts.sizes[themeProp(size)];
 };
 
@@ -100,9 +103,4 @@ export const infereBorderRadius = (props) => {
 export const inferePaddingSize = (props) => {
   const size = infereFontSize(props);
   return size * 0.60;
-};
-
-export const parseFloatProperty = (props, propName) => {
-  const value = findPropValue(props, propName);
-  return parseFloat(value);
 };

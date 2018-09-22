@@ -1,5 +1,25 @@
 const Theme = {
   new: {
+    inputs: {
+      focusBorderColor: {
+        primary: '#fb9410',
+        secondary: '#33a8ff',
+      },
+    },
+    colors: {
+      primary: {
+        normal: '#33a8ff',
+        inverted: '#FFFFFF',
+      },
+      secondary: {
+        normal: '#fb9410',
+        inverted: '#FFFFFF',
+      },
+      disabled: {
+        normal: '#aaaaaa',
+        inverted: '#FFFFFF',
+      },
+    },
     spacer: 10,
     fonts: {
       sizes: {

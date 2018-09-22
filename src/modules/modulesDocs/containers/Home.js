@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate, Trans } from 'react-i18next';
 import { Header, Container } from 'semantic-ui-react';
+import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
 
 const HomePage = () =>
   (
@@ -14,7 +15,7 @@ const HomePage = () =>
           <Trans i18nKey="metadata.description" />
         </Header.Subheader>
         <br />
-        <br />
+        <Checkbox checked="true" />
         <br />
       </Container>
 

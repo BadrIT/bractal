@@ -16,8 +16,8 @@
     </Examples>
 ```
 
-### Mode 
-Two modes are supported, `Primary` &amp; `Secondary`
+### Types 
+Two types are supported, `Primary` &amp; `Secondary`
 ```js
     <Examples>
         <Button>Click This</Button>

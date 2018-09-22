@@ -1,7 +1,9 @@
 import _ from 'lodash';
 
 export default (items, separator) => {
-  if (items.length === 0 || !_.isArray(items)) {
+  if (!items) {
+    return [];
+  } else if (items.length === 0 || !_.isArray(items)) {
     return [items];
   }
 

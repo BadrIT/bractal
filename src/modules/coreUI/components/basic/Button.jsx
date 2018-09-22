@@ -1,33 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
-import { infereFontSize, inferePaddingSize, infereBorderRadius, infereColors, infereDarkerColors } from '~/modules/coreUI/utils/infereStyle';
+import { infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-
-const colorStyles = css`
-  color: ${props => infereColors(props).lineColor};
-  background-color: ${props => infereColors(props).backgroundColor};
-  border-color: ${props => infereColors(props).lineColor};
-
-  &:hover {
-    color: ${props => infereDarkerColors(props, 0.1).lineColor};
-    background-color: ${props => infereDarkerColors(props, 0.1).backgroundColor};
-    border-color: ${props => infereDarkerColors(props, 0.1).lineColor};    
-  }  
-
-  &:active {
-    color: ${props => infereDarkerColors(props, 0.2).lineColor};
-    background-color: ${props => infereDarkerColors(props, 0.2).backgroundColor};
-    border-color: ${props => infereDarkerColors(props, 0.2).lineColor};
-  }
-`;
 
 // Must be of relative position for the loading icon to be drawn correctly
 const StyledButton = styled.button`
