@@ -69,8 +69,8 @@ export const ErrorLabel = styled.div`
 `;
 
 export const Header = styled(Label)`
-  padding-top: ${props => props.theme.new.paddings.large}px;
-  padding-bottom: ${props => props.theme.new.paddings.large}px;
+  padding-top: ${props => 2 * props.theme.new.spacer}px;
+  padding-bottom: ${props => 2 * props.theme.new.spacer}px;
   color: ${props => props.theme.colors.labels.important};
   font-size: ${props => props.theme.new.fonts.sizes.header}px;
   font-weight: bold;
