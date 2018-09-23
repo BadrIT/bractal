@@ -2,62 +2,104 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { infereControlType, infereFontSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
+import Icon from '~/modules/coreUI/components/basic/Icon';
+
 import { SmallLabel } from './Labels';
 
-const StylableCheckbox = styled.input`
+const RootContainer = styled(Row)`
+  cursor: pointer;
+`;
+
+const RealHiddenCheckbox = styled.input`
+  opacity: 0;
   position: absolute;
-  left: -999em;  
+  left: -999px;
 
-  &:checked + label::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 4px;
-    background: rgba(0,0,0,0);
-    bottom: 7px;
-    left: 3px;
-    border: 2px solid ${props => props.theme.colors.secondary};
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-  }    
+  & + div {
+    width: ${props => 1.3 * infereFontSize(props)}px;
+    height: ${props => 1.3 * infereFontSize(props)}px;
+    font-size: ${props => 0.7 * infereFontSize(props)}px;
 
-  & + label::before {
-    cursor: pointer;
-    content: "";
-    height: 16px;
-    width: 16px;
-    background-color: white;
     border: 1px solid;
-    border-color: ${props => props.theme.inputs.borderColor};
-    border-radius: 3px;
-    margin-right: 6px;
+    border-radius: ${props => infereBorderRadius(props)}px; 
+    
+    ${props => (props.disabled ? disabledColorStyles : colorStyles)}
   }
 
-  &:focus + label::before {
-    border-color: ${props => props.theme.inputs.borderColorActive};
-  }
-
-  & + label {
-    margin-left: 2px;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: ${props => props.theme.colors.labels.normal};
+  &:focus + div {
+    border-color: ${props => props.theme.new.inputs.focusBorderColor[infereControlType(props)]};
   }
 `;
 
-const Checkbox = props => (
-  <Row centerAligned>
-    <StylableCheckbox type="checkbox" id={props.elemID} {...props} />
-    <label htmlFor={props.elemID}>
-      <SmallLabel bold={props.bold}>
-        {props.label}
-      </SmallLabel>
-    </label>
-  </Row>
-);
+class Checkbox extends React.Component {
+  static getDerivedStateFromProps(newProps, prevState) {
+    if (newProps.checked !== prevState.previouslyRecievedChecked) {
+      return {
+        previouslyRecievedChecked: newProps.checked,
+        checked: newProps.checked,
+      };
+    }
+
+    return null;
+  }
+
+  state = {
+    previouslyRecievedChecked: true, // eslint-disable-line react/no-unused-state
+    checked: true,
+  }
+
+  onClick = () => {
+    if (this.props.disabled) {
+      return;
+    }
+    this.setState({ checked: !this.state.checked });
+  }
+
+  isChecked = () => this.state.checked;
+
+  handleInputChange = (event) => {
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
+
+    this.setState({
+      checked: event.target.checked,
+    });
+  }
+
+  render = () => (
+    <RootContainer
+      centerAligned
+      onClick={() => this.onClick()}
+    >
+      <RealHiddenCheckbox
+        type="checkbox"
+        id={this.props.elemID}
+        {...this.props}
+        checked={this.state.checked}
+        onChange={this.handleInputChange}
+      />
+      <Row
+        type="checkbox"
+        {...this.props}
+      >
+        {this.state.checked &&
+          <Icon className="fas fa-check" />
+        }
+      </Row>
+      {this.props.label &&
+        <React.Fragment>
+          <Spacer />
+          <SmallLabel bold={this.props.bold} customStyle={this.props.customStyle}>
+            {this.props.label}
+          </SmallLabel>
+        </React.Fragment>
+      }
+    </RootContainer>
+  );
+}
 
 Checkbox.propTypes = PropTypes.shape({
   elemID: PropTypes.string.isRequired,

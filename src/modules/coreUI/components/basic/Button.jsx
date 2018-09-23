@@ -1,166 +1,32 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
-import { MediumLabel } from '~/modules/coreUI/components/basic/Labels';
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
-import { infereFontSize, inferePaddingSize, infereBorderRadius } from '~/modules/coreUI/utils/infereStyle';
+import { infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
-import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-
-const getBackgroundColor = (props) => {
-  if (props.disabled) {
-    if (props.inverted) {
-      return props.theme.buttons.disabled.backgroundColor.inverted;
-    }
-    return props.theme.buttons.disabled.backgroundColor.normal;
-  }
-
-  if (props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary ? props.theme.colors.secondary : props.theme.colors.primary;
-};
-
-const getColor = (props) => {
-  if (!props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary ? props.theme.colors.secondary : props.theme.colors.primary;
-};
-
-const getHoverColor = (props) => {
-  if (!props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
-};
-
-const getClickedColor = (props) => {
-  if (!props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary
-    ? props.theme.colors.secondaryClicked
-    : props.theme.colors.primaryClicked;
-};
-
-const getHoverBackgroundColor = (props) => {
-  if (props.disabled) {
-    if (props.inverted) {
-      return props.theme.buttons.disabled.backgroundColor.inverted;
-    }
-    return props.theme.buttons.disabled.backgroundColor.normal;
-  }
-
-  if (props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary ? props.theme.colors.secondaryHover : props.theme.colors.primaryHover;
-};
-
-const getClickedBackgorundColor = (props) => {
-  if (props.disabled) {
-    if (props.inverted) {
-      return props.theme.buttons.disabled.backgroundColor.inverted;
-    }
-    return props.theme.buttons.disabled.backgroundColor.normal;
-  }
-
-  if (props.inverted) {
-    return props.theme.colors.named.white;
-  }
-
-  return props.secondary
-    ? props.theme.colors.secondaryClicked
-    : props.theme.colors.primaryClicked;
-};
-
-const getBorderRadius = (props) => {
-  if (props.fullRound) {
-    return 1000;
-  }
-
-  return props.radius ? props.radius : infereBorderRadius(props);
-};
-
-
-const ButtonLabelStyle = css`
-  font-size: ${props => infereFontSize(props)}px;
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-
-  color: ${props => getColor(props)};
-
-  &:hover {
-    color: ${props => getHoverColor(props)};
-  }
-
-  &:active {
-    color: ${props => getClickedColor(props)};
-  }
-`;
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 // Must be of relative position for the loading icon to be drawn correctly
-const StyledButton = styled(Column)`
-  width: 100%;
-  position: relative;  
+const StyledButton = styled.button`
+  width: ${props => (props.block ? '100%' : props.width)};
+  position: relative;    
 
   padding: ${props => inferePaddingSize(props)}px;
-    
-  background-color: ${props => getBackgroundColor(props)};
+
+  font-size: ${props => infereFontSize(props)}px;
+  font-weight: ${props => (props.bold ? 'bold' : 'normal')};  
   
   border: ${props => (props.borderLess ? 0 : (props.theme.buttons.border || 1))}px solid;
-  border-color: ${props => getColor(props)};
-  border-radius: ${props => getBorderRadius(props)}px;
+  border-radius: ${props => infereBorderRadius(props)}px;
+
+  outline-style: none;
   
   cursor: pointer;
-  
-  &:hover {
-    color: ${props => getHoverColor(props)};
-    background-color: ${props => getHoverBackgroundColor(props)};  
-    border-color: ${props => getHoverColor(props)};  
-  }  
 
-  &:active {
-    color: ${props => getClickedColor(props)};
-    background-color: ${props => getClickedBackgorundColor(props)};
-    border-color: ${props => getClickedColor(props)};
-  }
-`;
-
-const HiddenActualButton = styled.button`
-  opacity: 0;
-  position: absolute;
-
-  &:focus + div {
-    color: ${props => getHoverColor(props)};
-    background: ${props => getHoverBackgroundColor(props)};
-    border-color: ${props => getHoverColor(props)};
-
-    span {
-      color: ${props => getHoverColor(props)};
-    }
-  }
-`;
-
-const ButtonLoadingIcon = styled(FontAwesomeIcon)`
-  position: absolute;
-  left: ${props => props.theme.buttons.padding}px;
-  height: 100%;
-`;
-
-const ButtonContainer = styled.div`
-  width: ${props => (props.block ? '100%' : props.width)};
+  ${props => (props.disabled ? disabledColorStyles : colorStyles)}
 `;
 
 class Button extends React.Component {
@@ -177,28 +43,22 @@ class Button extends React.Component {
   };
 
   render = () => (
-    <ButtonContainer {...this.props}>
-      <HiddenActualButton {...this.props} />
-      <StyledButton
-        {...this.props}
-        onClick={e => this.onClick(e)}
-        centerAligned
-        centerJustify
-      >
+    <StyledButton
+      {...this.props}
+      onClick={e => this.onClick(e)}
+      centerAligned
+      centerJustify
+    >
+      <Row spaceBetween={0.5}>
         {this.props.loading &&
-          <ButtonLoadingIcon icon={faSpinner} spin />
+          <Icon className="fas fa-spinner fa-spin" />
         }
         {this.props.iconName &&
-          <React.Fragment>
-            <Icon className={this.props.iconName} />
-            <Spacer />
-          </React.Fragment>
+          <Icon className={this.props.iconName} />
         }
-        <MediumLabel {...this.props} customStyle={ButtonLabelStyle}>
-          {this.props.children}
-        </MediumLabel>
-      </StyledButton>
-    </ButtonContainer>
+        {this.props.children}
+      </Row>
+    </StyledButton>
   );
 }
 

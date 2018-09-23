@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
-import { parseFloatProperty } from '~/modules/coreUI/utils/infereStyle';
 import Spacer from './Spacer';
 
 const getIntraItemsSpacer = (props) => {
   let sizeProp = null;
-  sizeProp = parseFloatProperty(props, 'spaceBetween');
+  // eslint-disable-next-line react/prop-types
+  sizeProp = props.spaceBetween ? parseFloat(props.spaceBetween) : null;
   if (!sizeProp) {
     return null;
   }
@@ -53,8 +53,8 @@ const getAlignItems = (props) => {
   return null;
 };
 
-
 const StyledLinearLayout = styled.div`
+
   width: ${props => (props.fullWidth ? '100%' : null)};
   height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;

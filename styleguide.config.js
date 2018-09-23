@@ -17,6 +17,10 @@ module.exports = {
           rel: 'stylesheet',
           href: 'http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css',
         },
+        {
+          rel: 'stylesheet',
+          href: 'https://use.fontawesome.com/releases/v5.2.0/css/all.css',
+        },        
       ],
     },
   },

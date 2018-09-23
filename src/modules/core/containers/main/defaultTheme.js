@@ -1,5 +1,41 @@
 const Theme = {
   new: {
+    inputs: {
+      focusBorderColor: {
+        primary: '#0065b3',
+        secondary: '#e28203',
+      },
+    },
+    colors: {
+      primary: {
+        normal: '#33a8ff',
+        inverted: '#FFFFFF',
+      },
+      secondary: {
+        normal: '#fb9410',
+        inverted: '#FFFFFF',
+      },
+      disabled: {
+        normal: '#aaaaaa',
+        inverted: '#FFFFFF',
+      },
+      labels: {
+        normal: {
+          important: '#000000',
+          emphasized: 'rgba(0, 0, 0, 0.7)',
+          normal: 'rgba(0, 0, 0, 0.5)',
+          subtle: 'rgba(0, 0, 0, 0.35)',
+          hint: 'rgba(0, 0, 0, 0.22)',
+        },
+        inverted: {
+          important: 'white',
+          emphasized: 'rgba(255, 255, 255, 0.7)',
+          normal: 'rgba(255, 255, 255, 0.5)',
+          subtle: 'rgba(255, 255, 255, 0.4)',
+          hint: 'rgba(255, 255, 255, 0.3)',
+        },
+      },
+    },
     spacer: 10,
     fonts: {
       sizes: {
@@ -10,13 +46,10 @@ const Theme = {
         sm: 14,
         xs: 12,
       },
-    },
-    paddings: {
-      xLarge: 20,
-      large: 18,
-      medium: 14,
-      small: 12,
-      xSmall: 10,
+      weights: {
+        bold: 900,
+        semiBold: 600,
+      },
     },
     alertTypes: {
       colors: {

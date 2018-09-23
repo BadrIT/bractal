@@ -16,8 +16,8 @@
     </Examples>
 ```
 
-### Mode 
-Two modes are supported, `Primary` &amp; `Secondary`
+### Types 
+Two types are supported, `Primary` &amp; `Secondary`
 ```js
     <Examples>
         <Button>Click This</Button>
@@ -35,6 +35,29 @@ You can go with the normal version, or inverted one
     </Examples>
 ```
 
+### Disabled State
+You can go with the disabled version, or normal one
+```js
+    <Examples>
+        <Column spaceBetween={1}>
+            <Button>Click This</Button>
+            <Button disabled>Click This</Button>
+        </Column>
+        <Column spaceBetween={1}>
+            <Button inverted>Click This</Button>
+            <Button disabled inverted>Click This</Button>
+        </Column>
+        <Column spaceBetween={1}>
+            <Button secondary>Click This</Button>
+            <Button disabled secondary>Click This</Button>
+        </Column>        
+        <Column spaceBetween={1}>
+            <Button inverted secondary>Click This</Button>
+            <Button disabled inverted secondary>Click This</Button>
+        </Column>
+    </Examples>
+```
+
 ### Corners
 You can go for a full circle corner
 ```js
@@ -43,6 +66,28 @@ You can go for a full circle corner
         <Button fullRound inverted>Click This</Button>
     </Examples>
 ```
+
+### Loading Icon
+```js
+    <Examples>
+        <Button loading>Click This</Button>
+        <Button loading inverted>Click This</Button>
+        <Button loading secondary>Click This</Button>        
+        <Button loading secondary inverted>Click This</Button>
+    </Examples>
+```
+
+### Arbitrary Icon
+```js
+    <Examples>
+        <Button iconName='far fa-save'>Click This</Button>
+        <Button loading iconName='far fa-save'>Click This</Button>
+        <Button loading inverted iconName='far fa-save'>Click This</Button>
+        <Button loading secondary iconName='far fa-save'>Click This</Button>        
+        <Button loading secondary inverted iconName='far fa-save'>Click This</Button>
+    </Examples>
+```
+
 
 ### Label Style
 Only bold is supported

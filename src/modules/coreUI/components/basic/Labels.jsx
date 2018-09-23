@@ -1,32 +1,16 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export, react/prop-types */
+import React from 'react';
 import styled from 'styled-components';
 
-const getColor = (props) => {
-  if (props.color) {
-    if (props.theme.colors.labels[props.color]) {
-      return props.theme.colors.labels[props.color];
-    }
-    return props.color;
-  }
-  return props.theme.colors.labels.normal;
-};
-
-const getSize = (props) => {
-  if (props.size) {
-    if (props.theme.fonts.sizes[props.size]) {
-      return props.theme.fonts.sizes[props.size];
-    }
-    return props.size;
-  }
-  return props.theme.fonts.sizes.small;
-};
+import { infereFontSize, infereFontColor, infereFontWeight } from '~/modules/coreUI/utils/infereStyle';
 
 export const Label = styled.span`
   text-transform: ${props => (props.uppercase ? 'uppercase' : 'none')};
-  color: ${props => getColor(props)};
-  font-size: ${props => getSize(props)}px;
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  line-height: ${props => (props.paragraph ? 1.3 : 1)};
+  
+  color: ${props => infereFontColor(props)};
+
+  font-weight: ${props => infereFontWeight(props)};
+  font-size: ${props => infereFontSize(props)}px;
 
   text-align: ${props => props.align || 'left'};
 
@@ -37,40 +21,24 @@ export const Label = styled.span`
   ${props => props.customStyle}
 `;
 
-export const XLargeLabel = styled(Label)`
-  font-size: ${props => props.theme.new.fonts.sizes.xLarge}px;
-  ${props => props.customStyle}
-`;
+export const XLargeLabel = props =>
+  <Label {...props} xl>{props.children}</Label>;
 
-export const LargeLabel = styled(Label)`
-  font-size: ${props => props.theme.new.fonts.sizes.large}px;
-  ${props => props.customStyle}
-`;
+export const LargeLabel = props =>
+  <Label {...props} lg>{props.children}</Label>;
 
-export const MediumLabel = styled(Label)`
-  font-size: ${props => props.theme.new.fonts.sizes.medium}px;
-  ${props => props.customStyle}
-`;
+export const MediumLabel = props =>
+  <Label {...props}>{props.children}</Label>;
 
-export const SmallLabel = styled(Label)`
-  font-size: ${props => props.theme.new.fonts.sizes.small}px;
-  ${props => props.customStyle}
-`;
+export const SmallLabel = props =>
+  <Label {...props} sm>{props.children}</Label>;
 
-export const XSmallLabel = styled(Label)`
-  font-size: ${props => props.theme.new.fonts.sizes.xSmall}px;
-  ${props => props.customStyle}
-`;
-
-export const ErrorLabel = styled.div`
-  font-size: ${props => props.theme.new.fonts.sizes.xSmall}px;
-  color: ${props => props.theme.colors.error};
-  ${props => props.customStyle}
-`;
+export const XSmallLabel = props =>
+  <Label {...props} xs>{props.children}</Label>;
 
 export const Header = styled(Label)`
-  padding-top: ${props => props.theme.new.paddings.large}px;
-  padding-bottom: ${props => props.theme.new.paddings.large}px;
+  padding-top: ${props => 2 * props.theme.new.spacer}px;
+  padding-bottom: ${props => 2 * props.theme.new.spacer}px;
   color: ${props => props.theme.colors.labels.important};
   font-size: ${props => props.theme.new.fonts.sizes.header}px;
   font-weight: bold;

@@ -11,9 +11,7 @@ import Button from '~/modules/coreUI/components/basic/Button';
 
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { MediumLabel, Header } from '~/modules/coreUI/components/basic/Labels';
-
 import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
-
 import ToggleCard from '~/modules/apiMonitoring/components/ToggleCard';
 
 import GraphQlConstructs from '../utils/GraphqlConstructs';
