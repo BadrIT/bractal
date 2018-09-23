@@ -17,10 +17,6 @@ import SideMenuToggler from '~/modules/coreUI/components/layouts/defaultSiteLayo
 
 import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader/HeaderRowContainers';
 
-// TODO SARAH remove alert
-import withAlertContainer from '~/modules/core/utils/alertHelpers/withAlertContainer';
-import AlertTypes from '~/modules/core/utils/alertHelpers/alertComponent/AlertTypes';
-
 const HeaderTopRowContainer = styled(DefaultHeaderTopRowContainer)`
   margin-top: ${props => props.theme.paddings.xLarge}px;
 `;
@@ -89,13 +85,6 @@ const Header = ({ modules, notifyAlert }) => {
       },
     },
   };
-  // TODO SARAH remove alert
-  notifyAlert({
-    messageText: 'Hi Sarah1!',
-    topFullWidth: true,
-    type: AlertTypes.info,
-    buttonAction: () => console.log('Horray!!'),
-  });
 
   return (
     <SiteHeader
@@ -113,8 +102,6 @@ Header.propTypes = {
     menuItemTitle: PropTypes.string.isRequired,
     targetURL: PropTypes.string.isRequired,
   })).isRequired,
-  // TODO SARAH remove alert
-  notifyAlert: PropTypes.func.isRequired,
 };
 
 export default withAlertContainer(withModules(Header));
