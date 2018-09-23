@@ -2,8 +2,8 @@ const Theme = {
   new: {
     inputs: {
       focusBorderColor: {
-        primary: '#fb9410',
-        secondary: '#33a8ff',
+        primary: '#0065b3',
+        secondary: '#e28203',
       },
     },
     colors: {

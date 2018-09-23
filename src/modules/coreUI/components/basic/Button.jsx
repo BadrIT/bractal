@@ -2,18 +2,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
-import { infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles } from '~/modules/coreUI/utils/infereStyle';
+import { infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
-import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
 // Must be of relative position for the loading icon to be drawn correctly
 const StyledButton = styled.button`
-  width: 100%;
+  width: ${props => (props.block ? '100%' : props.width)};
   position: relative;    
 
   padding: ${props => inferePaddingSize(props)}px;
@@ -28,17 +26,7 @@ const StyledButton = styled.button`
   
   cursor: pointer;
 
-  ${colorStyles}
-`;
-
-const ButtonLoadingIcon = styled(FontAwesomeIcon)`
-  position: absolute;
-  left: ${props => props.theme.buttons.padding}px;
-  height: 100%;
-`;
-
-const ButtonContainer = styled.div`
-  width: ${props => (props.block ? '100%' : props.width)};
+  ${props => (props.disabled ? disabledColorStyles : colorStyles)}
 `;
 
 class Button extends React.Component {
@@ -55,25 +43,22 @@ class Button extends React.Component {
   };
 
   render = () => (
-    <ButtonContainer {...this.props}>
-      <StyledButton
-        {...this.props}
-        onClick={e => this.onClick(e)}
-        centerAligned
-        centerJustify
-      >
+    <StyledButton
+      {...this.props}
+      onClick={e => this.onClick(e)}
+      centerAligned
+      centerJustify
+    >
+      <Row spaceBetween={0.5}>
         {this.props.loading &&
-          <ButtonLoadingIcon icon={faSpinner} spin />
+          <Icon className="fas fa-spinner fa-spin" />
         }
         {this.props.iconName &&
-          <React.Fragment>
-            <Icon className={this.props.iconName} />
-            <Spacer />
-          </React.Fragment>
+          <Icon className={this.props.iconName} />
         }
         {this.props.children}
-      </StyledButton>
-    </ButtonContainer>
+      </Row>
+    </StyledButton>
   );
 }
 

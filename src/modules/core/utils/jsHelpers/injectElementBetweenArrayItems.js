@@ -8,12 +8,9 @@ export default (items, separator) => {
   }
 
   const itemsWithExtraSeparator = [
-    ..._.flatten(items.map(item => ([
-      item,
-      separator,
-    ]))),
+    ..._.flatten(items.map(item =>
+      (item ? ([item, separator]) : null))),
   ];
-
   return itemsWithExtraSeparator.slice(
     0,
     itemsWithExtraSeparator.length - 1,

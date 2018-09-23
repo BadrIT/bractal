@@ -53,40 +53,28 @@ export const infereColors = (props) => {
   return modesColors(type, props.theme)[mode];
 };
 
-export const infereDarkerColors = (props, darkenRatio) => {
-  const color = infereColors(props);
+export const darken = (color, ratio) => (ratio >= 0
+  ? Color(color).darken(ratio).string()
+  : Color(color).lighten(-1 * ratio).string());
 
-  if (props.disabled) {
-    return color;
-  }
-
-  return {
-    lineColor: Color(color.lineColor).darken(darkenRatio).string(),
-    backgroundColor: Color(color.backgroundColor).darken(darkenRatio).string(),
-  };
-};
-
+const colors = (props, darkRatio) => css`
+  color: ${darken(infereColors(props).lineColor, darkRatio)};
+  background-color: ${darken(infereColors(props).backgroundColor, darkRatio)};
+  border-color: ${darken(infereColors(props).lineColor, darkRatio)};
+`;
 
 export const colorStyles = css`
-  color: ${props => infereColors(props).lineColor};
-  background-color: ${props => infereColors(props).backgroundColor};
-  border-color: ${props => infereColors(props).lineColor};
+  ${props => colors(props, 0)}
 
-  &:hover {
-    color: ${props => infereDarkerColors(props, 0.05).lineColor};
-    background-color: ${props => infereDarkerColors(props, 0.05).backgroundColor};
-    border-color: ${props => infereDarkerColors(props, 0.05).lineColor};    
-  }  
-
-  &:active {
-    color: ${props => infereDarkerColors(props, 0.1).lineColor};
-    background-color: ${props => infereDarkerColors(props, 0.1).backgroundColor};
-    border-color: ${props => infereDarkerColors(props, 0.1).lineColor};
+  &:hover { ${props => colors(props, 0.05)} }  
+  &:active { ${props => colors(props, 0.1)} }
+  &:focus { 
+    border-color: ${props => darken(infereColors(props).lineColor, 0.3)};
   }
+`;
 
-  &:focus {
-    border-color: ${props => props.theme.new.inputs.focusBorderColor[infereControlType(props)]};
-  }
+export const disabledColorStyles = css`
+  ${props => colors(props, 0)}
 `;
 
 export const infereSize = props =>

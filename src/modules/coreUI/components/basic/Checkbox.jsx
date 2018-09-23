@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-import { infereControlType, infereFontSize, infereBorderRadius, colorStyles } from '~/modules/coreUI/utils/infereStyle';
+import { infereControlType, infereFontSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 
 import { SmallLabel } from './Labels';
@@ -25,7 +25,7 @@ const RealHiddenCheckbox = styled.input`
     border: 1px solid;
     border-radius: ${props => infereBorderRadius(props)}px; 
     
-    ${colorStyles}
+    ${props => (props.disabled ? disabledColorStyles : colorStyles)}
   }
 
   &:focus + div {

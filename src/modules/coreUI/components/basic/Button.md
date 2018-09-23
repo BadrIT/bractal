@@ -67,6 +67,28 @@ You can go for a full circle corner
     </Examples>
 ```
 
+### Loading Icon
+```js
+    <Examples>
+        <Button loading>Click This</Button>
+        <Button loading inverted>Click This</Button>
+        <Button loading secondary>Click This</Button>        
+        <Button loading secondary inverted>Click This</Button>
+    </Examples>
+```
+
+### Arbitrary Icon
+```js
+    <Examples>
+        <Button iconName='far fa-save'>Click This</Button>
+        <Button loading iconName='far fa-save'>Click This</Button>
+        <Button loading inverted iconName='far fa-save'>Click This</Button>
+        <Button loading secondary iconName='far fa-save'>Click This</Button>        
+        <Button loading secondary inverted iconName='far fa-save'>Click This</Button>
+    </Examples>
+```
+
+
 ### Label Style
 Only bold is supported
 ```js
