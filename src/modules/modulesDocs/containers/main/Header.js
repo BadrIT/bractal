@@ -41,7 +41,7 @@ const loadedModulesHeaderEntries = modules => modules.map(module => ({
   targetURL: module.homePath,
 }));
 
-const Header = ({ modules, notifyAlert }) => {
+const Header = ({ modules }) => {
   const menuInfo = {
     desktop: {
       top: {
@@ -104,4 +104,4 @@ Header.propTypes = {
   })).isRequired,
 };
 
-export default withAlertContainer(withModules(Header));
+export default withModules(Header);
