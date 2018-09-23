@@ -63,7 +63,7 @@ export const Wrapper = css`
 
 export const Toast = css`
   position: relative;
-  padding: ${props => props.theme.new.paddings.xSmall}px;
+  padding: ${props => 0.2 * props.theme.new.spacer}px;
   ${props => !props.topFullWidth && `
     margin: ${2 * props.theme.new.spacer}px;
   `}
