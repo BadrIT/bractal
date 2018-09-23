@@ -35,8 +35,6 @@ export const successColor = css`
   background: ${props => props.color || props.theme.new.alertTypes.colors.success};
 `;
 export const Wrapper = css`
-  z-index: 9999;
-  position: fixed;
   width: 100%;
   ${props => !props.topFullWidth && `
     display: flex;
@@ -75,6 +73,7 @@ export const Toast = css`
 export const ToastBody = css`
   flex: 1;
   font-size: ${props => props.fontSize || props.theme.new.fonts.sizes.md}px; 
+  margin-right: 10px;
 `;
 export const ToastCloseButton = css`
   display: flex;

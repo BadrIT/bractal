@@ -18,8 +18,7 @@ const Body = styled.div`
 const CloseButton = styled.button`
   ${ToastCloseButton}
 `;
-// TODO Sarah test acceptance of component in props to have alert content
-const AlertToast = (props) => {
+const AlertToastExample = (props) => {
   const alertData = {
     messageText: props.messageText,
     type: props.type,
@@ -39,12 +38,14 @@ const AlertToast = (props) => {
     >
       <ToastWrapper
         topFullWidth={props.topFullWidth}
-        className={alertData.type}
+        className={alertData.type || 'default'}
       >
         <Body>
           <CloseButton>✖</CloseButton>
           <ToastMessage
-            icon={<Icon className={ToastTypes[alertData.type].iconClassName} />}
+            icon={ToastTypes[alertData.type] &&
+              <Icon className={ToastTypes[alertData.type].iconClassName} />
+            }
             alertData={alertData}
           />
         </Body>
@@ -53,7 +54,7 @@ const AlertToast = (props) => {
   );
 };
 
-AlertToast.propTypes = PropTypes.shape({
+AlertToastExample.propTypes = PropTypes.shape({
   messageText: PropTypes.string,
   type: PropTypes.oneOf(Object.keys(AlertTypes)),
   autoClose: PropTypes.oneOfType([Number, Boolean]),
@@ -62,4 +63,4 @@ AlertToast.propTypes = PropTypes.shape({
   buttonAction: PropTypes.func,
 }).isRequired;
 
-export default AlertToast;
+export default AlertToastExample;

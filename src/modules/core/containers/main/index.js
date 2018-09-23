@@ -28,9 +28,7 @@ const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
       <ModulesLoader.Context.Provider value={modules} >
         <I18nextProvider i18n={i18next}>
           <ThemeProvider theme={theme}>
-            <AlertProvider
-              lg
-            >
+            <AlertProvider>
               <UserInfoProvider>
                 <ModalTrackerProvider>
                   <SideMenuTrackerProvider>

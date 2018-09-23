@@ -21,6 +21,8 @@ import {
 
 const ToastStyle = styled.div`
   .Toastify__toast-container {
+    z-index: 9999;
+    position: fixed;
     ${Wrapper}
   }
   .Toastify__toast {

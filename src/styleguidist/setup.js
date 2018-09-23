@@ -9,7 +9,7 @@ global.Box = props => (
 global.Row = Row;
 global.Column = Column;
 global.Examples = props => (
-  <Row topAligned spaceBetween="0.5">
+  <Row topAligned spaceBetween="0.5" fullWidth={props.fullWidth}>
     {props.children}
   </Row>
 );

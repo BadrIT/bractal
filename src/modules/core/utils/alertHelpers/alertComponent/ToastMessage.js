@@ -1,11 +1,10 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import AlertTypes from './AlertTypes';
 import Button from '~/modules/coreUI/components/basic/Button';
+import AlertTypes from './AlertTypes';
 
 const getColor = (props) => {
   if (props.type === AlertTypes.error) {
@@ -35,7 +34,9 @@ const ToastMessage = ({ icon, alertData, closeToast }) => (
     {alertData.messageText}
     <LargeSpacer />
     {alertData.buttonAction &&
-      <ButtonStyled inverted lg
+      <ButtonStyled
+        inverted
+        lg
         color={alertData.color}
         onClicked={() => { alertData.buttonAction(); closeToast(); }}
         type={alertData.type}
