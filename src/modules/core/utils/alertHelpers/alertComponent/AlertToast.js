@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
 import ToastMessage from './ToastMessage';
-import { 
+import {
   Wrapper,
   Toast,
   ToastBody,
@@ -17,7 +17,7 @@ import {
   successColor,
   slidein,
   slideout,
- } from './AlertToastStyle';
+} from './AlertToastStyle';
 
 const ToastStyle = styled.div`
   .Toastify__toast-container {
@@ -58,35 +58,20 @@ const ToastStyle = styled.div`
 `;
 // TODO Sarah test acceptance of component in props to have alert content
 const AlertToast = (props) => {
-  const alertData = {
-    messageText: props.messageText,
-    type: props.type,
-    icon: props.icon,
-    buttonText: props.buttonText,
-    buttonAction: props.buttonAction,
-    color: props.color,
-    fontSize: props.fontSize,
-  };
-
   const TargetComponent = props.component || ToastMessage;
-  const choosenConfig = ToastTypes[alertData.type] || { renderMethod: toast };
+  const choosenConfig = ToastTypes[props.type] || { renderMethod: toast };
 
   choosenConfig.renderMethod(<TargetComponent
-    icon={<Icon className={choosenConfig.iconClassName} />}
-    alertData={alertData}
+    {...props}
+    defaultIcon={<Icon className={choosenConfig.iconClassName} />}
   />);
 
   return (
-    <ToastStyle
-      topFullWidth={props.topFullWidth}
-      color={props.color}
-      fontSize={props.fontSize}
-      opacity={props.opacity}
-    >
+    <ToastStyle {...props} >
       <ToastContainer
         position="top-center"
-        autoClose={props.autoClose}
-        newestOnTop={false}
+        autoClose={1000}
+        newestOnTop
         closeOnClick={false}
         hideProgressBar
         draggable={false}

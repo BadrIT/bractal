@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
 import AlertContext from './AlertContext';
-import AlertToast from './alertComponent/AlertToastExample';
+import AlertToast from './alertComponent/AlertToast';
 
 class AlertProvider extends React.Component {
   state = {
@@ -28,6 +28,7 @@ class AlertProvider extends React.Component {
       hidden: false,
       topFullWidth: args.topFullWidth,
       color: args.color,
+      backgroundColor: args.backgroundColor,
     });
   }
 
@@ -35,15 +36,16 @@ class AlertProvider extends React.Component {
     <AlertContext.Provider value={this.startAlert}>
       {!(this.state.hidden) &&
         <AlertToast
+          {...this.props}
           messageText={this.state.messageText}
           autoClose={this.state.buttonAction ? false : 5000}
           type={this.state.type}
           icon={this.state.icon}
           buttonText={this.state.buttonText}
           buttonAction={this.state.buttonAction}
-          fontSize={this.props.fontSize}
           topFullWidth={this.state.topFullWidth}
           color={this.state.color || this.props.color}
+          backgroundColor={this.state.backgroundColor || this.props.backgroundColor}
           opacity={this.props.opacity}
         />}
       {this.props.children}

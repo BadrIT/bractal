@@ -1,4 +1,5 @@
 import { keyframes, css } from 'styled-components';
+import { infereFontSize, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
 
 export const slidein = keyframes`
   from {
@@ -20,28 +21,28 @@ export const slideout = keyframes`
   }
 `;
 export const defaultColor = css`
-  background: ${props => props.color || props.theme.new.alertTypes.colors.default};
+  background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.default};
 `;
 export const infoColor = css`
-  background: ${props => props.color || props.theme.new.alertTypes.colors.info};
+  background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.info};
 `;
 export const errorColor = css`
-  background: ${props => props.color || props.theme.new.alertTypes.colors.error};
+  background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.error};
 `;
 export const warningColor = css`
-  background: ${props => props.color || props.theme.new.alertTypes.colors.warning};
+  background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.warning};
 `;
 export const successColor = css`
-  background: ${props => props.color || props.theme.new.alertTypes.colors.success};
+  background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.success};
 `;
 export const Wrapper = css`
   width: 100%;
-  ${props => !props.topFullWidth && `
+    ${props => !props.topFullWidth && `
     display: flex;
     justify-content: flex-end;
     bottom: 0;
   `}
-  color: ${props => props.theme.colors.named.white};
+  color: ${props => props.color || props.theme.colors.named.white};
   opacity: ${props => props.opacity || '0.85'};
   animation-duration: 1s;
   .default {
@@ -62,18 +63,19 @@ export const Wrapper = css`
 `;
 
 export const Toast = css`
+  display: flex;
   position: relative;
-  padding: ${props => 0.2 * props.theme.new.spacer}px;
+  padding: ${props => inferePaddingSize(props)}px;
   ${props => !props.topFullWidth && `
     margin: ${2 * props.theme.new.spacer}px;
   `}
-  display: flex;
   cursor: pointer; 
 `;
 export const ToastBody = css`
+  margin-right: ${props => 3 * props.theme.new.spacer}px;
+  margin-left: ${props => props.theme.new.spacer}px;
   flex: 1;
-  font-size: ${props => props.fontSize || props.theme.new.fonts.sizes.md}px; 
-  margin-right: 10px;
+  font-size: ${props => infereFontSize(props)}px;
 `;
 export const ToastCloseButton = css`
   display: flex;
@@ -87,7 +89,7 @@ export const ToastCloseButton = css`
   border: none;
   cursor: pointer;
   opacity: 0.7;
-  font-size: ${props => 1.2 * props.fontSize || 18}px;
+  font-size: ${props => 1.2 * infereFontSize(props)}px;
   &:hover, &:focus {
     opacity: 1;
   }

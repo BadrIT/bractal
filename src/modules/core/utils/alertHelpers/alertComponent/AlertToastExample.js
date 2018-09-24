@@ -18,41 +18,26 @@ const Body = styled.div`
 const CloseButton = styled.button`
   ${ToastCloseButton}
 `;
-const AlertToastExample = (props) => {
-  const alertData = {
-    messageText: props.messageText,
-    type: props.type,
-    icon: props.icon,
-    buttonText: props.buttonText,
-    buttonAction: props.buttonAction,
-    color: props.color,
-    fontSize: props.fontSize,
-  };
-
-  return (
-    <Container
-      topFullWidth={props.topFullWidth}
-      color={props.color}
-      fontSize={props.fontSize}
-      opacity={props.opacity}
+const AlertToastExample = props => (
+  <Container {...props} >
+    <ToastWrapper
+      {...props}
+      className={props.type || 'default'}
     >
-      <ToastWrapper
-        topFullWidth={props.topFullWidth}
-        className={alertData.type || 'default'}
-      >
-        <Body>
-          <CloseButton>✖</CloseButton>
+      <Body {...props} >
+        <CloseButton {...props} >✖</CloseButton>
+        {props.component ||
           <ToastMessage
-            icon={ToastTypes[alertData.type] &&
-              <Icon className={ToastTypes[alertData.type].iconClassName} />
+            {...props}
+            defaultIcon={ToastTypes[props.type] &&
+              <Icon className={ToastTypes[props.type].iconClassName} />
             }
-            alertData={alertData}
           />
-        </Body>
-      </ToastWrapper>
-    </Container>
-  );
-};
+        }
+      </Body>
+    </ToastWrapper>
+  </Container>
+);
 
 AlertToastExample.propTypes = PropTypes.shape({
   messageText: PropTypes.string,

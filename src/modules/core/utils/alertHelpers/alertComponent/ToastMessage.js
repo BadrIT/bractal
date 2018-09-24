@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Button from '~/modules/coreUI/components/basic/Button';
+import { infereFontSize } from '~/modules/coreUI/utils/infereStyle';
 import AlertTypes from './AlertTypes';
 
 const getColor = (props) => {
@@ -24,24 +25,27 @@ const ButtonStyled = styled(Button)`
   border-style: none;
 `;
 const IconStyle = styled.div`
-  font-size: ${props => 1.2 * (props.size || props.theme.new.fonts.sizes.md)}px;
+  font-size: ${props => infereFontSize(props)}px;
 `;
 
-const ToastMessage = ({ icon, alertData, closeToast }) => (
+const ToastMessage = props => (
   <LinearLayout row centerJustified>
-    <IconStyle size={alertData.fontSize} >{alertData.icon || icon}</IconStyle>
+    <IconStyle {...props} >{props.icon || props.defaultIcon}</IconStyle>
     <LargeSpacer />
-    {alertData.messageText}
+    {props.messageText}
     <LargeSpacer />
-    {alertData.buttonAction &&
+    {props.buttonAction &&
       <ButtonStyled
+        {...props}
         inverted
-        lg
-        color={alertData.color}
-        onClicked={() => { alertData.buttonAction(); closeToast(); }}
-        type={alertData.type}
+        onClicked={() => {
+            props.buttonAction();
+            // eslint-disable-next-line
+            typeof props.closeToast === 'function' && props.closeToast();
+          }}
+        type={props.type}
       >
-        {alertData.buttonText || 'Click me!!'}
+        {props.buttonText || 'Click me!!'}
       </ButtonStyled>
     }
   </LinearLayout>
