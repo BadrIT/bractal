@@ -10,6 +10,8 @@ export const loadNext = (paginator, pageInfo) => paginator.loadNext(
   Math.ceil(pageInfo.items_count / pageInfo.limit),
 );
 
-export const leftClassName = 'fas fa-chevron-left';
+export const defaultLeftClassName = 'fas fa-chevron-left';
 
-export const rightClassName = 'fas fa-chevron-right';
+export const defaultRightClassName = 'fas fa-chevron-right';
+
+export const defaultEllipsisIcon = 'fas fa-ellipsis-h';

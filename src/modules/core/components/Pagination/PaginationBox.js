@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
 import Media from 'react-media';
 import { mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import PaginationWrapper from './PaginationWrapper';
 import PaginationBoxMobile from './PaginationBoxMobile';
 import PaginationBoxDesktop from './PaginationBoxDesktop';
+import { loadPrev, loadNext } from './PaginationNextAndPrevious';
 
 const PaginationBox = ({ refetchMethod, pageInfo, subscribe }) => {
   const paginator = new PaginationWrapper(refetchMethod, subscribe, pageInfo.limit);
@@ -19,7 +16,14 @@ const PaginationBox = ({ refetchMethod, pageInfo, subscribe }) => {
           {matches => (
             matches
               ? <PaginationBoxMobile paginator={paginator} pageInfo={pageInfo} />
-              : <PaginationBoxDesktop paginator={paginator} pageInfo={pageInfo} />
+              : <PaginationBoxDesktop
+                  loadNextPage={() => loadNext(paginator, pageInfo)}
+                  loadPrevPage={() => loadPrev(paginator, pageInfo)}
+                  loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
+                  currentPage={pageInfo.current_page}
+                  limit={pageInfo.limit}
+                  itemsCount={pageInfo.items_count}
+                />
           )}
         </Media>
       }

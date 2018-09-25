@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  components: ['src/modules/coreUI/components/basic/**/*.{ts,tsx,js,jsx}', 'src/modules/coreUI/components/layouts/helpers/**/*.{ts,tsx,js,jsx}'],
+  components: ['src/modules/coreUI/components/basic/**/*.{ts,tsx,js,jsx}',
+              'src/modules/coreUI/components/layouts/helpers/**/*.{ts,tsx,js,jsx}',
+              'src/modules/core/components/**/*.{ts,tsx,js,jsx}'],
   skipComponentsWithoutExample: true,
   require: [path.resolve(__dirname, 'src/styleguidist/setup.js')],
   webpackConfig: require('./config/webpack.config.dev.js'),
