@@ -17,6 +17,7 @@ import {
   successColor,
   slidein,
   slideout,
+  trackProgress,
 } from './AlertToastStyle';
 
 const ToastStyle = styled.div`
@@ -55,6 +56,10 @@ const ToastStyle = styled.div`
   .Toastify__slide-exit--top-center {
     animation-name: ${slideout};
   }
+  .Toastify__progress-bar {
+    position: absolute;
+    animation: ${trackProgress} linear 1;
+  }
 `;
 // TODO Sarah test acceptance of component in props to have alert content
 const AlertToast = (props) => {
@@ -70,7 +75,7 @@ const AlertToast = (props) => {
     <ToastStyle {...props} >
       <ToastContainer
         position="top-center"
-        autoClose={1000}
+        autoClose={!props.buttonAction && 1000}
         newestOnTop
         closeOnClick={false}
         hideProgressBar

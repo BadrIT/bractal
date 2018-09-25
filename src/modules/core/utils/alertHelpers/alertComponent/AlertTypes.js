@@ -18,7 +18,7 @@ export const ToastTypes = {
     renderMethod: toast.warning,
   },
   [AlertTypes.success]: {
-    iconClassName: 'far fa-check-circle',
+    iconClassName: 'fas fa-check-circle',
     renderMethod: toast.success,
   },
   [AlertTypes.info]: {

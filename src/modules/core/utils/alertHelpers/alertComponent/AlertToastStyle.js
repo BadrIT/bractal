@@ -1,6 +1,15 @@
 import { keyframes, css } from 'styled-components';
 import { infereFontSize, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
 
+export const trackProgress = keyframes`
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+`;
+
 export const slidein = keyframes`
   from {
     transform: translate3d(0, -110%, 0);
