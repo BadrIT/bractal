@@ -50,15 +50,22 @@ const ToastStyle = styled.div`
   .Toastify__close-button {
     ${ToastCloseButton}
   }
-  .Toastify__slide-enter--top-center {
+  .Toastify__slide-enter--bottom-right, .Toastify__slide-exit--top-center {
     animation-name: ${slidein};
   }
-  .Toastify__slide-exit--top-center {
+  .Toastify__slide-exit--bottom-right, .Toastify__slide-exit--top-center {
     animation-name: ${slideout};
   }
   .Toastify__progress-bar {
     position: absolute;
     animation: ${trackProgress} linear 1;
+  }
+  .Toastify__toast-container--bottom-right {
+    right: ${props => 2 * props.theme.new.spacer}px;
+    bottom: ${props => props.theme.new.spacer}px;
+  }
+  .Toastify__toast-container--top-center {
+    width: 100%;
   }
 `;
 // TODO Sarah test acceptance of component in props to have alert content
@@ -74,8 +81,8 @@ const AlertToast = (props) => {
   return (
     <ToastStyle {...props} >
       <ToastContainer
-        position="top-center"
-        autoClose={!props.buttonAction && 1000}
+        position={props.topFullWidth ? 'top-center' : 'bottom-right'}
+        autoClose={!props.buttonAction && 50000}
         newestOnTop
         closeOnClick={false}
         hideProgressBar

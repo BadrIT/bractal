@@ -41,7 +41,7 @@ const ToastMessage = props => (
         onClicked={() => {
             props.buttonAction();
             // eslint-disable-next-line
-            typeof props.closeToast === 'function' && props.closeToast();
+            // typeof props.closeToast === 'function' && props.closeToast();
           }}
         type={props.type}
       >

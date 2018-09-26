@@ -45,12 +45,6 @@ export const successColor = css`
   background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.success};
 `;
 export const Wrapper = css`
-  width: 100%;
-    ${props => !props.topFullWidth && `
-    display: flex;
-    justify-content: flex-end;
-    bottom: 0;
-  `}
   color: ${props => props.color || props.theme.colors.named.white};
   opacity: ${props => props.opacity || '0.85'};
   animation-duration: 1s;
@@ -73,12 +67,10 @@ export const Wrapper = css`
 
 export const Toast = css`
   display: flex;
-  position: relative;
   padding: ${props => inferePaddingSize(props)}px;
-  ${props => !props.topFullWidth && `
-    margin: ${2 * props.theme.new.spacer}px;
-  `}
+  margin-bottom: ${props => props.theme.new.spacer}px;
   cursor: pointer; 
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);
 `;
 export const ToastBody = css`
   margin-right: ${props => 3 * props.theme.new.spacer}px;
@@ -88,9 +80,7 @@ export const ToastBody = css`
 `;
 export const ToastCloseButton = css`
   display: flex;
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  position: relative;
   align-self: flex-start;
   color: ${props => props.theme.colors.named.white};
   background: transparent;
@@ -98,7 +88,7 @@ export const ToastCloseButton = css`
   border: none;
   cursor: pointer;
   opacity: 0.7;
-  font-size: ${props => 1.2 * infereFontSize(props)}px;
+  font-size: ${props => infereFontSize(props)}px;
   &:hover, &:focus {
     opacity: 1;
   }
