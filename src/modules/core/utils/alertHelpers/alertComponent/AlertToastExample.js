@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
 import ToastMessage from './ToastMessage';
@@ -8,6 +8,10 @@ import { Wrapper, Toast, ToastBody, ToastCloseButton } from './AlertToastStyle';
 
 const Container = styled.div`
   ${Wrapper}
+  ${props => !props.topFullWidth && css`
+    align-self: flex-end;
+    margin-right: 20px;
+  `}
 `;
 const ToastWrapper = styled.div`
   ${Toast}
@@ -25,7 +29,6 @@ const AlertToastExample = props => (
       className={props.type || 'default'}
     >
       <Body {...props} >
-        <CloseButton {...props} >✖</CloseButton>
         {props.component ||
           <ToastMessage
             {...props}
@@ -35,6 +38,7 @@ const AlertToastExample = props => (
           />
         }
       </Body>
+      <CloseButton {...props} >✖</CloseButton>
     </ToastWrapper>
   </Container>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
 import ToastMessage from './ToastMessage';
@@ -18,6 +18,7 @@ import {
   slidein,
   slideout,
   trackProgress,
+  bottomRight,
 } from './AlertToastStyle';
 
 const ToastStyle = styled.div`
@@ -50,7 +51,7 @@ const ToastStyle = styled.div`
   .Toastify__close-button {
     ${ToastCloseButton}
   }
-  .Toastify__slide-enter--bottom-right, .Toastify__slide-exit--top-center {
+  .Toastify__slide-enter--bottom-right, .Toastify__slide-enter--top-center {
     animation-name: ${slidein};
   }
   .Toastify__slide-exit--bottom-right, .Toastify__slide-exit--top-center {
@@ -61,11 +62,17 @@ const ToastStyle = styled.div`
     animation: ${trackProgress} linear 1;
   }
   .Toastify__toast-container--bottom-right {
-    right: ${props => 2 * props.theme.new.spacer}px;
-    bottom: ${props => props.theme.new.spacer}px;
+    ${props => bottomRight(props)}
   }
   .Toastify__toast-container--top-center {
     width: 100%;
+  }
+  .Toastify__toast:nth-child(n+2) {
+    ${props => props.topFullWidth && css`
+      position: absolute;
+      top: 0;
+      width: 100%;
+    `}
   }
 `;
 // TODO Sarah test acceptance of component in props to have alert content

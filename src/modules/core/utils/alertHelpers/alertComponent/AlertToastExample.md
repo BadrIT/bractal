@@ -144,7 +144,7 @@ Five types are supported, error, warning, success, info and default
                 type="info"
                 buttonAction={() => console.log("action triggered !!")}
                 buttonText="Click for action !"
-            />  
+            /> 
             <AlertToastExample 
                 messageText="Alert Toast"
                 type="info"
