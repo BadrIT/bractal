@@ -54,9 +54,18 @@ class Button extends React.Component {
           <Icon className="fas fa-spinner fa-spin" />
         }
         {this.props.iconName &&
-          <Icon className={this.props.iconName} />
+          <Icon {...this.props} className={this.props.iconName} />
+        }
+        {this.props.icon &&
+          <this.props.icon.type {...this.props} />
         }
         {this.props.children}
+        {this.props.iconAfterName &&
+          <Icon {...this.props} className={this.props.iconAfterName} />
+        }
+        {this.props.iconAfter &&
+          <this.props.iconAfter.type {...this.props} />
+        }
       </Row>
     </StyledButton>
   );

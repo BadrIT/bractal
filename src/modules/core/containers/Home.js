@@ -4,13 +4,13 @@ import { Container, Header, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import withModules from '../utils/modulesLoader/withModules';
-import AdvancedSelect from '../../coreUI/components/basic/AdvancedSelect';
+import PopupSelect from '../../coreUI/components/basic/PopupSelect';
 import Select from '../../coreUI/components/basic/Select';
 
 const HomePage = ({ modules }) => (
   <Container text>
     <br />
-    <AdvancedSelect />
+    <PopupSelect />
     <Select />
     <React.Fragment>
       <Header size="huge">

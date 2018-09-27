@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import { infereControlMode, darken } from '~/modules/coreUI/utils/infereStyle';
@@ -79,11 +80,20 @@ class ToggleButton extends React.Component {
     <StyledButton
       {...this.props}
       selected={this.state.selected}
-      onClicked={() => this.setState({ selected: !this.state.selected })}
+      onClicked={(event) => {
+        this.setState({ selected: !this.state.selected });
+        if (this.props.onClicked) {
+          this.props.onClicked(event);
+        }
+      }}
     >
       Toggle
     </StyledButton>
   )
 }
+
+ToggleButton.propTypes = {
+  onClicked: PropTypes.func.isRequired,
+};
 
 export default ToggleButton;

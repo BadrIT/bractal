@@ -2,6 +2,6 @@
 
 ```js
   <Examples>
-    <AdvancedSelect />    
+    <PopupSelect />    
   </Examples>
 ```
