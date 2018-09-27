@@ -4,6 +4,10 @@ import styled, { withTheme } from 'styled-components';
 import Select from 'react-select';
 import { colors } from 'react-select/lib/theme';
 
+import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import PulseLoader from 'react-spinners/PulseLoader';
+
 import ToggleButton from './ToggleButton';
 import Icon from './Icon';
 
@@ -142,10 +146,20 @@ const StyledOpenCloseIcon = styled(Icon)`
   padding-top: 5px;
 `;
 
-const OpenIndicator = props => (props.selected
-  ? <StyledOpenCloseIcon className="fas fa-chevron-up" />
-  : <StyledOpenCloseIcon className="fas fa-chevron-down" />
+const Indicator = props => (
+  <Row fullWidth grow rightJustified>
+    {props.isLoading &&
+      <React.Fragment>
+        <PulseLoader size={5} color="rgba(0,0,0,0.2)" />
+        <Spacer />
+      </React.Fragment>
+    }
+    <StyledOpenCloseIcon className={props.iconClass} />
+  </Row>
 );
+
+const OpenIndicator = props =>
+  <Indicator iconClass={props.selected ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} />;
 
 class PopupSelect extends Component {
   state = { isOpen: false, value: undefined };
@@ -165,6 +179,7 @@ class PopupSelect extends Component {
         onClose={this.toggleOpen}
         target={
           <ToggleButton
+            style={{ width: '100%' }}
             iconAfter={<OpenIndicator />}
             onClicked={this.toggleOpen}
             selected={isOpen}
@@ -190,6 +205,7 @@ class PopupSelect extends Component {
           styles={selectStyles}
           tabSelectsValue={false}
           value={value}
+          isLoading
         />
       </Dropdown>
     );
