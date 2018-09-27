@@ -75,7 +75,6 @@ const ToastStyle = styled.div`
     `}
   }
 `;
-// TODO Sarah test acceptance of component in props to have alert content
 const AlertToast = (props) => {
   const TargetComponent = props.component || ToastMessage;
   const choosenConfig = ToastTypes[props.type] || { renderMethod: toast };
@@ -89,7 +88,7 @@ const AlertToast = (props) => {
     <ToastStyle {...props} >
       <ToastContainer
         position={props.topFullWidth ? 'top-center' : 'bottom-right'}
-        autoClose={!props.buttonAction && 50000}
+        autoClose={!props.buttonAction && 5000}
         newestOnTop
         closeOnClick={false}
         hideProgressBar

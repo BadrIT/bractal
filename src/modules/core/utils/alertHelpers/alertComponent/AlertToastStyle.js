@@ -45,20 +45,20 @@ export const successColor = css`
   background: ${props => props.backgroundColor || props.theme.new.alertTypes.colors.success};
 `;
 
-export const bottomRight = (props) => css`
+export const bottomRight = props => (css`
   right: ${2 * props.theme.new.spacer}px;
   bottom: ${props.theme.new.spacer}px;
   width: fit-content;
-`;
+`);
 export const Wrapper = css`
-  ${props => props.topFullWidth ? (
+  ${props => (props.topFullWidth ? (
     css`
       width: 100%;
     `
   ) : (
     bottomRight(props)
 
-  )}
+  ))}
   color: ${props => props.color || props.theme.colors.named.white};
   opacity: ${props => props.opacity || '0.85'};
   animation-duration: 1s;
