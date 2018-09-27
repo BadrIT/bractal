@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Column, Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-import Loader from '~/modules/coreUI/components/basic/GradientLoader';
-import PropTypes from 'prop-types';
+import Loader from './GradientLoader';
 
 const CardContainer = styled(Column)`
   padding: 20px;
@@ -39,6 +39,7 @@ const TextLoader4 = styled(Loader)`
 `;
 
 const LightCardBackground = styled(Loader)`
+  width: 100%;
   animation-duration: 3s;
   background: #f6f7f8;
   background: linear-gradient(to right, #f9f9f9 8%, #f5f5f5 30%, #f9f9f9 50%);

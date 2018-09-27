@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { LargeSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import Loader from '~/modules/coreUI/components/basic/GradientLoader';
+import Loader from './GradientLoader';
 
 const ImageLoader = styled(Loader)`
   width: ${props => 5 * props.theme.new.spacer}px;
@@ -23,21 +23,31 @@ const TextLoader2 = styled(Loader)`
 const RowVerticalAligned = styled(TopAlignedRow)`
   align-items: center;
 `;
-
+const LightCardBackground = styled(Loader)`
+  width: 100%;
+  animation-duration: 3s;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #f9f9f9 8%, #f5f5f5 30%, #f9f9f9 50%);
+`;
+const CardContainer = styled.div`
+  padding-left: ${props => 1.5 * props.theme.new.spacer}px;
+`;
 const SearchCardLoader = () => (
-  <div>
-    <LargeSpacer />
-    <RowVerticalAligned>
-      <ImageLoader />
+  <LightCardBackground>
+    <CardContainer>
       <LargeSpacer />
-      <LeftAlignedColumn>
-        <TextLoader1 />
-        <SmallSpacer />
-        <TextLoader2 />
-      </LeftAlignedColumn>
-    </RowVerticalAligned>
-    <LargeSpacer />
-  </div>
+      <RowVerticalAligned>
+        <ImageLoader />
+        <LargeSpacer />
+        <LeftAlignedColumn>
+          <TextLoader1 />
+          <SmallSpacer />
+          <TextLoader2 />
+        </LeftAlignedColumn>
+      </RowVerticalAligned>
+      <LargeSpacer />
+    </CardContainer>
+  </LightCardBackground>
 );
 
 export default SearchCardLoader;
