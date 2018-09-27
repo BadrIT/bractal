@@ -1,14 +1,15 @@
 import React from 'react';
-import RelayInitializer from './RelayInitializer';
+import RelayContext from './RelayContext';
+
 
 export default function withRelayEnvironment(WrappedComponent) {
-  return function render(props) {
-    return (
-      <RelayInitializer.Context.Consumer>
+  return class PureWrapper extends React.PureComponent {
+    render = () => (
+      <RelayContext.Consumer>
         {environment => (
-          <WrappedComponent environment={environment} {...props} />
+          <WrappedComponent environment={environment} {...this.props} />
         )}
-      </RelayInitializer.Context.Consumer>
+      </RelayContext.Consumer>
     );
   };
 }

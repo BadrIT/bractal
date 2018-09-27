@@ -14,17 +14,21 @@ const PaginationBox = ({ refetchMethod, pageInfo, subscribe }) => {
       {pageInfo.items_count > pageInfo.limit &&
         <Media query={mediaQueryMax('mobile')}>
           {matches => (
-            matches
-              ? <PaginationBoxMobile paginator={paginator} pageInfo={pageInfo} />
-              : <PaginationBoxDesktop
-                  loadNextPage={() => loadNext(paginator, pageInfo)}
-                  loadPrevPage={() => loadPrev(paginator, pageInfo)}
-                  loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
-                  currentPage={pageInfo.current_page}
-                  limit={pageInfo.limit}
-                  itemsCount={pageInfo.items_count}
-                />
-          )}
+            matches ? (
+              <PaginationBoxMobile
+                loadNextPage={() => loadNext(paginator, pageInfo)}
+                loadPrevPage={() => loadPrev(paginator, pageInfo)}
+              />
+            ) : ( 
+              <PaginationBoxDesktop
+                loadNextPage={() => loadNext(paginator, pageInfo)}
+                loadPrevPage={() => loadPrev(paginator, pageInfo)}
+                loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
+                currentPage={pageInfo.current_page}
+                limit={pageInfo.limit}
+                itemsCount={pageInfo.items_count}
+              />
+          ))}
         </Media>
       }
     </React.Fragment>

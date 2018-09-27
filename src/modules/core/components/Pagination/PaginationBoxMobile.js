@@ -1,15 +1,17 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Trans, translate } from 'react-i18next';
+// import { Trans, translate } from 'react-i18next';
 import styled from 'styled-components';
 import { XXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import { BasicButton } from '~/modules/coreUI/components/legacies/Button';
+import Button from '~/modules/coreUI/components/basic/Button';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Icon from '~/modules/coreUI/components/basic/Icon';
-import { loadPrev, loadNext, leftClassName, rightClassName } from './PaginationNextAndPrevious';
+import { Label } from '~/modules/coreUI/components/basic/Labels';
+import { defaultLeftClassName, defaultRightClassName } from './PaginationNextAndPrevious';
 
-const Left = styled.div`
-  position: absolute;
+const IconStyle = styled(Icon)`
+  position: relative;
   left: ${props => props.theme.paddings.large}px;
 `;
 
@@ -18,31 +20,31 @@ const Right = styled.div`
   right: ${props => props.theme.paddings.large}px;
 `;
 
-const PaginationBoxResponsive = ({ paginator, pageInfo }) => (
+const PaginationBoxResponsive = props => (
   <Row spaceBetween>
-    <BasicButton
-      block
+    <Button
       primary
-      onClicked={() => loadPrev(paginator, pageInfo)}
+      onClicked={() => props.loadPrevPage()}
     >
-      <Left><Icon className={leftClassName} /></Left>
-      <Trans i18nKey="Pagination.PreviousButton" />
-    </BasicButton>
+    <Row>
+      <Icon className={defaultLeftClassName} />
+      {/* <Trans i18nKey="Pagination.PreviousButton" /> */}
+      PreviousButton
+    </Row>
+    </Button>
     <XXXLargeSpacer />
-    <BasicButton
-      block
+    <Button
       primary
-      onClicked={() => loadNext(paginator, pageInfo)}
+      onClicked={() => props.loadNextPage()}
     >
-      <Right><Icon className={rightClassName} /></Right>
-      <Trans i18nKey="Pagination.NextButton" />
-    </BasicButton>
+      <Label>NextButton</Label>
+      <Right><Icon className={defaultRightClassName} /></Right>
+      {/* <Trans i18nKey="Pagination.NextButton" /> */}
+    </Button>
   </Row >
 );
 
-PaginationBoxResponsive.propTypes = {
-  pageInfo: PropTypes.shape({}).isRequired,
-  paginator: PropTypes.shape({}.isRequired),
-}.isRequired;
+// export default translate('ecommerceCoreUI')(PaginationBoxResponsive);
 
-export default translate('ecommerceCoreUI')(PaginationBoxResponsive);
+export default PaginationBoxResponsive;
+
