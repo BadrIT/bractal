@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 import { withModules } from '~/modules/core/utils/modulesLoader';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
 import Spacer from './Spacer';
 

@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from 'emotion';
 import t from 'tcomb-form';
 import React from 'react';
 import Checkbox from '~/modules/coreUI/components/basic/Checkbox';

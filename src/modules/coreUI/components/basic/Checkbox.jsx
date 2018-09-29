@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
@@ -25,7 +25,7 @@ const RealHiddenCheckbox = styled.input`
     border: 1px solid;
     border-radius: ${props => infereBorderRadius(props)}px; 
     
-    ${props => (props.disabled ? disabledColorStyles : colorStyles)}
+    ${props => (props.disabled ? disabledColorStyles(props) : colorStyles(props))}
   }
 
   &:focus + div {

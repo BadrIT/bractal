@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
 import changeCase from 'change-case';
 
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';

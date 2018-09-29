@@ -1,13 +1,17 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
-import { infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
+import { propsForPrefix, infereFontSize, inferePaddingSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+
+const ButtonContent = styled(Row)`
+  white-space: nowrap;
+`;
 
 // Must be of relative position for the loading icon to be drawn correctly
 const StyledButton = styled.button`
@@ -26,7 +30,7 @@ const StyledButton = styled.button`
   
   cursor: pointer;
 
-  ${props => (props.disabled ? disabledColorStyles : colorStyles)}
+  ${props => (props.disabled ? disabledColorStyles(props) : colorStyles(props))}
 `;
 
 class Button extends React.Component {
@@ -49,24 +53,30 @@ class Button extends React.Component {
       centerAligned
       centerJustify
     >
-      <Row spaceBetween={0.5}>
+      <ButtonContent spaceBetween={0.5}>
         {this.props.loading &&
           <Icon className="fas fa-spinner fa-spin" />
         }
         {this.props.iconName &&
-          <Icon {...this.props} className={this.props.iconName} />
+          <Icon
+            className={this.props.iconName}
+            {...propsForPrefix(this.props, 'iconBefore_')}
+          />
         }
         {this.props.icon &&
-          <this.props.icon.type {...this.props} />
+          this.props.icon
         }
         {this.props.children}
         {this.props.iconAfterName &&
-          <Icon {...this.props} className={this.props.iconAfterName} />
+          <Icon
+            className={this.props.iconAfterName}
+            {...propsForPrefix(this.props, 'iconAfter_')}
+          />
         }
         {this.props.iconAfter &&
-          <this.props.iconAfter.type {...this.props} />
+          this.props.iconAfter
         }
-      </Row>
+      </ButtonContent>
     </StyledButton>
   );
 }

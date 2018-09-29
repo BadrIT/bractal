@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import { Label } from '~/modules/coreUI/components/basic/Labels';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';

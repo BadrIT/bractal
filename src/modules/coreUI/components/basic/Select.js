@@ -3,7 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { createFilter } from 'react-select';
-import styled, { withTheme } from 'styled-components';
+import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
 
 const Input = styled.input`
   width: 100%; /* TO BE COMPATIBLE WITH ANY CONTAINER */

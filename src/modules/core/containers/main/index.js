@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'emotion-theming';
 import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
 import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTrackerProvider';
 import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';

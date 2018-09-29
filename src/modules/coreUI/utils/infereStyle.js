@@ -1,5 +1,6 @@
 import Color from 'color';
-import { css } from 'styled-components';
+import { css } from 'emotion';
+import _ from 'lodash';
 
 const SIZE_PROP_NAMES = [
   'xs',
@@ -63,18 +64,18 @@ const colors = (props, darkRatio) => css`
   border-color: ${darken(infereColors(props).lineColor, darkRatio)};
 `;
 
-export const colorStyles = css`
-  ${props => colors(props, 0)}
+export const colorStyles = props => css`
+  ${colors(props, 0)}
 
-  &:hover { ${props => colors(props, 0.05)} }  
-  &:active { ${props => colors(props, 0.1)} }
+  &:hover { ${colors(props, 0.05)} }  
+  &:active { ${colors(props, 0.1)} }
   &:focus { 
-    border-color: ${props => darken(infereColors(props).lineColor, 0.3)};
+    border-color: ${darken(infereColors(props).lineColor, 0.3)};
   }
 `;
 
-export const disabledColorStyles = css`
-  ${props => colors(props, 0)}
+export const disabledColorStyles = props => css`
+  ${colors(props, 0)}
 `;
 
 export const infereSize = props =>
@@ -119,3 +120,9 @@ export const inferePaddingSize = (props) => {
   const size = infereFontSize(props);
   return size * 0.60;
 };
+
+export const propsForPrefix = (props, prefix) =>
+  _.mapKeys(
+    _.pickBy(props, (propValue, propName) => propName.indexOf(prefix) === 0),
+    (triggerPropValue, triggerPropKey) => triggerPropKey.replace(prefix, ''),
+  );

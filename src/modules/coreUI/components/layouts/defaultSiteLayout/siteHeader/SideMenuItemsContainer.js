@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'styled-components';
+import { css } from 'emotion';
 
 import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
@@ -9,13 +9,13 @@ import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import MenuItemRenderer from './MenuItemRenderer';
 
 
-const CustomLinkStyle = css`
-  font-size: ${props => props.theme.fonts.sizes.xLarge}px;
-  color: ${props => props.theme.colors.invertedLabels.important};
-  padding: ${props => props.theme.paddings.large}px;
+const CustomLinkStyle = props => css`
+  font-size: ${props.theme.fonts.sizes.xLarge}px;
+  color: ${props.theme.colors.invertedLabels.important};
+  padding: ${props.theme.paddings.large}px;
 
   &:hover {
-    color: ${props => props.theme.colors.invertedLabels.normal};
+    color: ${props.theme.colors.invertedLabels.normal};
   }
 `;
 
@@ -23,9 +23,9 @@ const appendDefaultLinkStyle = (itemInfo) => {
   if (itemInfo.customStyle) {
     return {
       ...itemInfo,
-      customStyle: css`
-        ${CustomLinkStyle}
-        ${itemInfo.customStyle}
+      customStyle: props => css`
+        ${CustomLinkStyle(props)}
+        ${itemInfo.customStyle(props)}
       `,
     };
   }

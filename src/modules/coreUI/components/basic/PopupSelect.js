@@ -1,12 +1,17 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
 import Select from 'react-select';
+import { css } from 'emotion';
+
+
 import { colors } from 'react-select/lib/theme';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { propsForPrefix } from '~/modules/coreUI/utils/infereStyle';
 
 import ToggleButton from './ToggleButton';
 import Icon from './Icon';
@@ -74,8 +79,26 @@ const stateOptions = [
 ];
 
 const selectStyles = {
-  control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
-  menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
+  control: base => css`
+    ${base}
+    margin: 8px;
+    border-width: 0px 0px 1px 0px;
+    border-radius: 0px;
+    border-color: #cccccc;
+    background: none;
+    box-shadow: none;
+    padding-bottom: 5px;
+  `,
+  menu: () => css`
+    box-shadow: none;
+    border-width: 0px 1px 1px 1px;
+    background-color: white;
+  `,
+  input: base => css`
+    ${base}
+    border: none;
+    background-color: rgba(0,0,0,0);
+  `,
 };
 
 const Menu = (props) => {
@@ -89,6 +112,7 @@ const Menu = (props) => {
         marginTop: 8,
         position: 'absolute',
         zIndex: 2,
+        width: '100%',
       }}
       {...props}
     />
@@ -114,7 +138,7 @@ const Dropdown = ({
   target,
   onClose,
 }) => (
-  <div style={{ position: 'relative' }}>
+  <div style={{ position: 'relative', width: '100%' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}
@@ -143,7 +167,7 @@ const DropdownIndicator = () => (
 );
 
 const StyledOpenCloseIcon = styled(Icon)`
-  padding-top: 5px;
+  padding-top: 3px;
 `;
 
 const Indicator = props => (
@@ -164,9 +188,12 @@ const OpenIndicator = props =>
 class PopupSelect extends Component {
   state = { isOpen: false, value: undefined };
   onSelectChange = (value) => {
-    this.toggleOpen();
+    this.closeMenu();
     this.setState({ value });
   };
+  closeMenu = () => {
+    this.setState({ isOpen: false });
+  }
   toggleOpen = () => {
     this.setState(state => ({ isOpen: !state.isOpen }));
   };
@@ -177,12 +204,15 @@ class PopupSelect extends Component {
       <Dropdown
         isOpen={isOpen}
         onClose={this.toggleOpen}
+        style={{ width: '100%' }}
         target={
           <ToggleButton
             style={{ width: '100%' }}
-            iconAfter={<OpenIndicator />}
+            iconAfter={<OpenIndicator selected={isOpen} />}
             onClicked={this.toggleOpen}
             selected={isOpen}
+            forceSelected={this.props.trigger_bright}
+            {...propsForPrefix(this.props, 'trigger_')}
           >
             {value ? `State: ${value.label}` : 'Select a State'}
           </ToggleButton>
@@ -199,13 +229,14 @@ class PopupSelect extends Component {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
+          onMenuClose={this.closeMenu}
           onChange={this.onSelectChange}
           options={stateOptions}
           placeholder="Search..."
           styles={selectStyles}
-          tabSelectsValue={false}
+          tabSelectsValue
+          escapeClearsValue
           value={value}
-          isLoading
         />
       </Dropdown>
     );

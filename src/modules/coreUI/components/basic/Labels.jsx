@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export, react/prop-types */
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import { infereFontSize, infereFontColor, infereFontWeight } from '~/modules/coreUI/utils/infereStyle';
 

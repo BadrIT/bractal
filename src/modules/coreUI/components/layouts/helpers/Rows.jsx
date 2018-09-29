@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 const getJustifyContent = (props) => {
   if (props.spaceAroundJustified) {

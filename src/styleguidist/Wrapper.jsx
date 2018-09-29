@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'emotion-theming';
 import Theme from '~/modules/core/containers/main/defaultTheme';
 import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 
