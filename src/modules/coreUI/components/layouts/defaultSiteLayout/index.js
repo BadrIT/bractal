@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import withSideMenuTracker from '~/modules/core/utils/sideMenuHelpers/withSideMenuTracker';
-
 import { setRoleAsLayoutPageContent, setRoleAsLayoutHeader, setRoleAsLayoutSideMenu, getLayoutHeader, getLayoutPageContent, getLayoutSideMenu } from './componentsRoles';
 
 const SIDE_MENU_WIDTH = 280;

@@ -1,0 +1,1 @@
+Atoms are the basic building block in our system. It's the smallest possible bits of UI. These are buttons, labels, checkboxes, combo boxes .... etc.

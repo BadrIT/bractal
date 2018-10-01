@@ -1,5 +1,4 @@
 /* eslint-env browser */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { I18nextProvider } from 'react-i18next';
@@ -10,7 +9,7 @@ import { ThemeProvider } from 'emotion-theming';
 import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
 import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTrackerProvider';
 import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';
-
+import AlertProvider from '~/modules/core/utils/alertHelpers/AlertProvider';
 import ModulesLoader from '~/modules/core/utils/modulesLoader';
 import RelayInitializer from '~/modules/core/utils/relayHelpers/RelayInitializer';
 
@@ -29,13 +28,15 @@ const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
       <ModulesLoader.Context.Provider value={modules} >
         <I18nextProvider i18n={i18next}>
           <ThemeProvider theme={theme}>
-            <UserInfoProvider>
-              <ModalTrackerProvider>
-                <SideMenuTrackerProvider>
-                  { AppComponent }
-                </SideMenuTrackerProvider>
-              </ModalTrackerProvider>
-            </UserInfoProvider>
+            <AlertProvider>
+              <UserInfoProvider>
+                <ModalTrackerProvider>
+                  <SideMenuTrackerProvider>
+                    { AppComponent }
+                  </SideMenuTrackerProvider>
+                </ModalTrackerProvider>
+              </UserInfoProvider>
+            </AlertProvider>
           </ThemeProvider>
         </I18nextProvider>
       </ModulesLoader.Context.Provider>

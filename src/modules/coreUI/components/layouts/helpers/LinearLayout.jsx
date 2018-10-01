@@ -54,7 +54,6 @@ const getAlignItems = (props) => {
 };
 
 const StyledLinearLayout = styled.div`
-
   width: ${props => (props.fullWidth ? '100%' : null)};
   height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;
@@ -81,6 +80,10 @@ export const Column = props => (
 
 export const Row = props => (
   <LinearLayout row {...props} />
+);
+
+export const Box = props => (
+  <LinearLayout column {...props} />
 );
 
 export default LinearLayout;
