@@ -18,6 +18,7 @@ module.exports = (plop) => {
         type: 'input',
         name: 'moduleName',
         message: 'What is your module name (name) ?',
+        default: answers => `${changeCase.lower(answers.modelName)}s`,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'moduleName is required';
