@@ -17,7 +17,6 @@ import SideMenuToggler from '~/modules/coreUI/components/layouts/defaultSiteLayo
 
 import { DefaultHeaderTopRowContainer, DefaultHeaderBottomRowContainer } from '~/modules/coreUI/components/layouts/defaultSiteLayout/siteHeader/HeaderRowContainers';
 
-
 const HeaderTopRowContainer = styled(DefaultHeaderTopRowContainer)`
   margin-top: ${props => props.theme.paddings.xLarge}px;
 `;
@@ -31,7 +30,6 @@ const HeaderBottomRowContainer = styled(DefaultHeaderBottomRowContainer)`
 const HeaderBottomRowMenuItem = styled.div`
   padding: ${props => props.theme.paddings.medium}px;
 `;
-
 const loadedModulesHeaderEntries = modules => modules.map(module => ({
   itemRenderer: (
     <HeaderBottomRowMenuItem>
@@ -42,7 +40,6 @@ const loadedModulesHeaderEntries = modules => modules.map(module => ({
   ),
   targetURL: module.homePath,
 }));
-
 
 const Header = ({ modules }) => {
   const menuInfo = {

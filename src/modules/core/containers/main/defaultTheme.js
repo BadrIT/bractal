@@ -35,6 +35,13 @@ const Theme = {
           hint: 'rgba(255, 255, 255, 0.3)',
         },
       },
+      alerts: {
+        error: '#E64A19',
+        info: '#5c9ec0',
+        success: '#7CB342',
+        warning: '#FFB300',
+        default: '#708090',
+      },
     },
     spacer: 10,
     fonts: {
@@ -113,9 +120,9 @@ const Theme = {
       bold: 3,
     },
     color: {
-      light: 'rgba(0,0,0,0.1)',
-      normal: 'rgba(0,0,0,0.3)',
-      dark: 'rgba(0,0,0,0.5)',
+      light: 'rgba(0,0,0,0.3)',
+      normal: 'rgba(0,0,0,0.5)',
+      dark: 'rgba(0,0,0,0.8)',
     },
     radius: {
       small: 2,

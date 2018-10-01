@@ -4,7 +4,6 @@ import styled from 'react-emotion';
 import { Container } from 'semantic-ui-react';
 
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import HeaderRow from './HeaderRow';
@@ -12,7 +11,6 @@ import HeaderRow from './HeaderRow';
 // the menu a first position parent, so that it stay within the page limits
 const PositionedContainer = styled(Container)`
   position: relative;
-
   &&& {
     ${props => cssMediaMax.tablet`
       width: 100% !important;
@@ -21,6 +19,7 @@ const PositionedContainer = styled(Container)`
     `}
   }
 `;
+
 const PositionedDiv = styled.div`
   position: relative;
 `;

@@ -5,7 +5,6 @@ import { css } from 'emotion';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
-
 import MenuItemRenderer from './MenuItemRenderer';
 
 
