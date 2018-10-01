@@ -1,5 +1,5 @@
 // these sizes are arbitrary and you can set them to whatever you wish
-import { css } from 'styled-components';
+import { css } from 'emotion';
 
 const QueryMode = {
   MIN: 0,

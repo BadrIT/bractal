@@ -4,7 +4,7 @@ Bractal is a platform that enables you to get your React Apps, off-the-ground so
 
 # Why Bractal
 
-It differs from libraries like Bootsrap and SemanticUI, that Bractal not only provide UI components, but a way to extend and re-use components. Plus it's built from the ground up, on React, embracing concepts like styled-components. 
+It differs from libraries like Bootsrap and SemanticUI, that Bractal not only provide UI components, but a way to extend and re-use components. Plus it's built from the ground up, on React.
 
 AND, if your app, is beyond a simple handful pages, then Bractal would be very handy to modularize your system.
 

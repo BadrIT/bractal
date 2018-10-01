@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { Image } from 'semantic-ui-react';
 
 const LogoImage = styled(Image)`

@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
-import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import Button from '~/modules/coreUI/components/basic/Button';
 import { infereFontSize } from '~/modules/coreUI/utils/infereStyle';
 import AlertTypes from './AlertTypes';
 
 const getColor = (props) => {
   if (props.type === AlertTypes.error) {
-    return props.theme.new.alertTypes.colors.error;
+    return props.theme.new.colors.alerts.error;
   } else if (props.type === AlertTypes.info) {
-    return props.theme.new.alertTypes.colors.info;
+    return props.theme.new.colors.alerts.info;
   } else if (props.type === AlertTypes.warning) {
-    return props.theme.new.alertTypes.colors.warning;
+    return props.theme.new.colors.alerts.warning;
   } else if (props.type === AlertTypes.success) {
-    return props.theme.new.alertTypes.colors.success;
+    return props.theme.new.colors.alerts.success;
   }
-  return props.theme.new.alertTypes.colors.default;
+  return props.theme.new.colors.alerts.default;
 };
 
 const ButtonStyled = styled(Button)`
@@ -31,9 +31,9 @@ const IconStyle = styled.div`
 const ToastMessage = props => (
   <LinearLayout row centerJustified>
     <IconStyle {...props} >{props.icon || props.defaultIcon}</IconStyle>
-    <LargeSpacer />
+    <Spacer size={1.5} />
     {props.messageText}
-    <LargeSpacer />
+    <Spacer size={1.5} />
     {props.buttonAction &&
       <ButtonStyled
         {...props}

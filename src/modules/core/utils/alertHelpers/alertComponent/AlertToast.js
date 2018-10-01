@@ -1,7 +1,8 @@
 import React from 'react';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
 import ToastMessage from './ToastMessage';
@@ -25,31 +26,31 @@ const ToastStyle = styled.div`
   .Toastify__toast-container {
     z-index: 9999;
     position: fixed;
-    ${Wrapper}
+    ${props => Wrapper(props)}
   }
   .Toastify__toast {
-    ${Toast}
+    ${props => Toast(props)}
   }
   .Toastify__toast-body {
-    ${ToastBody}
+    ${props => ToastBody(props)}
   }
   .Toastify__toast--default {
-    ${defaultColor}
+    ${props => defaultColor(props)}
   }
   .Toastify__toast--info {
-    ${infoColor}
+    ${props => infoColor(props)}
   }
   .Toastify__toast--success {
-    ${successColor}
+    ${props => successColor(props)}
   }
   .Toastify__toast--warning {
-    ${warningColor}
+    ${props => warningColor(props)}
   }
   .Toastify__toast--error {
-    ${errorColor}
+    ${props => errorColor(props)}
   }
   .Toastify__close-button {
-    ${ToastCloseButton}
+    ${props => ToastCloseButton(props)}
   }
   .Toastify__slide-enter--bottom-right, .Toastify__slide-enter--top-center {
     animation-name: ${slidein};

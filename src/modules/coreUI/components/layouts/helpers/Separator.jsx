@@ -1,14 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 import Spacer from './Spacer';
 
 const lengths = {
   small: '30%',
-  normal: '40%',
+  normal: '50%',
   large: '70%',
-  xLarge: '90%',
+  xLarge: '85%',
   full: '100%',
 };
 
@@ -31,7 +31,7 @@ const getWeight = (props) => {
 };
 
 const getColor = (props) => {
-  let color = 'light';
+  let color = 'normal';
   if (props.separatorColorTone) {
     color = props.separatorColorTone;
   }
@@ -44,7 +44,9 @@ const SeparatorContainer = styled.div`
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  position: relative;  
+  position: relative;
+  width: ${props => !props.vertical && '100%'};
+  height: ${props => props.vertical && '100%'};
 `;
 
 const getGenericHeight = (props) => {
@@ -82,9 +84,9 @@ const Separator = props => (
 );
 
 Separator.propTypes = PropTypes.shape({
-  spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
+  spacerSize: PropTypes.number,
   separatorWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
-  separatorLength: PropTypes.oneOf(['short', 'normal', 'long', 'full']),
+  separatorLength: PropTypes.oneOf(['small', 'normal', 'large', 'xLarge', 'full']),
   separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),
 }).isRequired;
 

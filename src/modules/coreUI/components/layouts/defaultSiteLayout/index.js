@@ -1,6 +1,6 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';

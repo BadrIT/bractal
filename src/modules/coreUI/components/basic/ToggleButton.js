@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 
 import { infereControlMode, darken } from '~/modules/coreUI/utils/infereStyle';
 
@@ -33,29 +35,31 @@ const colors = (props, darkRatio) => css`
   border-color: ${darken(borderColor(props), darkRatio)};
 `;
 
-const deSelectedColorStyles = css`
-  ${props => colors(props, 0)}
+const deSelectedColorStyles = props => css`
+  ${colors(props, 0)}
 
-  &:hover { ${props => colors(props, 0.05)} }  
-  &:active { ${props => colors(props, 0.1)} }
+  &:hover { ${colors(props, 0.05)} }
+  &:active { ${colors(props, 0.1)} }
   &:focus {
-    border-color: ${props => darken(borderColor(props), 0.2)};
+    border-color: ${darken(borderColor(props), 0.2)};
   }
 `;
 
-const disabledColorStyles = css`
-  ${props => colors(props, 0)}  
+const disabledColorStyles = props => css`
+  ${colors(props, 0)}  
   
-  &:hover { ${props => colors(props, 0)} }  
-  &:active { ${props => colors(props, 0)} }
-  &:focus { ${props => colors(props, 0)} }
+  &:hover { ${colors(props, 0)} }  
+  &:active { ${colors(props, 0)} }
+  &:focus { ${colors(props, 0)} }
 
   opacity: 0.3;
 `;
 
 const StyledButton = styled(Button)`
-  ${props => !props.selected && deSelectedColorStyles};
-  ${props => props.disabled && disabledColorStyles}
+  ${props => !props.selected && deSelectedColorStyles(props)};
+  ${props => props.disabled && disabledColorStyles(props)}
+
+  ${props => props.customStyles && props.customStyles(props)}
 `;
 
 class ToggleButton extends React.Component {
@@ -78,12 +82,32 @@ class ToggleButton extends React.Component {
   render = () => (
     <StyledButton
       {...this.props}
-      selected={this.state.selected}
-      onClicked={() => this.setState({ selected: !this.state.selected })}
+      selected={this.props.forceSelected || this.state.selected}
+      customStyles={this.props.customStyles}
+      onClicked={(event) => {
+        this.setState({ selected: !this.state.selected });
+        if (this.props.onClicked) {
+          this.props.onClicked(event);
+        }
+      }}
     >
-      Toggle
+      {this.props.label || this.props.children}
     </StyledButton>
   )
 }
+
+ToggleButton.defaultProps = {
+  customStyles: null,
+  forceSelected: false,
+  label: null,
+};
+
+ToggleButton.propTypes = {
+  forceSelected: PropTypes.bool,
+  onClicked: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+  customStyles: PropTypes.shape({}),
+  label: PropTypes.string,
+};
 
 export default ToggleButton;
