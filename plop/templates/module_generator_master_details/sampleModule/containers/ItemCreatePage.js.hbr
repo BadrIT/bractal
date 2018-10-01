@@ -1,0 +1,74 @@
+import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+import { graphql } from 'react-relay';
+
+import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
+import { XXXXLargeSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
+import { BasicButton } from '~/modules/coreUI/components/basic/Button';
+
+const FormMutation = graphql`
+  mutation {{uiItemName}}CreatePageMutation (
+    $data : {{uiItemName}}CreateInput!
+  ) {
+      create{{uiItemName}} (
+        data : $data
+      ) {
+          {{itemCreateEntryFields}}
+      }
+  }
+`;
+
+const RelayFormFields = {
+  fields: [],
+};
+
+class {{uiItemName}}CreatePage extends Component {
+  state = {
+    panelError: null,
+    isLoading: false,
+  };
+
+  onSuccess = () => {
+
+  }
+
+  onError = (error) => {
+    this.setState({ panelError: error });
+  };
+
+  setLoadingState = (isLoading) => {
+    this.setState({ isLoading });
+  }
+
+  submitForm = () => {
+    this.form.submitForm();
+  }
+
+  render() {
+    const { isLoading, panelError } = this.state;
+    return (
+      <Container>
+        <ErrorLabel>
+          {panelError}
+        </ErrorLabel>
+        <LargeSpacer />
+        <RelayForm
+          onRef={(ref) => { this.form = ref; }}
+          onFormError={error => this.onError(error)}
+          onFormSuccess={response => this.onSuccess(response)}
+          onFormLoading={loading => this.setLoadingState(loading)}
+          mutationRoot="create{{uiItemName}}"
+          options={RelayFormFields}
+          mutation={FormMutation}
+        />
+        <BasicButton width="100px" primary disabled={isLoading} onClicked={() => this.submitForm()}>
+          Create
+        </BasicButton>
+        <XXXXLargeSpacer />
+      </Container>
+    );
+  }
+}
+
+export default {{uiItemName}}CreatePage;

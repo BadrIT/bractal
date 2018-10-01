@@ -80,6 +80,19 @@ class RelayForm extends Component {
 
   getValue = () => this.Form.getValue();
 
+  getCommitFormMutationVariables = () => {
+    if (this.props.getCommitFormMutationVariables) {
+      return this.props.getCommitFormMutationVariables(this.Form);
+    }
+
+    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
+
+    return {
+      ...this.Form.getValue(),
+      ...addiontalMutationVariables,
+    };
+  };
+
   updateTcompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
     const fields = {};
@@ -196,12 +209,7 @@ class RelayForm extends Component {
       return;
     }
 
-    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
-
-    const variables = {
-      ...formValues,
-      ...addiontalMutationVariables,
-    };
+    const variables = this.getCommitFormMutationVariables();
 
     this.onLoading(true);
 
