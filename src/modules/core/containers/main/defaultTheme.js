@@ -26,6 +26,7 @@ const Theme = {
           normal: 'rgba(0, 0, 0, 0.5)',
           subtle: 'rgba(0, 0, 0, 0.35)',
           hint: 'rgba(0, 0, 0, 0.22)',
+          error: 'red',
         },
         inverted: {
           important: 'white',
@@ -33,6 +34,7 @@ const Theme = {
           normal: 'rgba(255, 255, 255, 0.5)',
           subtle: 'rgba(255, 255, 255, 0.4)',
           hint: 'rgba(255, 255, 255, 0.3)',
+          error: 'red',
         },
       },
       alerts: {

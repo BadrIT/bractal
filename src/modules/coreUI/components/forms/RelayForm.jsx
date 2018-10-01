@@ -80,6 +80,21 @@ class RelayForm extends Component {
 
   getValue = () => this.Form.getValue();
 
+  getCommitFormMutationVariables = () => {
+    const formVariables = this.Form.getValue();
+
+    if (this.props.getSubmissionVariables) {
+      return this.props.getSubmissionVariables(formVariables);
+    }
+
+    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
+
+    return {
+      ...formVariables,
+      ...addiontalMutationVariables,
+    };
+  };
+
   updateTcompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
     const fields = {};
@@ -196,12 +211,7 @@ class RelayForm extends Component {
       return;
     }
 
-    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
-
-    const variables = {
-      ...formValues,
-      ...addiontalMutationVariables,
-    };
+    const variables = this.getCommitFormMutationVariables();
 
     this.onLoading(true);
 
@@ -219,10 +229,12 @@ class RelayForm extends Component {
             this.updateTcompOptionsWithErrors(errors);
           }
 
-          if (response && errors.global) {
+          if (errors && errors.global) {
             onFormError(errors.global);
           } else if (typeof errors === 'string') {
             onFormError(errors);
+          } else if (!response && errors) {
+            onFormError(JSON.stringify(errors));
           } else {
             onFormError(null);
           }

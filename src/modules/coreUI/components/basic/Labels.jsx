@@ -36,6 +36,9 @@ export const SmallLabel = props =>
 export const XSmallLabel = props =>
   <Label {...props} xs>{props.children}</Label>;
 
+export const ErrorLabel = props =>
+  <Label {...props} error>{props.children}</Label>;
+
 export const Header = styled(Label)`
   padding-top: ${props => 2 * props.theme.new.spacer}px;
   padding-bottom: ${props => 2 * props.theme.new.spacer}px;

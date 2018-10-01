@@ -16,6 +16,7 @@ const FONT_COLORS = [
   'emphasized',
   'subtle',
   'hint',
+  'error',
 ];
 
 const themeProp = propName => propName.replace('s_', '');
@@ -85,7 +86,7 @@ export const infereFontColor = (props) => {
   if (props.color) {
     return props.color;
   }
-  const color = FONT_COLORS.find(sizeProp => props[sizeProp]) || 'normal';
+  const color = FONT_COLORS.find(fontColor => props[fontColor]) || 'normal';
   const mode = infereControlMode(props);
 
   return props.theme.new.colors.labels[mode][color];
