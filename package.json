@@ -92,15 +92,15 @@
   },
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
-    "build": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ node scripts/build.js",
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:es",
-    "refetch-schema": "graphql-fetch-schema __ENDPOINT__",
+    "refetch-schema": "graphql-fetch-schema http://localhost:4000",
     "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:es": "eslint ./src ",
-    "start": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ npm run start-internal"
+    "start": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 npm run start-internal"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.11",

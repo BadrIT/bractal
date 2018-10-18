@@ -1,9 +1,9 @@
 import apiMonitoring from '~/modules/apiMonitoring';
-import moduleDocs from '~/modules/modulesDocs';
+import todos from '~/modules/todos';
 
 const modules = [
   apiMonitoring,
-  moduleDocs,
+  todos,
 ];
 
 export default modules;
