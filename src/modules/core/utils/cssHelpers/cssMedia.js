@@ -16,14 +16,14 @@ const supportedSizes = [
 
 export const mediaSizesMax = {
   largeDesktop: 10240,
-  desktop: 1370,
+  desktop: 1600,
   tablet: 1100,
   mobile: 800,
   xsmall: 500,
 };
 
 export const mediaSizesMin = {
-  largeDesktop: 1370,
+  largeDesktop: 1600,
   desktop: 1100,
   tablet: 800,
   mobile: 500,
@@ -60,3 +60,4 @@ export const cssMediaRange = cssMedia(QueryMode.RANGE);
 
 export const mediaQueryMax = mediaName => `(max-width: ${emSizeString(mediaName, true)})`;
 export const mediaQueryMin = mediaName => `(min-width: ${emSizeString(mediaName, false)})`;
+export const mediaQueryExact = mediaName => `(min-width: ${emSizeString(mediaName, false)}) and (max-width: ${emSizeString(mediaName, true)})`;

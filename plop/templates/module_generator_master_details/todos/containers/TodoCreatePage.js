@@ -11,25 +11,25 @@ import { withRouter } from 'react-router-dom';
 import { sentenceCase } from 'change-case';
 
 const FormMutation = graphql`
-  mutation {{uiItemName}}CreatePageMutation (
-    $data: {{modelName}}CreateInput!,
+  mutation TodoCreatePageMutation (
+    $data: TodoCreateInput!,
   ) {
-    create{{modelName}} (
+    createTodo (
       data : $data
     ) {
-      {{itemCreateEntryFields}}
+      id title description
     }
   }
 `;
 
-class {{uiItemName}}CreatePage extends Component {
+class TodoCreatePage extends Component {
   state = {
     panelError: null,
     isLoading: false,
   };
 
   onSuccess = () => {
-    this.props.history.push('/{{dashCase moduleShortUniqueName}}');
+    this.props.history.push('/todos');
   }
 
   onError = (error) => {
@@ -46,7 +46,7 @@ class {{uiItemName}}CreatePage extends Component {
 
   render() {
     const { isLoading, panelError } = this.state;
-    const fieldOptions = '{{itemCreateEntryFields}}'.split(' ')
+    const fieldOptions = 'id title description'.split(' ')
       .filter(field => field !== 'id')
       .map(field => ({
         name: field,
@@ -66,9 +66,9 @@ class {{uiItemName}}CreatePage extends Component {
           onFormError={error => this.onError(error)}
           onFormSuccess={response => this.onSuccess(response)}
           onFormLoading={loading => this.setLoadingState(loading)}
-          mutationRoot="create{{modelName}}"
+          mutationRoot="createTodo"
           mutation={FormMutation}
-          options=\{{
+          options={{
             fields: fieldOptions,
           }}
           getSubmissionVariables={formVariables => ({
@@ -87,10 +87,10 @@ class {{uiItemName}}CreatePage extends Component {
   }
 }
 
-{{uiItemName}}CreatePage.propTypes = {
+TodoCreatePage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default withRouter({{uiItemName}}CreatePage);
+export default withRouter(TodoCreatePage);
