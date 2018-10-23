@@ -95,6 +95,11 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
   ![Plop Input](docs/assets/getting_started/plop_result.png)
   5. Now you should see the newly created module in the path ```{AppRoot}/src/modules/todos```
   6. Now add the newly created modules to module configurations. To do so, change the contents of ```{AppRoot}/src/modulesConfig.js```. To be the same as [(This file)](docs/assets/getting_started/sample.moduleConfig.js)
+  7. Rerun compile-relay to get the new Relay files :
+  ```
+  cd {AppRoot}
+  npm run compile-relay
+  ```
   7. Now you can run the app to see your new module 
   ```
   cd {AppRoot}
