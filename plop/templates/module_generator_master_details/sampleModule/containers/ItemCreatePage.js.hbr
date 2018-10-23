@@ -4,7 +4,7 @@ import { graphql } from 'react-relay';
 import PropTypes from 'prop-types';
 
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
-import { XXXXLargeSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import Button from '~/modules/coreUI/components/basic/Button';
 import { withRouter } from 'react-router-dom';
@@ -60,7 +60,7 @@ class {{uiItemName}}CreatePage extends Component {
         <ErrorLabel>
           {panelError}
         </ErrorLabel>
-        <LargeSpacer />
+        <Spacer size={1.5} />
         <RelayForm
           onRef={(ref) => { this.form = ref; }}
           onFormError={error => this.onError(error)}
@@ -81,7 +81,7 @@ class {{uiItemName}}CreatePage extends Component {
         <Button width="100px" primary disabled={isLoading} onClicked={() => this.submitForm()}>
           Create
         </Button>
-        <XXXXLargeSpacer />
+        <Spacer size={3.5} />
       </Container>
     );
   }

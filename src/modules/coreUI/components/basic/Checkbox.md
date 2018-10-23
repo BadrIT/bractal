@@ -2,8 +2,8 @@
 
 ```js
   <VerticalExamples>
-    <Checkbox checked label='Checked Example !' />
-    <Checkbox label='Un checked Example !'/>
+    <Checkbox md checked label='Checked Example !' />
+    <Checkbox md label='Un checked Example !'/>
   </VerticalExamples>
 ```
 
@@ -59,4 +59,49 @@ You can go with the disabled version, or normal one
       <Checkbox disabled secondary inverted checked label='Disabled....' />
     </VerticalExamples>
   </Examples>
+```
+
+### Border Radius
+```js
+  <VerticalExamples>
+    <Checkbox checked label='Normal' />
+    <Checkbox secondary fullRound label='Full Round' />
+  </VerticalExamples>
+```
+
+### Responsive Size
+
+```js
+  <Examples leftAligned testForScreens={['xsmall', 'mobile', 'tablet', 'desktop', 'largeDesktop']}>
+    <Checkbox
+      checked
+      size={['xs', 'sm', 'md', 'lg', 'xl']}
+      label='Responsive Label, try to resize the screen to see the effect.'
+    />
+  </Examples>
+```
+
+### Space Props
+
+It accept all the standard space props
+
+```js
+  <VerticalExamples>
+    <Checkbox p={5} checked label='Padding' />
+    <Checkbox minWidth={6} checked label='Width' />
+    <Checkbox minHeight={6} checked label='Height' />
+    <Checkbox margin={2} checked label='Margin' />
+  </VerticalExamples>
+```
+
+### Label Styles
+
+Almost all label styles, but with 'label_' prefix
+
+```js
+  <VerticalExamples>
+    <Checkbox label_bold checked label='Bold Label' />
+    <Checkbox label_important label_bold checked label='Important/bold Label' />
+    <Checkbox label_xl checked label='Large Label' />
+  </VerticalExamples>
 ```

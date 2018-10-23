@@ -17,7 +17,7 @@ const SideMenu = styled(Column)`
   ${props => props.isSideMenuOpen && cssMediaMax.tablet`
     display: flex;
     align-items: flex-start;
-    padding-left: ${props2 => props2.theme.paddings.large}px;
+    padding-left: ${props.theme.paddings.large}px;
     max-width: ${SIDE_MENU_WIDTH}px;
     min-width: ${SIDE_MENU_WIDTH}px;
   `}
