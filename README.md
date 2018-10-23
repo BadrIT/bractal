@@ -114,6 +114,21 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
 
 // TODO
 
+## Component documentation
+
+Documentation is on : [Styleguidist] https://badrit.github.io/bractal/
+
+to build a local version of the documentation, run :
+
+```
+npx styleguidist server
+```
+
+to add a documentation of a new component, add it's link to the appropriate location here :
+{AppRoot}/styleguide.config.js
+
+Then add a '*.md' file beside it. (Check {AppRoot}/src/modules/coreUI/components/basic/Labels.md, for an example)
+
 # Roadmap
 
 ## Release 0 
