@@ -30,6 +30,7 @@ module.exports = {
             'src/modules/coreUI/components/basic/Button.jsx',
             'src/modules/coreUI/components/basic/ToggleButton.js',
             'src/modules/coreUI/components/basic/Checkbox.jsx',
+            'src/modules/coreUI/components/basic/RadioButton.js',
             'src/modules/coreUI/components/basic/PopupSelect.js',
           ],
         },
