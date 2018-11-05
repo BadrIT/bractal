@@ -1,7 +1,6 @@
 type User {
   id: ID! @unique
-  name: String! @unique
-  password: String!
+  auth0ID: String! @unique
   todos: [Todo!]!
 }
 

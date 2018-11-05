@@ -157,10 +157,8 @@ export type TodoOrderByInput =
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "password_ASC"
-  | "password_DESC"
+  | "auth0ID_ASC"
+  | "auth0ID_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -169,8 +167,7 @@ export type UserOrderByInput =
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface UserCreateWithoutTodosInput {
-  name: String;
-  password: String;
+  auth0ID: String;
 }
 
 export type TodoWhereUniqueInput = AtLeastOne<{
@@ -251,8 +248,7 @@ export interface TodoCreateManyWithoutAuthorInput {
 }
 
 export interface UserUpdateWithoutTodosDataInput {
-  name?: String;
-  password?: String;
+  auth0ID?: String;
 }
 
 export interface TodoSubscriptionWhereInput {
@@ -279,7 +275,7 @@ export interface TodoCreateInput {
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-  name?: String;
+  auth0ID?: String;
 }>;
 
 export interface UserWhereInput {
@@ -297,34 +293,20 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
+  auth0ID?: String;
+  auth0ID_not?: String;
+  auth0ID_in?: String[] | String;
+  auth0ID_not_in?: String[] | String;
+  auth0ID_lt?: String;
+  auth0ID_lte?: String;
+  auth0ID_gt?: String;
+  auth0ID_gte?: String;
+  auth0ID_contains?: String;
+  auth0ID_not_contains?: String;
+  auth0ID_starts_with?: String;
+  auth0ID_not_starts_with?: String;
+  auth0ID_ends_with?: String;
+  auth0ID_not_ends_with?: String;
   todos_every?: TodoWhereInput;
   todos_some?: TodoWhereInput;
   todos_none?: TodoWhereInput;
@@ -340,8 +322,7 @@ export interface TodoUpdateInput {
 }
 
 export interface UserCreateInput {
-  name: String;
-  password: String;
+  auth0ID: String;
   todos?: TodoCreateManyWithoutAuthorInput;
 }
 
@@ -386,8 +367,7 @@ export interface UserSubscriptionWhereInput {
 }
 
 export interface UserUpdateInput {
-  name?: String;
-  password?: String;
+  auth0ID?: String;
   todos?: TodoUpdateManyWithoutAuthorInput;
 }
 
@@ -397,24 +377,21 @@ export interface NodeNode {
 
 export interface UserPreviousValuesNode {
   id: ID_Output;
-  name: String;
-  password: String;
+  auth0ID: String;
 }
 
 export interface UserPreviousValues
   extends Promise<UserPreviousValuesNode>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  password: () => Promise<String>;
+  auth0ID: () => Promise<String>;
 }
 
 export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValuesNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  auth0ID: () => Promise<AsyncIterator<String>>;
 }
 
 export interface TodoEdgeNode {
@@ -435,14 +412,12 @@ export interface TodoEdgeSubscription
 
 export interface UserNode {
   id: ID_Output;
-  name: String;
-  password: String;
+  auth0ID: String;
 }
 
 export interface User extends Promise<UserNode>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  password: () => Promise<String>;
+  auth0ID: () => Promise<String>;
   todos: <T = Promise<Array<TodoNode>>>(
     args?: {
       where?: TodoWhereInput;
@@ -460,8 +435,7 @@ export interface UserSubscription
   extends Promise<AsyncIterator<UserNode>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  auth0ID: () => Promise<AsyncIterator<String>>;
   todos: <T = Promise<AsyncIterator<Array<TodoSubscription>>>>(
     args?: {
       where?: TodoWhereInput;
