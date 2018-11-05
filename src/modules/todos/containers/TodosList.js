@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { logout } from '~/modules/todos/Auth';
 import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import TodosListEntry from './TodosListEntry';
 
@@ -20,8 +21,11 @@ const TodosList = ({ query }) => (
           Create Todo
         </Link>
         <Link
-          to="/todos/signin"
-          onClick={() => localStorage.removeItem('userId')}
+          to="/todos"
+          onClick={() => {
+            logout();
+            localStorage.removeItem('accessToken');
+          }}
         >
           Log out
         </Link>
@@ -48,8 +52,8 @@ TodosList.propTypes = {
 };
 
 export default createFragmentContainer(TodosList, graphql`
-  fragment TodosList_query on Query @argumentDefinitions(userId: {type: "ID!"}){    
-    todosByUser(userId: $userId) {
+  fragment TodosList_query on Query {    
+    todosByUser {
       ...TodosListEntry_todoInfo
     }
   }

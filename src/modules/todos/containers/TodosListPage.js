@@ -11,8 +11,8 @@ import { withRelayEnvironment } from '~/modules/core/utils/relayHelpers/RelayIni
 import TodosList from './TodosList';
 
 const TodosListPageQuery = graphql`
-    query TodosListPageQuery ($userId: ID!) {
-      ...TodosList_query @arguments(userId: $userId)
+    query TodosListPageQuery {
+      ...TodosList_query
     }
 `;
 
@@ -21,9 +21,6 @@ const TodosListPage = ({ environment }) => (
     environment={environment}
     // eslint-disable-next-line react/jsx-curly-spacing
     query={ TodosListPageQuery }
-    variables={{
-      userId: localStorage.getItem('userId'),
-    }}
     render={({ error, props }) => {
       // eslint-disable-next-line react/prop-types
       const queryRoot = props;

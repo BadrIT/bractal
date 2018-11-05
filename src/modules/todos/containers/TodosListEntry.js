@@ -19,7 +19,7 @@ const TodosListEntry = ({ todoInfo }) => {
   return (
     <Segment >
       {fields.map(field => (
-        <div key={field}><b>{field} : </b>{ todoInfo[field] }</div>
+        <div key={field}><b>{field} : </b>{todoInfo[field]}</div>
       ))}
       <br />
       <Link

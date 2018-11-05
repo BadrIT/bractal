@@ -1,20 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import TodosListPage from './TodosListPage';
+import { Link } from 'react-router-dom';
 
-const TodosPage = props => (
-  <React.Fragment>
-    {localStorage.getItem('userId') ? (
-      <TodosListPage />
-    ) : (
-      props.history.push('/todos/signin')
-    )}
-  </React.Fragment>
-);
+import { login } from '~/modules/todos/Auth';
 
-TodosPage.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
+const TodosPage = () => {
+  login();
+  return (
+    <Link to="/todos/list">
+      Click if you are not redirected automatically
+    </Link>
+  );
 };
+
 export default TodosPage;

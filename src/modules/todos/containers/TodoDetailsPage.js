@@ -25,7 +25,7 @@ const TodoDetailsPage = ({ environment, match }) => {
 
   return (
     <Container>
-      <Link to="/todos" >
+      <Link to="/todos/list" >
         <h1> {'< Todo List'} </h1>
       </Link>
       <br />

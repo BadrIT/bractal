@@ -19,6 +19,7 @@ const RelayInitializer = {
         ...additionalHeaders,
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
       body: JSON.stringify({
         query: operation.text,

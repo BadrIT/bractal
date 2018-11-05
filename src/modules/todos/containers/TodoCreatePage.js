@@ -30,7 +30,7 @@ class TodoCreatePage extends Component {
   };
 
   onSuccess = () => {
-    this.props.history.push('/todos');
+    this.props.history.push('/todos/list');
   }
 
   onError = (error) => {
@@ -56,7 +56,7 @@ class TodoCreatePage extends Component {
       }));
     return (
       <Container>
-        <Link to="/todos" >
+        <Link to="/todos/list" >
           <h1> {'< Todo List'} </h1>
         </Link>
         <br />
@@ -81,7 +81,6 @@ class TodoCreatePage extends Component {
           getSubmissionVariables={formVariables => ({
             data: {
               ...formVariables,
-              userId: localStorage.getItem('userId'),
             },
           })}
         />
