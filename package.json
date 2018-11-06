@@ -56,6 +56,7 @@
     "raf": "3.4.0",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-datepicker": "^1.8.0",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.5.2",
     "react-ellipsis-with-tooltip": "^1.0.8",
@@ -93,15 +94,15 @@
   },
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
-    "build": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ node scripts/build.js",
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4466 node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:es",
-    "refetch-schema": "graphql-fetch-schema __ENDPOINT__",
+    "refetch-schema": "graphql-fetch-schema http://localhost:4466",
     "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:es": "eslint ./src ",
-    "start": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ npm run start-internal"
+    "start": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4466 npm run start-internal"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.11",
