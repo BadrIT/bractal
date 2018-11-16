@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import Button from '~/modules/coreUI/components/basic/Button';
 import { infereFontSize } from '~/modules/coreUI/utils/infereStyle';
@@ -9,15 +9,15 @@ import AlertTypes from './AlertTypes';
 
 const getColor = (props) => {
   if (props.type === AlertTypes.error) {
-    return props.theme.new.colors.alerts.error;
+    return props.theme.new.colors.named.error;
   } else if (props.type === AlertTypes.info) {
-    return props.theme.new.colors.alerts.info;
+    return props.theme.new.colors.named.info;
   } else if (props.type === AlertTypes.warning) {
-    return props.theme.new.colors.alerts.warning;
+    return props.theme.new.colors.named.warning;
   } else if (props.type === AlertTypes.success) {
-    return props.theme.new.colors.alerts.success;
+    return props.theme.new.colors.named.success;
   }
-  return props.theme.new.colors.alerts.default;
+  return props.theme.new.colors.named.default;
 };
 
 const ButtonStyled = styled(Button)`

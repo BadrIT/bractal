@@ -95,6 +95,11 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
   ![Plop Input](docs/assets/getting_started/plop_result.png)
   5. Now you should see the newly created module in the path ```{AppRoot}/src/modules/todos```
   6. Now add the newly created modules to module configurations. To do so, change the contents of ```{AppRoot}/src/modulesConfig.js```. To be the same as [(This file)](docs/assets/getting_started/sample.moduleConfig.js)
+  7. Rerun compile-relay to get the new Relay files :
+  ```
+  cd {AppRoot}
+  npm run compile-relay
+  ```
   7. Now you can run the app to see your new module 
   ```
   cd {AppRoot}
@@ -108,6 +113,21 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
 ### Add/Delete Todo entries
 
 // TODO
+
+## Component documentation
+
+Documentation is on : [Styleguidist] https://badrit.github.io/bractal/
+
+to build a local version of the documentation, run :
+
+```
+npx styleguidist server
+```
+
+to add a documentation of a new component, add it's link to the appropriate location here :
+{AppRoot}/styleguide.config.js
+
+Then add a '*.md' file beside it. (Check {AppRoot}/src/modules/coreUI/components/basic/Labels.md, for an example)
 
 # Roadmap
 

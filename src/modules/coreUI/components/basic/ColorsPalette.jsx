@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-import { withTheme } from 'emotion-theming';
 import changeCase from 'change-case';
+import { withTheme } from 'emotion-theming';
 import styled from 'react-emotion';
 
 import { Box, Column, Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';

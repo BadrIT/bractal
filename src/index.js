@@ -13,7 +13,7 @@ import '~/styles/css/App.css';
 
 // Loading gloabl styles
 // eslint-disable-next-line no-unused-vars
-import fontFamily from '~/modules/coreUI/globalStyles/fontFamily';
+import fontFamily from '~/globalStyles/fontFamily';
 
 export const { renderApp } = BractalCore;
 BractalCore.renderApp(
