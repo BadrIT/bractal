@@ -1,16 +1,19 @@
 /* eslint-disable import/prefer-default-export, react/prop-types */
 import React from 'react';
 import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
+import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 
-import { infereFontSize, infereFontColor, infereFontWeight } from '~/modules/coreUI/utils/infereStyle';
+import { responsiveStyle, infereFontSize, responsiveFontSizeStyle, infereFontColor, infereFontWeight } from '~/modules/coreUI/utils/infereStyle';
 
-export const Label = styled.span`
+const InnerLabel = styled.span`
   text-transform: ${props => (props.uppercase ? 'uppercase' : 'none')};
   
-  color: ${props => infereFontColor(props)};
+  color: ${props => infereFontColor(props, 'normal')};
 
   font-weight: ${props => infereFontWeight(props)};
-  font-size: ${props => infereFontSize(props)}px;
+
+  line-height: 1.1em;
 
   text-align: ${props => props.align || 'left'};
 
@@ -18,8 +21,23 @@ export const Label = styled.span`
     color: ${props => props.theme.colors.link};
   }
 
-  ${props => props.customStyle}
+  ${props => !props.inheritSize && responsiveFontSizeStyle(props)}
+
+  ${props => props.customStyle && props.customStyle(props)}
 `;
+
+export const Label = withMedia(withTheme(props => (
+  <InnerLabel
+    {...props}
+    title={process.isStyleguidistActive &&
+      /* For debugging purposes, show the current size as a tool tip */
+      responsiveStyle(props, 'size', size => infereFontSize(props, size))
+    }
+  />
+)));
+
+export const XXLargeLabel = props =>
+  <Label {...props} xxl>{props.children}</Label>;
 
 export const XLargeLabel = props =>
   <Label {...props} xl>{props.children}</Label>;
@@ -40,9 +58,9 @@ export const ErrorLabel = props =>
   <Label {...props} error>{props.children}</Label>;
 
 export const Header = styled(Label)`
-  padding-top: ${props => 2 * props.theme.new.spacer}px;
-  padding-bottom: ${props => 2 * props.theme.new.spacer}px;
+  line-height: 1.3em;
+
   color: ${props => props.theme.colors.labels.important};
   font-size: ${props => props.theme.new.fonts.sizes.header}px;
-  font-weight: bold;
+  font-weight: ${props => props.theme.fonts.weights.semiBold};
 `;

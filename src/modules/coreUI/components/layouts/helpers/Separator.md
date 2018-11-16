@@ -31,8 +31,8 @@ This would draw a horizonal/vertical separator
 
 ```js
   <VerticalExamples fullWidth centerAligned>
-    Light Separator
-    <Separator separatorWeight='light' separatorColorTone='dark'/>
+    Thin Separator
+    <Separator separatorWeight='thin' separatorColorTone='dark'/>
     Normal Separator
     <Separator separatorWeight='normal' separatorColorTone='dark'/>
     Bold Separator
@@ -51,4 +51,21 @@ This would draw a horizonal/vertical separator
     Dark Separator
     <Separator separatorColorTone='dark' />
   </VerticalExamples>
+```
+
+### Vertical
+
+```js
+  <Examples fullWidth centerAligned height={20}>
+    Small Separator
+    <Separator vertical separatorLength='small' separatorColorTone='dark'/>
+    Normal Separator
+    <Separator vertical separatorLength='normal' separatorColorTone='dark'/>
+    Large Separator
+    <Separator vertical separatorLength='large' separatorColorTone='dark'/>
+    XLarge Separator
+    <Separator vertical separatorLength='xLarge' separatorColorTone='dark'/>
+    Full Separator
+    <Separator vertical separatorLength='full' separatorColorTone='dark'/>
+  </Examples>
 ```

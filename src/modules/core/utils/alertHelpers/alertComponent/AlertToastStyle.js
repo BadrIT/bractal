@@ -31,19 +31,19 @@ export const slideout = keyframes`
   }
 `;
 export const defaultColor = props => css`
-  background: ${props.backgroundColor || props.theme.new.colors.alerts.default};
+  background: ${props.backgroundColor || props.theme.new.colors.named.default};
 `;
 export const infoColor = props => css`
-  background: ${props.backgroundColor || props.theme.new.colors.alerts.info};
+  background: ${props.backgroundColor || props.theme.new.colors.named.info};
 `;
 export const errorColor = props => css`
-  background: ${props.backgroundColor || props.theme.new.colors.alerts.error};
+  background: ${props.backgroundColor || props.theme.new.colors.named.error};
 `;
 export const warningColor = props => css`
-  background: ${props.backgroundColor || props.theme.new.colors.alerts.warning};
+  background: ${props.backgroundColor || props.theme.new.colors.named.warning};
 `;
 export const successColor = props => css`
-  background: ${props.backgroundColor || props.theme.new.colors.alerts.success};
+  background: ${props.backgroundColor || props.theme.new.colors.named.success};
 `;
 
 export const bottomRight = props => (css`

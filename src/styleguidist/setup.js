@@ -6,7 +6,7 @@ import { Label } from '~/modules/coreUI/components/basic/Labels';
 
 // Loading gloabl styles
 // eslint-disable-next-line no-unused-vars
-import fontFamily from '~/modules/coreUI/globalStyles/fontFamily';
+import fontFamily from '~/globalStyles/fontFamily';
 
 global.Box = props => (
   <Spacer size={props.size || 6} style={{ backgroundColor: props.color || 'gray' }} />

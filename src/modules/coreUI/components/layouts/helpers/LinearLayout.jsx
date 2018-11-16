@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'react-emotion';
-import injectElementBetweenArrayItems from '~/modules/core/utils/jsHelpers/injectElementBetweenArrayItems';
+import injectElementBetweenChildElements from '~/modules/core/utils/jsHelpers/injectElementBetweenChildElements';
+import { boxColorsStyles } from '~/modules/coreUI/utils/infereStyle';
+import spaceStyles from '~/modules/coreUI/utils/styleSystem';
+import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
+
 import Spacer from './Spacer';
 
 const getIntraItemsSpacer = (props) => {
@@ -11,6 +15,33 @@ const getIntraItemsSpacer = (props) => {
     return null;
   }
   return <Spacer size={sizeProp} />;
+};
+
+const getBorderColor = (props) => {
+  let color = 'light';
+  if (props.borderColor) {
+    color = props.borderColor;
+  }
+
+  return props.theme.borders.color[color] || props.borderColor;
+};
+
+const getBorderWeight = (props) => {
+  let weight = 'thin';
+  if (props.borderWeight) {
+    weight = props.borderWeight;
+  }
+
+  return props.theme.borders.size[weight];
+};
+
+const getBorderRadius = (props) => {
+  let radius = 'normal';
+  if (props.borderRadius) {
+    radius = props.borderRadius;
+  }
+
+  return props.theme.borders.radius[radius] || radius;
 };
 
 const getJustifyContent = (props) => {
@@ -53,24 +84,42 @@ const getAlignItems = (props) => {
   return null;
 };
 
-const StyledLinearLayout = styled.div`
-  width: ${props => (props.fullWidth ? '100%' : null)};
-  height: ${props => (props.fullHeight ? '100%' : null)};
+const StyledLinearLayout = withMedia(styled.div`
+  width: ${props => (props.fullWidth ? '100%' : props.width)};
+  height: ${props => (props.fullHeight ? '100%' : props.height)};
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: ${props => (props.row ? 'row' : 'column')};
   flex-grow: ${props => (props.grow ? 1 : null)};
-  justify-content: ${props => getJustifyContent(props) || 'space-around'};
-  align-items: ${props => getAlignItems(props) || 'center'};  
-`;
+  justify-content: ${props => getJustifyContent(props) || 'flex-start'};
+  align-items: ${props => getAlignItems(props) || 'center'};
 
-const LinearLayout = props => (
+  border: ${props => props.bordered && `solid ${getBorderWeight(props)}px ${getBorderColor(props)}`};
+  border-radius: ${props => getBorderRadius(props)}px;
+  border-top: ${props => props.topBordered && `solid ${getBorderWeight(props)}px ${getBorderColor(props)}`};
+  border-left: ${props => props.leftBordered && `solid ${getBorderWeight(props)}px ${getBorderColor(props)}`};
+  border-bottom: ${props => props.bottomBordered && `solid ${getBorderWeight(props)}px ${getBorderColor(props)}`};
+  border-right: ${props => props.rightBordered && `solid ${getBorderWeight(props)}px ${getBorderColor(props)}`};
+
+  padding: ${props => props.padding * props.theme.new.spacer}px;
+  padding-left: ${props => props.paddingLeft * props.theme.new.spacer}px;
+  padding-right: ${props => props.paddingRight * props.theme.new.spacer}px;
+  padding-top: ${props => props.paddingTop * props.theme.new.spacer}px;
+  padding-bottom: ${props => props.paddingBottom * props.theme.new.spacer}px;
+
+  ${props => spaceStyles(props)}
+  ${props => boxColorsStyles(props)}
+  ${props => props.customStyles && props.customStyles(props)}
+`);
+
+export const LinearLayout = props => (
   <StyledLinearLayout {...props}>
-    {[
-      ...injectElementBetweenArrayItems(
-        props.children, // eslint-disable-line react/prop-types
-        getIntraItemsSpacer(props),
-      ),
-    ]}
+    {injectElementBetweenChildElements(
+      props.children, // eslint-disable-line react/prop-types
+      getIntraItemsSpacer(props),
+      true,
+    )}
   </StyledLinearLayout>
 );
 
@@ -83,7 +132,5 @@ export const Row = props => (
 );
 
 export const Box = props => (
-  <LinearLayout column {...props} />
+  <LinearLayout {...props} />
 );
-
-export default LinearLayout;

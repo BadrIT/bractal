@@ -204,7 +204,6 @@ class PopupSelect extends Component {
       <Dropdown
         isOpen={isOpen}
         onClose={this.toggleOpen}
-        style={{ width: '100%' }}
         target={
           <ToggleButton
             style={{ width: '100%' }}
@@ -213,9 +212,7 @@ class PopupSelect extends Component {
             selected={isOpen}
             forceSelected={this.props.trigger_bright}
             {...propsForPrefix(this.props, 'trigger_')}
-          >
-            {value ? `State: ${value.label}` : 'Select a State'}
-          </ToggleButton>
+          />
         }
       >
         <Select

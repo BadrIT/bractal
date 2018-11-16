@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import styled from 'react-emotion';
 import { css } from 'emotion';
+import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 
-import { infereControlMode, darken } from '~/modules/coreUI/utils/infereStyle';
+import { infereControlMode, darken, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
 
 import Button from './Button';
 
@@ -52,14 +54,19 @@ const disabledColorStyles = props => css`
   &:active { ${colors(props, 0)} }
   &:focus { ${colors(props, 0)} }
 
-  opacity: 0.3;
+  opacity: 0.4;
 `;
 
 const StyledButton = styled(Button)`
-  ${props => !props.selected && deSelectedColorStyles(props)};
-  ${props => props.disabled && disabledColorStyles(props)}
+  /*${props => !props.selected && deSelectedColorStyles(props)};*/
+  ${props => (props.disabled || props.disabledColors) && disabledColorStyles(props)}
 
-  ${props => props.customStyles && props.customStyles(props)}
+  ${props => props.styles && props.styles(props)}
+
+  ${props => props.media.xsmall && css`
+    padding-top: ${0.5 * inferePaddingSize(props)}px;
+    padding-bottom: ${0.5 * inferePaddingSize(props)}px;
+  `}
 `;
 
 class ToggleButton extends React.Component {
@@ -79,35 +86,49 @@ class ToggleButton extends React.Component {
     selected: true,
   }
 
-  render = () => (
-    <StyledButton
-      {...this.props}
-      selected={this.props.forceSelected || this.state.selected}
-      customStyles={this.props.customStyles}
-      onClicked={(event) => {
-        this.setState({ selected: !this.state.selected });
-        if (this.props.onClicked) {
-          this.props.onClicked(event);
-        }
-      }}
-    >
-      {this.props.label || this.props.children}
-    </StyledButton>
-  )
+  render = () => {
+    let passedProps = this.props;
+    if (passedProps.clickable && passedProps.disabled) {
+      passedProps = _.omit(passedProps, 'disabled');
+      passedProps.disabledColors = true;
+    }
+
+    const selected = this.props.forceSelected || this.state.selected;
+
+    return (
+      <StyledButton
+        {...passedProps}
+        selected={selected}
+        passive={!selected}
+        styles={this.props.styles}
+        onClicked={(event) => {
+          this.setState({ selected: !this.state.selected });
+          if (this.props.onClicked) {
+            this.props.onClicked(event);
+          }
+        }}
+      >
+        {this.props.label || this.props.children}
+      </StyledButton>
+    );
+  };
 }
 
 ToggleButton.defaultProps = {
-  customStyles: null,
+  styles: null,
+  // forceSelected: false,portals => 2,
   forceSelected: false,
   label: null,
+  onClicked: null,
+  children: null,
 };
 
 ToggleButton.propTypes = {
   forceSelected: PropTypes.bool,
-  onClicked: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
-  customStyles: PropTypes.shape({}),
+  onClicked: PropTypes.func,
+  children: PropTypes.string,
+  styles: PropTypes.shape({}),
   label: PropTypes.string,
 };
 
-export default ToggleButton;
+export default withMedia(ToggleButton);
