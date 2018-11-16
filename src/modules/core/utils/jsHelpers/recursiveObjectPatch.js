@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const recursiveUpdate = (pathElements, current, targetObject, updatesObject) => {
   if (pathElements.length === current) {
     return {
@@ -27,21 +29,16 @@ export const applyPatch = (path, variables, updatesObject) => {
   return recursiveUpdate(pathElements, 1, variables, updatesObject);
 };
 
-const recursiveArray = (pathObject, current, variables) => {
-  let returnedObject = applyPatch(
-    pathObject[current].path,
-    variables,
-    pathObject[current].update,
-  );
-  if (pathObject[current + 1]) {
-    returnedObject = recursiveArray(
-      pathObject,
-      current + 1,
-      returnedObject,
-    );
-  }
-  return returnedObject;
-};
-
-export const applyPatchChain = (pathObject, variables) =>
-  recursiveArray(pathObject, 0, variables);
+export const applyPatchChain = (patchList, initialVariables) => (
+  !patchList || !_.isArray(patchList) || patchList.length === 0
+    ? initialVariables
+    : _.reduce(
+      patchList,
+      (resultVariables, patch) => applyPatch(
+        patch.path,
+        resultVariables,
+        patch.update,
+      ),
+      initialVariables,
+    )
+);

@@ -7,11 +7,11 @@ example 1 :
     .with(itemInfo)
       .if_hasAnyOf(['verticalSeparator', 'horizontalSpacer'])
         .thenProhibitAllOf([
-          'linkLabelText', 'iconImageSrc', 'itemRenderer', 'targetURL', 'dropdownContent',
+          'linkLabelText', 'iconImageSrc', 'itemRenderer', 'targeturl', 'dropdownContent',
         ])
       .and_if_hasAnyOf(['linkLabelText', 'iconImageSrc', 'itemRenderer'])
         .thenRequireAnyOf([
-          'targetURL', 'dropdownContent',
+          'targeturl', 'dropdownContent',
         ])
     .then()
       .if_has('verticalSeparator')

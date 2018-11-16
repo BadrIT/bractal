@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled from 'react-emotion';
+import { withTheme } from 'emotion-theming';
 import PropTypes from 'prop-types';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';

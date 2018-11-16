@@ -5,7 +5,6 @@ import RefetchContainer from '~/modules/core/utils/relayHelpers/RefetchContainer
 
 import withRootQuery from './withRootQuery';
 
-
 export default function withRefetchQuery(
   WrappedComponent,
   query,
@@ -33,15 +32,11 @@ export default function withRefetchQuery(
     fragment,
     query,
   );
-  // eslint-disable-next-line react/prefer-stateless-function
-  class InnerComponent extends React.PureComponent {
-    render = () => <QueryWrapper {...this.props} />;
-  }
 
   return withRootQuery(
-    InnerComponent,
+    QueryWrapper,
     query,
-    LoaderComponent === WrappedComponent ? InnerComponent : LoaderComponent,
+    LoaderComponent === WrappedComponent ? QueryWrapper : LoaderComponent,
     variables,
   );
 }

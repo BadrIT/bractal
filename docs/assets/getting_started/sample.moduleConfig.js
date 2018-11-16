@@ -1,9 +1,9 @@
 import apiMonitoring from '~/modules/apiMonitoring';
-import posts from '~/modules/posts';
+import todos from '~/modules/todos';
 
 const modules = [
   apiMonitoring,
-  posts,
+  todos,
 ];
 
 export default modules;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 import Media from 'react-media';

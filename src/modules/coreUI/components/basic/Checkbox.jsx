@@ -1,12 +1,16 @@
+/* eslint-disable indent */
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
+import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-import { infereControlType, infereFontSize, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
+import { propsForPrefix, infereControlType, infereNamedFontSize, responsiveStyle, infereBorderRadius, colorStyles, disabledColorStyles } from '~/modules/coreUI/utils/infereStyle';
 import Icon from '~/modules/coreUI/components/basic/Icon';
+import spaceStyles from '~/modules/coreUI/utils/styleSystem';
 
-import { SmallLabel } from './Labels';
+import { Label } from './Labels';
 
 const RootContainer = styled(Row)`
   cursor: pointer;
@@ -18,14 +22,20 @@ const RealHiddenCheckbox = styled.input`
   left: -999px;
 
   & + div {
-    width: ${props => 1.3 * infereFontSize(props)}px;
-    height: ${props => 1.3 * infereFontSize(props)}px;
-    font-size: ${props => 0.7 * infereFontSize(props)}px;
+    ${props => responsiveStyle(props, 'size', size => css`
+      /* Workaround for Flexbox & Grid inconsistencies when using only width/height */
+      min-width: ${1.3 * infereNamedFontSize(props, size)}px;
+      max-width: ${1.3 * infereNamedFontSize(props, size)}px;
+      min-height: ${1.3 * infereNamedFontSize(props, size)}px;
+      max-height: ${1.3 * infereNamedFontSize(props, size)}px;
+      font-size: ${0.7 * infereNamedFontSize(props, size)}px;
+    `)};
 
     border: 1px solid;
     border-radius: ${props => infereBorderRadius(props)}px; 
     
-    ${props => (props.disabled ? disabledColorStyles : colorStyles)}
+    ${props => spaceStyles(props)}
+    ${props => (props.disabled ? disabledColorStyles(props) : colorStyles(props))}
   }
 
   &:focus + div {
@@ -78,23 +88,32 @@ class Checkbox extends React.Component {
         type="checkbox"
         id={this.props.elemID}
         {...this.props}
+        inverted={this.props.inverted || !this.state.checked}
         checked={this.state.checked}
         onChange={this.handleInputChange}
       />
       <Row
+        fullWidth
+        fullHeight
+        centerAligned
+        centerJustified
         type="checkbox"
         {...this.props}
       >
         {this.state.checked &&
-          <Icon className="fas fa-check" />
+          <Icon inheritColor inheritSize className="fas fa-check" />
         }
       </Row>
       {this.props.label &&
         <React.Fragment>
           <Spacer />
-          <SmallLabel bold={this.props.bold} customStyle={this.props.customStyle}>
+          <Label
+            size={this.props.size}
+            bold={this.props.bold}
+            {...propsForPrefix(this.props, 'label_')}
+          >
             {this.props.label}
-          </SmallLabel>
+          </Label>
         </React.Fragment>
       }
     </RootContainer>
@@ -105,4 +124,4 @@ Checkbox.propTypes = PropTypes.shape({
   elemID: PropTypes.string.isRequired,
 }).isRequired;
 
-export default Checkbox;
+export default withMedia(Checkbox);

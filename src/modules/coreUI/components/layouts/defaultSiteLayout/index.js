@@ -1,12 +1,11 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 
 import { Row, Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import withSideMenuTracker from '~/modules/core/utils/sideMenuHelpers/withSideMenuTracker';
-
 import { setRoleAsLayoutPageContent, setRoleAsLayoutHeader, setRoleAsLayoutSideMenu, getLayoutHeader, getLayoutPageContent, getLayoutSideMenu } from './componentsRoles';
 
 const SIDE_MENU_WIDTH = 280;
@@ -18,7 +17,7 @@ const SideMenu = styled(Column)`
   ${props => props.isSideMenuOpen && cssMediaMax.tablet`
     display: flex;
     align-items: flex-start;
-    padding-left: ${props2 => props2.theme.paddings.large}px;
+    padding-left: ${props.theme.paddings.large}px;
     max-width: ${SIDE_MENU_WIDTH}px;
     min-width: ${SIDE_MENU_WIDTH}px;
   `}

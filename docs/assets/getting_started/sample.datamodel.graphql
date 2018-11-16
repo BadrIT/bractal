@@ -3,9 +3,8 @@ type User {
   name: String!
 }
 
-type Post {
+type Todo {
   id: ID! @unique
   title: String!
   description: String!
-  author: User!
 }

@@ -1,6 +1,6 @@
 import deepmerge from 'deepmerge';
 import _ from 'lodash';
-import queryString from 'query-string';
+import qs from 'qs';
 import { applyPatchChain } from '~/modules/core/utils/jsHelpers/recursiveObjectPatch';
 
 export const generateURLQueryStringFromGraphQLQueryInput = (
@@ -10,7 +10,7 @@ export const generateURLQueryStringFromGraphQLQueryInput = (
 ) => {
   const updatesList = _.isArray(graphQLUpdates) ? graphQLUpdates : [graphQLUpdates];
 
-  return queryString.stringify({
+  return qs.stringify({
     [key]: JSON.stringify(applyPatchChain(updatesList, initialVariables || {})),
   });
 };
@@ -20,10 +20,14 @@ export const appendQueryStringInputToGraphQLQueryInput = (
   URLQueryString,
   currentVariables,
 ) => {
-  const params = queryString.parse(URLQueryString);
+  const queryString = URLQueryString.length > 0 && URLQueryString[0] === '?'
+    ? URLQueryString.substr(1)
+    : URLQueryString;
+
+  const params = qs.parse(queryString);
   if (!params || !params[key]) {
     return currentVariables || {};
   }
 
-  return deepmerge(JSON.parse(params[key]), currentVariables);
+  return deepmerge(currentVariables, JSON.parse(params[key]));
 };

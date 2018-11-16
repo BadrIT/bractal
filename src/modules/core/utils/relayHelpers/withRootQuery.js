@@ -1,54 +1,69 @@
-/* eslint-disable function-paren-newline */
+/* eslint-disable function-paren-newline, react/no-redundant-should-component-update */
 import React from 'react';
 import { QueryRenderer } from 'react-relay';
 import lodash from 'lodash';
+
 import Loader from '~/modules/coreUI/components/basic/Loader';
+
+import withAlertMsg from '~/modules/core/utils/alertHelpers/withAlertContainer';
+import AlertTypes from '~/modules/core/utils/alertHelpers/alertComponent/AlertTypes';
 
 import withRelayEnvironment from './withRelayEnvironment';
 
-
 export default function WithRootQuery(WrappedComponent, RootQuery, LoaderComponent, variables) {
   return withRelayEnvironment(
-    // NOTE : Workaround (Extending React.PureComponent) for
-    //        the Component being re-rendered due to shallow changes in props
-    // eslint-disable-next-line react/no-multi-comp
-    class PureWrapper extends React.PureComponent {
-      render = () => {
-        const externalProps = this.props;
-        this.mergedVars = this.mergedVars || (lodash.isFunction(variables)
-          ? variables(externalProps)
-          : variables
-        );
+    withAlertMsg(
+      // eslint-disable-next-line react/prefer-stateless-function
+      class InnerRootQuery extends React.Component {
+        render = () => {
+          const externalProps = this.props;
+          const mergedVars = lodash.isFunction(variables) ? variables(externalProps) : variables;
 
-        return (
-          <QueryRenderer
-            // eslint-disable-next-line react/prop-types
-            environment={externalProps.environment}
-            query={RootQuery}
-            variables={this.mergedVars}
-            render={({ error, props }) => {
-              const isLoading = !props;
-              if (error) {
-                return <div>{error.message}</div>;
-              } else if (props || (isLoading && LoaderComponent === WrappedComponent)) {
-                return (
-                  <WrappedComponent
-                    key="rootQueryContainer"
-                    {...externalProps}
-                    queryResult={props}
-                    isLoading={isLoading}
-                  />
-                );
-              }
+          return process.isStyleguidistActive ? (
+            <WrappedComponent {...externalProps} />
+          ) : (
+            <QueryRenderer
+              // eslint-disable-next-line react/prop-types
+              environment={externalProps.environment}
+              query={RootQuery}
+              variables={mergedVars}
+              render={({ error, props }) => {
+                const isLoading = !props;
+                if (error) {
+                  // eslint-disable-next-line react/prop-types
+                  this.props.notifyAlert({ messageText: error.message, type: AlertTypes.error });
 
-              if (LoaderComponent) {
-                return <LoaderComponent {...externalProps} isLoading />;
-              }
-              return <Loader />;
-            }}
-          />
-        );
-      }
-    },
+                  return (
+                    // TODO: Handle Errors in components or in general component
+                    <div>
+                      {`
+                      Internal Server Error:
+                        ${error.code ? error.code : ''}
+                        ${error.message ? error.message : ''}
+                        ${error.stack ? error.stack : ''}
+                      `}
+                    </div>
+                  );
+                }
+                if (props || (isLoading && LoaderComponent === WrappedComponent)) {
+                  return (
+                    <WrappedComponent
+                      {...externalProps}
+                      queryResult={props}
+                      isLoading={isLoading}
+                    />
+                  );
+                }
+
+                if (LoaderComponent) {
+                  return <LoaderComponent {...externalProps} isLoading />;
+                }
+                return <Loader />;
+              }}
+            />
+          );
+        };
+      },
+    ),
   );
 }

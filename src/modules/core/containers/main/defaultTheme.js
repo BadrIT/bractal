@@ -7,39 +7,73 @@ const Theme = {
       },
     },
     colors: {
-      primary: {
-        normal: '#33a8ff',
-        inverted: '#FFFFFF',
-      },
-      secondary: {
-        normal: '#fb9410',
-        inverted: '#FFFFFF',
-      },
-      disabled: {
-        normal: '#aaaaaa',
-        inverted: '#FFFFFF',
+      buttons: {
+        primary: {
+          background: '#33a8ff',
+          backgroundinverted: '#FFFFFF',
+          line: '#FFFFFF',
+          lineInverted: '#33a8ff',
+        },
+        secondary: {
+          background: '#fb9410',
+          backgroundinverted: '#FFFFFF',
+          line: '#FFFFFF',
+          lineInverted: '#fb9410',
+        },
+        passive: {
+          background: '#e5e5e5',
+          backgroundinverted: '#FFFFFF',
+          line: 'rgba(0, 0, 0, 0.7)',
+          lineInverted: '#aaaaaa',
+        },
+        disabled: {
+          background: '#aaaaaa',
+          backgroundinverted: '#FFFFFF',
+          line: '#FFFFFF',
+          lineInverted: '#aaaaaa',
+        },
       },
       labels: {
         normal: {
+          primary: '#33a8ff',
+          secondary: '#fb9410',
           important: '#000000',
           emphasized: 'rgba(0, 0, 0, 0.7)',
           normal: 'rgba(0, 0, 0, 0.5)',
           subtle: 'rgba(0, 0, 0, 0.35)',
           hint: 'rgba(0, 0, 0, 0.22)',
+          error: '#d32f2f',
         },
         inverted: {
+          primary: 'white',
+          secondary: 'white',
           important: 'white',
           emphasized: 'rgba(255, 255, 255, 0.7)',
           normal: 'rgba(255, 255, 255, 0.5)',
           subtle: 'rgba(255, 255, 255, 0.4)',
           hint: 'rgba(255, 255, 255, 0.3)',
+          error: 'red',
         },
+      },
+      panels: {
+        background: '#f9f9f9',
+      },
+      named: {
+        primary: '#33a8ff',
+        secondary: '#fb9410',
+        error: '#d32f2f',
+        info: '#5c9ec0',
+        success: '#7CB342',
+        warning: '#FFB300',
+        default: '#708090',
+        inverted: '#FFFFFF',
       },
     },
     spacer: 10,
     fonts: {
       sizes: {
         header: 36,
+        xxl: 25,
         xl: 20,
         lg: 18,
         md: 16,
@@ -47,8 +81,11 @@ const Theme = {
         xs: 12,
       },
       weights: {
-        bold: 900,
+        extraBold: 900,
+        bold: 700,
         semiBold: 600,
+        regular: 400,
+        normal: 'normal',
       },
     },
   },
@@ -113,9 +150,9 @@ const Theme = {
       bold: 3,
     },
     color: {
-      light: 'rgba(0,0,0,0.1)',
-      normal: 'rgba(0,0,0,0.3)',
-      dark: 'rgba(0,0,0,0.5)',
+      light: 'rgba(0,0,0,0.3)',
+      normal: 'rgba(0,0,0,0.5)',
+      dark: 'rgba(0,0,0,0.8)',
     },
     radius: {
       small: 2,
