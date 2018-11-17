@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import {
   createFragmentContainer,
   graphql,
@@ -46,10 +47,11 @@ TodosList.propTypes = {
   }).isRequired,
 };
 
-export default createFragmentContainer(TodosList, graphql`
-  fragment TodosList_query on Query @argumentDefinitions(userId: {type: "ID!"}){    
-    todosByUser(userId: $userId) {
-      ...TodosListEntry_todoInfo
-    }
-  }
-`);
+export default TodosList;
+// export default createFragmentContainer(TodosList, graphql`
+//   fragment TodosList_query on Query @argumentDefinitions(userId: {type: "ID!"}){    
+//     todosByUser(userId: $userId) {
+//       ...TodosListEntry_todoInfo
+//     }
+//   }
+// `);

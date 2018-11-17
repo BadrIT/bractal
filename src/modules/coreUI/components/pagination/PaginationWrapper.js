@@ -1,14 +1,11 @@
 import { scrollToContainerTop } from '~/modules/core/utils/jsHelpers/ScrollToTop';
-import keys from '~/modules/ecommerceCoreUI/components/listViewLayout/SubscribeKeys';
+import { ITEMS_LIST_VIEW_PAGINATION_KEY, buildPaginationQueryInput } from './index';
 
 class PaginationWrapper {
-  constructor(updatePaginationVariables, subscribe, limit) {
-    this.updatePaginationVariables = updatePaginationVariables;
-    subscribe(this);
-    this.key = keys.pagination;
-    this.reset = () => ({
-      path: '^.input.page',
-      update: { offset: 0, limit },
+  constructor(refetchMethod, refetchSubscribeToPreflight, limit) {
+    this.refetchMethod = refetchMethod;
+    refetchSubscribeToPreflight(ITEMS_LIST_VIEW_PAGINATION_KEY, {
+      reset: () => buildPaginationQueryInput(0, limit),
     });
   }
 
@@ -16,21 +13,20 @@ class PaginationWrapper {
     if (!(pageNumber === lastPageNumber - 1)) {
       this.refetch(pageNumber + 1, limit);
     }
-  }
+  };
+
   loadPrev = (pageNumber, limit) => {
     if (!(pageNumber === 0)) {
       this.refetch(pageNumber - 1, limit);
     }
-  }
+  };
 
   refetch = (pageNumber, limit) => {
-    this.updatePaginationVariables(
-      '^.input.page',
-      { offset: (pageNumber) * limit, limit },
-      this.key,
-    );
+    this.refetchMethod(ITEMS_LIST_VIEW_PAGINATION_KEY, [
+      buildPaginationQueryInput(pageNumber * limit, limit),
+    ]);
     scrollToContainerTop('ProductsListContainer');
-  }
+  };
 }
 
 export default PaginationWrapper;

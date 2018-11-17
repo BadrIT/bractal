@@ -6,12 +6,15 @@ import PaginationWrapper from './PaginationWrapper';
 import PaginationBoxMobile from './PaginationBoxMobile';
 import PaginationBoxDesktop from './PaginationBoxDesktop';
 import { loadPrev, loadNext } from './PaginationNextAndPrevious';
+import withPaginationData from './PaginationData';
 
-const PaginationBox = ({ refetchMethod, pageInfo, subscribe }) => {
-  const paginator = new PaginationWrapper(refetchMethod, subscribe, pageInfo.limit);
+const PaginationBox = ({ refetchMethod, refetchSubscribeToPreflight, pageInfo }) => {
+  const limit = pageInfo ? pageInfo.limit : 12;
+  const paginator = new PaginationWrapper(refetchMethod, refetchSubscribeToPreflight, limit);
   return (
     <React.Fragment>
-      {pageInfo.items_count > pageInfo.limit &&
+      {pageInfo
+        && pageInfo.items_count > pageInfo.limit &&
         <Media query={mediaQueryMax('mobile')}>
           {matches => (
             matches ? (
@@ -19,16 +22,16 @@ const PaginationBox = ({ refetchMethod, pageInfo, subscribe }) => {
                 loadNextPage={() => loadNext(paginator, pageInfo)}
                 loadPrevPage={() => loadPrev(paginator, pageInfo)}
               />
-            ) : ( 
-              <PaginationBoxDesktop
-                loadNextPage={() => loadNext(paginator, pageInfo)}
-                loadPrevPage={() => loadPrev(paginator, pageInfo)}
-                loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
-                currentPage={pageInfo.current_page}
-                limit={pageInfo.limit}
-                itemsCount={pageInfo.items_count}
-              />
-          ))}
+            ) : (
+                <PaginationBoxDesktop
+                  loadNextPage={() => loadNext(paginator, pageInfo)}
+                  loadPrevPage={() => loadPrev(paginator, pageInfo)}
+                  loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
+                  currentPage={pageInfo.current_page}
+                  limit={pageInfo.limit}
+                  itemsCount={pageInfo.items_count}
+                />
+              ))}
         </Media>
       }
     </React.Fragment>
@@ -40,4 +43,4 @@ PaginationBox.propTypes = {
   refetchMethod: PropTypes.func.isRequired,
 }.isRequired;
 
-export default PaginationBox;
+export default withPaginationData(PaginationBox);

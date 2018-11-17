@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import { translate, Trans } from 'react-i18next';
 import { Header, Container } from 'semantic-ui-react';
@@ -28,7 +29,7 @@ const HomePage = () => (
       <Route path="/todos/signup" exact component={SignupPage} />
       <Route path="/todos/signin" exact component={SigninPage} />
       <Route path="/todos/create" exact component={TodoCreatePage} />
-      <Route path="/todos/:id" exact component={TodoDetailsPage} />
+      {/* <Route path="/todos/:id" exact component={TodoDetailsPage} /> */}
     </Switch>
   </React.Fragment>
 );

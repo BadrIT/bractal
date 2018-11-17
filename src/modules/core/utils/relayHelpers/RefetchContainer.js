@@ -8,7 +8,9 @@ import objectsDeepNotEqualComparison from '~/modules/core/utils/jsHelpers/object
 import RefetchProvider from './RefetchProvider';
 import RefetchDependencyResolver from './RefetchDependencyResolver';
 
-const getVariables = props => (_.isFunction(props.variables) ? props.variables(props) : props.variables);
+const getVariables = props => (_.isFunction(props.variables)
+  ? props.variables(props)
+  : props.variables);
 
 const refetchData = props => props.dataHooks
   && props.queryResult
@@ -35,13 +37,6 @@ class RefetchContainer extends React.Component {
     return null;
   }
 
-  state = {
-    isLoading: false,
-    prevIsLoading: false, // eslint-disable-line react/no-unused-state
-    variables: getVariables(this.props),
-    prevVariables: getVariables(this.props), // eslint-disable-line react/no-unused-state
-  };
-
   constructor(props) {
     super(props);
 
@@ -50,6 +45,13 @@ class RefetchContainer extends React.Component {
       props.refetchDependencies,
     );
   }
+
+  state = {
+    isLoading: false,
+    prevIsLoading: false, // eslint-disable-line react/no-unused-state
+    variables: getVariables(this.props),
+    prevVariables: getVariables(this.props), // eslint-disable-line react/no-unused-state
+  };
 
   componentDidMount = () => {
     this.setState({
