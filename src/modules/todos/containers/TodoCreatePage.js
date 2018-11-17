@@ -3,7 +3,7 @@ import { Container, Header } from 'semantic-ui-react';
 import { translate, Trans } from 'react-i18next';
 import { graphql } from 'react-relay';
 import PropTypes from 'prop-types';
-
+import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
@@ -67,7 +67,6 @@ class TodoCreatePage extends Component {
         <ErrorLabel>
           {panelError}
         </ErrorLabel>
-        <Spacer lg />
         <RelayForm
           onRef={(ref) => { this.form = ref; }}
           onFormError={error => this.onError(error)}
@@ -85,11 +84,12 @@ class TodoCreatePage extends Component {
             },
           })}
         />
-
-        <Button fullRound primary disabled={isLoading} onClicked={() => this.submitForm()}>
-          <Trans i18nKey="form.todo" />
-        </Button>
-        <Spacer xl />
+        <Column leftAligned fullWidth>
+          <Button width="200px" fullRound primary disabled={isLoading} onClicked={() => this.submitForm()}>
+            <Trans i18nKey="form.todo" />
+          </Button>
+          <Spacer xl />
+        </Column>
       </Container>
     );
   }
