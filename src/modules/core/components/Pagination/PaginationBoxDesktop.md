@@ -51,6 +51,7 @@
           limit={1}
           itemsCount={2000}
         /> <PaginationBoxDesktop
+          md
           currentPage={9}
           limit={1}
           itemsCount={2000}

@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
-
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { infereFontSize, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
@@ -12,8 +12,9 @@ import { defaultLeftClassName, defaultRightClassName, defaultEllipsisIcon } from
 // TODO Mostafa remove all margins
 const SHOWN_LINKS_COUNT = 8;
 
+// TODO fix size
 const IconCommonStyle = css`
-  font-size: ${props => infereFontSize(props)}pt;
+  // font-size: ${props => infereFontSize(props)}px;
 `;
 
 const IconLeft = styled(Icon)`
@@ -49,7 +50,7 @@ const ToggleButtonStyle = styled(ToggleButton)`
   margin: 5px;
   color: ${props => props.theme.new.colors.labels.normal.normal};
   ${props => props.selected && css`
-    color: ${props.theme.new.colors.primary.inverted};
+    color: ${props.theme.new.colors.labels.inverted.primary};
     border: 0px;
   `}
   &:hover {
@@ -59,7 +60,7 @@ const ToggleButtonStyle = styled(ToggleButton)`
   }
 
   &:active {
-    color: ${props => props.theme.new.colors.primary.inverted};
+    color: ${props => props.theme.new.colors.labels.inverted.primary};
     background: ${props => props.theme.new.colors.primaryClicked};
     border: 0px;
   }
@@ -92,7 +93,7 @@ const PaginationBoxDesktop = props => (
             selected={props.currentPage === item}
             onClicked={() => props.loadPage(item)}
           >
-            {item}
+            <p>{item}</p>
           </ToggleButtonStyle>
         )))}
       <IconRight
