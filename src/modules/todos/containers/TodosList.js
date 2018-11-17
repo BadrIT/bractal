@@ -6,8 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-
-import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import TodosListEntry from './TodosListEntry';
 
 const TodosList = ({ query }) => (

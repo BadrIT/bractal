@@ -8,7 +8,7 @@ import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import Button from '~/modules/coreUI/components/basic/Button';
-import LinearLayout from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
+import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { withRouter } from 'react-router-dom';
 
 const ContainerStyled = styled.div`
