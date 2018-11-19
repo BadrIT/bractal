@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { login } from '~/modules/todos/Auth';
 
-const TodosPage = () => {
-  login();
+const TodosPage = (props) => {
+  login(props);
   return (
     <Link to="/todos/list">
       Click if you are not redirected automatically

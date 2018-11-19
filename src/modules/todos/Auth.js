@@ -32,6 +32,7 @@ lock.on('authenticated', (authResult) => {
       // Handle error
       return;
     }
+    console.log(authResult);
     localStorage.setItem('accessToken', authResult.accessToken);
   });
 });
@@ -40,4 +41,16 @@ export const logout = () => lock.logout({
   returnTo: 'http://localhost:3000/todos/',
 });
 
-export const login = () => lock.show();
+export const login = (props) => {
+  lock.checkSession({
+    redirectUrl: 'http://localhost:3000/todos/list',
+    scope: 'openid',
+    audience: 'https://bractal.auth0.com/api/v2/',
+  }, (error, authResult) => {
+    if (error || !authResult) {
+      lock.show();
+    } else {
+      props.history.push('/todos/list');
+    }
+  });
+};
