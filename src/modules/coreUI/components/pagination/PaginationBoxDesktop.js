@@ -13,12 +13,12 @@ import { defaultLeftClassName, defaultRightClassName, defaultEllipsisIcon } from
 const SHOWN_LINKS_COUNT = 8;
 
 // TODO fix size
-const IconCommonStyle = css`
-  // font-size: ${props => infereFontSize(props)}px;
+const IconCommonStyle = props => css`
+   font-size: ${infereFontSize(props)}px;
 `;
 
 const IconLeft = styled(Icon)`
-  ${IconCommonStyle}
+  ${props => IconCommonStyle(props)}
   ${props => props.currentPage === 1 && css`
   pointer-events: none;
   color: ${props.theme.new.colors.labels.normal.hint};
@@ -26,7 +26,7 @@ const IconLeft = styled(Icon)`
 `;
 
 const IconRight = styled(Icon)`
-  ${IconCommonStyle}
+  ${props => IconCommonStyle(props)}
   ${props => props.currentPage === props.lastPage && css`
   pointer-events: none;
   color: ${props.theme.new.colors.labels.normal.hint};
@@ -34,7 +34,7 @@ const IconRight = styled(Icon)`
 `;
 
 const IconEllipsis = styled(Icon)`
-  ${IconCommonStyle}
+  ${props => IconCommonStyle(props)}
   margin: 5px;
 `;
 
@@ -46,8 +46,8 @@ const PaginationStyle = styled.div`
 
 const ToggleButtonStyle = styled(ToggleButton)`
   min-width: ${props => 4 * inferePaddingSize(props)}px;
-  height: ${props => 4 * inferePaddingSize(props)}px;
-  margin: 5px;
+  // height: ${props => 4 * inferePaddingSize(props)}px;
+  // margin: 5px;
   color: ${props => props.theme.new.colors.labels.normal.normal};
   ${props => props.selected && css`
     color: ${props.theme.new.colors.labels.inverted.primary};
@@ -88,6 +88,7 @@ const PaginationBoxDesktop = props => (
         ) : (
           <ToggleButtonStyle
             {...props}
+            pxRatio={1.8}
             inverted={props.currentPage !== item}
             fullRound
             selected={props.currentPage === item}
@@ -95,7 +96,7 @@ const PaginationBoxDesktop = props => (
           >
             <p>{item}</p>
           </ToggleButtonStyle>
-        )))}
+          )))}
       <IconRight
         {...props}
         currentPage={props.currentPage}
