@@ -1,10 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
+import { responsiveStyle, infereSpaceSize } from '~/modules/coreUI/utils/infereStyle';
+
+import spaceStyles from '~/modules/coreUI/utils/styleSystem';
 
 export const StyledSpacer = styled.div`
-  width: ${props => props.size * props.theme.new.spacer}px;
-  height: ${props => props.size * props.theme.new.spacer}px;
+  flex-grow: ${props => (props.grow ? 1 : null)};
+  
+  ${props => responsiveStyle(props, 'size', size => css`
+    min-width: ${infereSpaceSize(props, size)};
+    min-height: ${infereSpaceSize(props, size)};
+  `)};
+
+  ${props => spaceStyles(props)}
 `;
 
 const Spacer = props => <StyledSpacer {...props} />;
@@ -18,3 +28,11 @@ Spacer.propTypes = PropTypes.shape({
 }).isRequired;
 
 export default Spacer;
+
+export const HSpacer = props => (
+  <Spacer minHeight="1px" {...props} />
+);
+
+export const VSpacer = props => (
+  <Spacer minWidth="1px" {...props} />
+);

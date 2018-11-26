@@ -1,8 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
+import { css } from 'emotion';
 import PropTypes from 'prop-types';
 
+import { responsiveStyle, infereSpaceSize } from '~/modules/coreUI/utils/infereStyle';
+import spaceStyles from '~/modules/coreUI/utils/styleSystem';
+import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
+
 import Spacer from './Spacer';
+import { LinearLayout } from './LinearLayout';
+
 
 const lengths = {
   small: '30%',
@@ -12,80 +19,73 @@ const lengths = {
   full: '100%',
 };
 
-const getLength = (props) => {
-  let length = 'normal';
-  if (props.separatorLength) {
-    length = props.separatorLength;
-  }
+const getLength = (props, size) =>
+  lengths[size] ||
+  infereSpaceSize(props, size);
 
-  return lengths[length] || '50%';
-};
-
-const getWeight = (props) => {
-  let weight = 'light';
-  if (props.separatorWeight) {
-    weight = props.separatorWeight;
-  }
-
-  return props.theme.borders.size[weight];
-};
+const getWeight = (props, size) =>
+  (props.theme.borders.size[size] && `${props.theme.borders.size[size]}px`) ||
+  infereSpaceSize(props, size);
 
 const getColor = (props) => {
-  let color = 'light';
-  if (props.separatorColorTone) {
-    color = props.separatorColorTone;
-  }
+  const color = props.separatorColorTone || 'light';
 
   return props.theme.borders.color[color];
 };
 
-const SeparatorContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const SeparatorContainer = styled(LinearLayout)`
   align-self: stretch;
-  position: relative;  
+  position: relative;
+  opacity: ${props => props.opacity || 1};
+
+  ${props => spaceStyles(props)}
 `;
 
-const getGenericHeight = (props) => {
-  if (props.vertical) {
-    return getLength(props) || '50%';
-  }
-  return `${getWeight(props) || 1}px`;
-};
+const VerticalSeparatorRenderer = props => css`
+  ${responsiveStyle(props, 'separatorLength', size => css`
+    height: ${getLength(props, size)};
+  `, 'normal')};
+  ${responsiveStyle(props, 'separatorWeight', size => css`
+    width: ${getWeight(props, size)};
+  `, 'thin')};
+`;
 
-const getGenericWidth = (props) => {
-  if (props.vertical) {
-    return `${getWeight(props) || 1}px`;
-  }
-  return getLength(props) || '50%';
-};
+const HorizontalSeparatorRenderer = props => css`
+  ${responsiveStyle(props, 'separatorWeight', size => css`
+    height: ${getWeight(props, size)};
+  `, 'thin')};
+  ${responsiveStyle(props, 'separatorLength', size => css`
+    width: ${getLength(props, size)};
+  `, 'normal')};
+`;
 
-const SeparatorRenderer = styled.div`
-  height: ${props => getGenericHeight(props)};
-  width: ${props => getGenericWidth(props)};
-
-  margin-top: ${props => (props.vertical ? props.offset : null)};
-  margin-left: ${props => (!props.vertical ? props.offset : null)};
+const SeparatorRenderer = withMedia(styled.div`
+  ${props => (props.vertical
+    ? VerticalSeparatorRenderer(props)
+    : HorizontalSeparatorRenderer(props)
+  )}
   
-  background-color: ${props => getColor(props) || props.theme.borders.color.light};
-  opacity: ${props => props.opacity || 0.4};
-`;
+  background-color: ${props => getColor(props)};
+`);
 
 const Separator = props => (
-  <SeparatorContainer {...props}>
+  <SeparatorContainer {...props} row={props.vertical}>
     {/* TODO : Use PropTypes default value instead */}
-    <Spacer size={props.spacerSize} />
-    <SeparatorRenderer {...props} />
-    <Spacer size={props.spacerSize} />
+    <Spacer size={props.spacerSize || 1} />
+    <SeparatorRenderer
+      separatorWeight={props.separatorWeight}
+      separatorLength={props.separatorLength}
+      separatorColorTone={props.separatorColorTone}
+      vertical={props.vertical}
+    />
+    <Spacer size={props.spacerSize || 1} />
   </SeparatorContainer>
 );
 
 Separator.propTypes = PropTypes.shape({
-  spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
-  separatorWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
-  separatorLength: PropTypes.oneOf(['short', 'normal', 'long', 'full']),
+  separatorWeight: PropTypes.oneOf(['thin', 'normal', 'bold']),
+  separatorLength: PropTypes.oneOf(['small', 'normal', 'large', 'xLarge', 'full']),
   separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),
 }).isRequired;
 
-export default Separator;
+export default withMedia(Separator);

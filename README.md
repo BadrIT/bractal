@@ -4,7 +4,7 @@ Bractal is a platform that enables you to get your React Apps, off-the-ground so
 
 # Why Bractal
 
-It differs from libraries like Bootsrap and SemanticUI, that Bractal not only provide UI components, but a way to extend and re-use components. Plus it's built from the ground up, on React, embracing concepts like styled-components. 
+It differs from libraries like Bootsrap and SemanticUI, that Bractal not only provide UI components, but a way to extend and re-use components. Plus it's built from the ground up, on React.
 
 AND, if your app, is beyond a simple handful pages, then Bractal would be very handy to modularize your system.
 
@@ -39,7 +39,7 @@ By now you should be able to see the welcome screen (Welcome !):
 
 ### Premise
 
-We want to create a CRUD(create, update, delete) module for posts. Where the user can create a post, update a post or delete a post.
+We want to create a CRUD(create, update, delete) module for a Todos List. Where the user can list his Todos, create a Todo, update a Todo or delete a Todo.
 
 ### Backend
 
@@ -54,7 +54,7 @@ To start, let's create a GraphQL using a Prisma hosted service.
    4. Now you should be able to explore your updated schema on prisma's playground (You should see it's URL on the terminal after executing the previous command), and the following query should succeed (It would return empty results but that's fine for now) :
    ```graphql
     query {
-      posts {
+      todoes {
         id
         title
         description
@@ -93,63 +93,41 @@ Now let's add some exciting stuff. We'll create a bunch of views, with just few 
   ![Plop Input](docs/assets/getting_started/plop_input.png)
   4. If the everything went fine, you should see something like :
   ![Plop Input](docs/assets/getting_started/plop_result.png)
-  5. Now you should see the newly created module in the path ```{AppRoot}/src/modules/posts```
+  5. Now you should see the newly created module in the path ```{AppRoot}/src/modules/todos```
   6. Now add the newly created modules to module configurations. To do so, change the contents of ```{AppRoot}/src/modulesConfig.js```. To be the same as [(This file)](docs/assets/getting_started/sample.moduleConfig.js)
+  7. Rerun compile-relay to get the new Relay files :
+  ```
+  cd {AppRoot}
+  npm run compile-relay
+  ```
   7. Now you can run the app to see your new module 
   ```
   cd {AppRoot}
   npm start
   ```
-  8. You should now see 'Posts' as a new entry in the top menu of the App.
+  8. You should now see 'Todos' as a new entry in the top menu of the App.
+  9. Open the Todos page, and create some entries, by clicking 'Create Todo'.
+  10. To see the details of a certain Todo open a certain Todo by clicking it's details link.
   9. Voila` !!! , Hello Bractal World !
 
-### Viewing the data
-
-Now you're supposed to see an empty view, since we haven't added any posts yet. First let's add some fixed data, then we will add them dynamically.
-
-   1. Goto your Prisma's Playground and add a user and associate to him some posts
-   ```graphql
-    mutation {
-      createUser(data: {
-        name: "Your Name"
-      }) {
-        name
-        id
-      }
-    }
-   ```
-   2. Record the id you got from the previous mutation (Your user's id)
-   3. Create some posts (Replace the USER_ID in the following snippet with the id, you got in the previous step)
-   ```graphql
-    mutation {
-      createPost(data:{
-        title: "Nice Article !" 
-        description: "And this is it's description"
-        author: {
-          connect: {
-            id: "USER_ID"
-          }
-        }
-      }) {
-        title
-        description
-        author {
-          name
-          id
-        }
-      }
-    }
-   ``` 
-   4. Create as many posts as you wish, to get a nice view
-   5. Goto your App in the browswer and refresh it to see the List of posts that you've just created !
-   6. Now you can click on one of the posts to see it's details or go back to the list of posts.
-   6. That's it, you just got your first Bractal's module up and running, congrats !!
-
-### Creating some data
-
-In this step you'll create a form and a mutation to allow the user to add a post record.
+### Add/Delete Todo entries
 
 // TODO
+
+## Component documentation
+
+Documentation is on : [Styleguidist] https://badrit.github.io/bractal/
+
+to build a local version of the documentation, run :
+
+```
+npx styleguidist server
+```
+
+to add a documentation of a new component, add it's link to the appropriate location here :
+{AppRoot}/styleguide.config.js
+
+Then add a '*.md' file beside it. (Check {AppRoot}/src/modules/coreUI/components/basic/Labels.md, for an example)
 
 # Roadmap
 

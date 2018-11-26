@@ -2,10 +2,10 @@
 import React from 'react';
 import ExternalLink from '~/modules/coreUI/components/basic/ExternalLink';
 import { Image } from 'semantic-ui-react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import ValidateAndResolve from '~/modules/core/utils/jsHelpers/ValidateAndResolve';
-import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/VerticalSeparator';
+import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 
 import DropdownContentTracker from './DropdownContentTracker';
@@ -52,7 +52,8 @@ const renderMenuItem = (itemInfo) => {
 };
 
 const renderVerticalSeparator = itemInfo => (
-  <VerticalSeparator
+  <Separator
+    vertical
     spacerSize={itemInfo.spacerSize}
     separatorColorTone={itemInfo.separatorColorTone}
     separatorLength={itemInfo.separatorLength || 'large'}

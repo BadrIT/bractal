@@ -1,11 +1,13 @@
 {
     "extends": "airbnb",
     "parser": "babel-eslint",
+    "plugins": ["emotion"],
     "rules": {
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "emotion/syntax-preference": [2, "string"]
     },
     "env": {
         "browser": true,
