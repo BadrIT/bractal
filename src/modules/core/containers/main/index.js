@@ -20,7 +20,7 @@ import registerServiceWorker from './registerServiceWorker';
 import i18nextLoader from './i18n'; // initialized i18next instance
 
 const portalEndPoint = process.env.REACT_APP_GRAPHQL_ENDPOINT;
-assert(portalEndPoint, "Backend endpoint isn't set correctly, call the npm build (or start), as follows : 'REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk-dev.badrit.com/graphql npm start''");
+assert(portalEndPoint, "Backend endpoint isn't set correctly, call the npm build (or start), as follows : 'REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 npm start''");
 
 const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
   <Router>

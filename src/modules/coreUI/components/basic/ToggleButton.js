@@ -63,10 +63,11 @@ const StyledButton = styled(Button)`
 
   ${props => props.styles && props.styles(props)}
 
-  ${props => props.media.xsmall && css`
-    padding-top: ${0.5 * inferePaddingSize(props)}px;
-    padding-bottom: ${0.5 * inferePaddingSize(props)}px;
-  `}
+  // TODO this line not working
+  // ${props => props.media.xsmall && css`
+  //   padding-top: ${0.5 * inferePaddingSize(props)}px;
+  //   padding-bottom: ${0.5 * inferePaddingSize(props)}px;
+  // `}
 `;
 
 class ToggleButton extends React.Component {

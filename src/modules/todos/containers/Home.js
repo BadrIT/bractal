@@ -1,9 +1,9 @@
-/*eslint-disable*/
 import React from 'react';
 import { translate, Trans } from 'react-i18next';
 import { Header, Container } from 'semantic-ui-react';
 import { Switch, Route } from 'react-router-dom';
-
+import RelayProvider from '~/modules/core/utils/relayHelpers/RelayProvider';
+import AlertProvider from '~/modules/core/utils/alertHelpers/AlertProvider';
 import TodosMainPage from './TodosMainPage';
 import SignupPage from './SignupPage';
 import SigninPage from './SigninPage';
@@ -29,9 +29,17 @@ const HomePage = () => (
       <Route path="/todos/signup" exact component={SignupPage} />
       <Route path="/todos/signin" exact component={SigninPage} />
       <Route path="/todos/create" exact component={TodoCreatePage} />
-      {/* <Route path="/todos/:id" exact component={TodoDetailsPage} /> */}
+      <Route path="/todos/:id" exact component={TodoDetailsPage} />
     </Switch>
   </React.Fragment>
 );
 
-export default translate('todos')(HomePage);
+const Wrapper = () => (
+  <AlertProvider>
+    <RelayProvider>
+      <HomePage />
+    </RelayProvider>
+  </AlertProvider>
+);
+
+export default translate('todos')(Wrapper);

@@ -23,15 +23,15 @@ const PaginationBox = ({ refetchMethod, refetchSubscribeToPreflight, pageInfo })
                 loadPrevPage={() => loadPrev(paginator, pageInfo)}
               />
             ) : (
-                <PaginationBoxDesktop
-                  loadNextPage={() => loadNext(paginator, pageInfo)}
-                  loadPrevPage={() => loadPrev(paginator, pageInfo)}
-                  loadPage={(item) => paginator.refetch(item - 1, pageInfo.limit)}
-                  currentPage={pageInfo.current_page}
-                  limit={pageInfo.limit}
-                  itemsCount={pageInfo.items_count}
-                />
-              ))}
+              <PaginationBoxDesktop
+                loadNextPage={() => loadNext(paginator, pageInfo)}
+                loadPrevPage={() => loadPrev(paginator, pageInfo)}
+                loadPage={item => paginator.refetch(item - 1, pageInfo.limit)}
+                currentPage={pageInfo.current_page}
+                limit={pageInfo.limit}
+                itemsCount={pageInfo.items_count}
+              />
+            ))}
         </Media>
       }
     </React.Fragment>

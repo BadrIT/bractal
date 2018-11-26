@@ -1,4 +1,4 @@
-import { scrollToContainerTop } from '~/modules/core/utils/jsHelpers/ScrollToTop';
+import { scrollHtmltoTop } from '~/modules/core/utils/jsHelpers/ScrollToTop';
 import { ITEMS_LIST_VIEW_PAGINATION_KEY, buildPaginationQueryInput } from './index';
 
 class PaginationWrapper {
@@ -25,7 +25,7 @@ class PaginationWrapper {
     this.refetchMethod(ITEMS_LIST_VIEW_PAGINATION_KEY, [
       buildPaginationQueryInput(pageNumber * limit, limit),
     ]);
-    scrollToContainerTop('ProductsListContainer');
+    scrollHtmltoTop();
   };
 }
 

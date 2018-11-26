@@ -6,10 +6,25 @@ const resolvers = {
     todo(root, args, context) {
       return context.prisma.todo({ id: args.todoId })
     },
-    todosByUser(root, args, context) {
-      return context.prisma.user({
-        id: args.userId
-      }).todos()
+    async todosByUser(root, args, context) {
+      const todos = await context.prisma.user({
+        id: args.input.userId
+      }).todos({
+        skip: args.input.page.offset,
+        first: args.input.page.limit
+      });
+      const todosCount = await context.prisma.user({
+        id: args.input.userId
+      }).todos();
+      const pageInfo = {
+        limit: args.input.page.limit,
+        current_page: args.input.page.offset / args.input.page.limit + 1,
+        items_count: todosCount.length,
+      }
+      return {
+          todos,
+          pageInfo,
+      }
     },
     getUsers(root, args, context) {
       return context.prisma.users({})
@@ -34,7 +49,7 @@ const resolvers = {
       )
     },
     async Signin(root, args, context, info) {
-      const user = await context.prisma.users({where:{name: args.data.name}})
+      const user = await context.prisma.users({ where: { name: args.data.name } })
       if (user[0].password == args.data.password) {
         return user[0];
       } else {

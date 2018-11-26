@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import {
   Segment,
 } from 'semantic-ui-react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
 import PropTypes from 'prop-types';
 
 const itemDetailsLink = itemID => `/todos/${itemID}`;
@@ -36,9 +32,4 @@ TodosListEntry.propTypes = {
   todoInfo: PropTypes.shape({}).isRequired,
 };
 
-export default createFragmentContainer(TodosListEntry, graphql`
-  fragment TodosListEntry_todoInfo on Todo {
-    id,
-    title,
-  }
-`);
+export default TodosListEntry;

@@ -45,7 +45,7 @@ class RelayProvider extends React.Component {
 
     assert(
       this.portalEndPoint,
-      "Back-end endpoint isn't set correctly, pass it as a prop, or call the npm build (or start), as follows : 'REACT_APP_GRAPHQL_ENDPOINT=https://ayk-test-portal.badrit.com/graphql npm start''",
+      "Back-end endpoint isn't set correctly, pass it as a prop, or call the npm build (or start), as follows : 'REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 npm start''",
     );
 
     const store = new Store(new RecordSource());
