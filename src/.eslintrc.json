@@ -8,7 +8,9 @@
         "jsx-a11y/anchor-is-valid": [ "error", {
             "components": [ "Link" ],
             "specialLink": [ "to" ]
-        }]
+        }],
+        "linebreak-style": 0,
+        "global-require": 0
     },
     "env": {
         "browser": true,

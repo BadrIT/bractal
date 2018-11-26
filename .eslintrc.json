@@ -7,7 +7,9 @@
             "extensions": [".js", ".jsx"]
         }],
         "no-param-reassign": 0,
-        "emotion/syntax-preference": [2, "string"]
+        "emotion/syntax-preference": [2, "string"],
+        "linebreak-style": 0,
+        "global-require": 0
     },
     "env": {
         "browser": true,
