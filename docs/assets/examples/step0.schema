@@ -1,0 +1,41 @@
+type Query {
+  todo(todoId: ID!): Todo
+  todosByUser(userId: ID!): [Todo!]!
+  getUsers: User!
+}
+
+type Mutation {
+  createTodo(data: TodoCreateInput!): Todo
+  createUser(data: CreateUserInput!): User
+  Signin(data: SignInInput): User
+}
+
+input CreateUserInput {
+  name: String!
+  password: String!
+}
+
+input SignInInput {
+  name: String!
+  password: String!
+}
+
+input TodoCreateInput {
+  title: String!
+  description: String!
+  userId: ID!
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  description: String!
+  author: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  password: String!
+  todos: [Todo!]!
+}
