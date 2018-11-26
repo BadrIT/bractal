@@ -1,0 +1,19 @@
+type Query {
+  todo(todoId: ID!): Todo
+  todosByUser: [Todo!]!
+}
+
+type Mutation {
+  createTodo(data: TodoCreateInput!) :Todo
+}
+
+input TodoCreateInput {
+  title: String!
+  description: String!
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  description: String!
+}
