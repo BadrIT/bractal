@@ -10,6 +10,8 @@ import PaginationBox from '~/modules/coreUI/components/pagination/PaginationBox'
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import TodosList from './TodosList';
 
+const PAGE_LIMIT = 3;
+
 const TodosListPageQuery = graphql`
   query TodosListPageQuery ($input: TodosUserInput!) {
     ...TodosListPage_queryResult @arguments(input: $input)
@@ -55,7 +57,7 @@ export default withRefetchQuery(
     input: {
       userId: localStorage.getItem('userId'),
       page: {
-        limit: 3,
+        limit: PAGE_LIMIT,
         offset: 0,
       },
     },
