@@ -30,7 +30,6 @@ module.exports = {
             'src/modules/coreUI/components/basic/Button.jsx',
             'src/modules/coreUI/components/basic/ToggleButton.js',
             'src/modules/coreUI/components/basic/Checkbox.jsx',
-            'src/modules/coreUI/components/basic/RadioButton.js',
             'src/modules/coreUI/components/basic/PopupSelect.js',
           ],
         },
@@ -47,11 +46,7 @@ module.exports = {
     {
 			name: 'Molecules',
       content: 'docs/sections/atoms/introduction.md',
-      components: () => [
-        'src/modules/core/utils/alertHelpers/**/*.{ts,tsx,js,jsx}',
-        'src/modules/core/components/Pagination/PaginationBoxDesktop.js',
-        'src/modules/core/components/Pagination/PaginationBoxMobile.js',
-      ],
+      components: () => ['src/modules/core/utils/alertHelpers/**/*.{ts,tsx,js,jsx}'],
 		},
 	],
   skipComponentsWithoutExample: true,

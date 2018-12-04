@@ -1,0 +1,11 @@
+type User {
+  id: ID! @unique
+  name: String!
+}
+
+type Todo {
+  id: ID! @unique
+  title: String!
+  description: String!
+  reminder_date: String!
+}

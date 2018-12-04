@@ -8,6 +8,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.3.1",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "0.1.0-11",
+    "ajv-keywords": "^3.2.0",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-core": "6.26.0",
@@ -56,6 +57,7 @@
     "raf": "3.4.0",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-datepicker": "^2.0.0",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.5.2",
     "react-ellipsis-with-tooltip": "^1.0.8",
@@ -68,7 +70,7 @@
     "react-modal": "^3.5.1",
     "react-relay": "^1.6.0",
     "react-router-dom": "^4.2.2",
-    "react-select": "^2.0.0",
+    "react-select": "^2.1.2",
     "react-slick": "^0.23.1",
     "react-spinners": "^0.4.5",
     "react-toastify": "^4.3.1",
@@ -93,15 +95,15 @@
   },
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
-    "build": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 node scripts/build.js",
+    "build": "REACT_APP_GRAPHQL_ENDPOINT=https://eu1.prisma.sh/abdelrahman/hello-world/dev node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:es",
-    "refetch-schema": "graphql-fetch-schema http://localhost:4000",
+    "refetch-schema": "graphql-fetch-schema https://eu1.prisma.sh/abdelrahman/hello-world/dev",
     "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:es": "eslint ./src ",
-    "start": "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000 npm run start-internal"
+    "start": "REACT_APP_GRAPHQL_ENDPOINT=https://eu1.prisma.sh/abdelrahman/hello-world/dev npm run start-internal"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.11",

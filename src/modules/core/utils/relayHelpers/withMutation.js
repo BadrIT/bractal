@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { commitMutation } from 'react-relay';
 import PropTypes from 'prop-types';
@@ -10,28 +11,22 @@ class Wrapper extends React.Component {
     assert(this.wrappedComponent.onMutationError, 'onMutationError Should Not Be Undefined');
     assert(this.wrappedComponent.onMutationSuccess, 'onMutationSuccess Should Not Be Undefined');
     assert(this.wrappedComponent.onMutationLoading, 'onMutationLoading Should Not Be Undefined');
-  };
-
-  onError = (errors, rawErrors) => {
-    if (this.wrappedComponent) {
-      this.wrappedComponent.onMutationError(errors, rawErrors);
-    }
-  };
-
+  }
+  onError = (error) => {
+    this.wrappedComponent.onMutationError(error);
+  }
   onSuccess = (response) => {
-    if (this.wrappedComponent) {
-      this.wrappedComponent.onMutationSuccess(response);
-    }
-  };
-
+    this.wrappedComponent.onMutationSuccess(response);
+  }
   onLoading = (loading) => {
-    if (this.wrappedComponent) {
-      this.wrappedComponent.onMutationLoading(loading);
-    }
-  };
-
-  submit = (variables, successCallback = null) => {
-    const { environment, mutation, mutationRoot } = this.props;
+    this.wrappedComponent.onMutationLoading(loading);
+  }
+  submit = (variables) => {
+    const {
+      environment,
+      mutation,
+      mutationRoot,
+    } = this.props;
 
     this.onLoading(true);
 
@@ -39,7 +34,6 @@ class Wrapper extends React.Component {
       mutation,
       variables,
       onCompleted: (response, errors) => {
-        let rawErrors;
         const serverErrors = {};
         const globalError = errors && errors.length > 0 && errors[0];
 
@@ -47,26 +41,17 @@ class Wrapper extends React.Component {
           serverErrors.global = globalError.message;
         }
 
-        const errorsExist = response
-          && response[mutationRoot]
-          && response[mutationRoot].errors
-          && response[mutationRoot].errors.length;
-
-        if (errorsExist) {
-          rawErrors = response[mutationRoot].errors;
-          rawErrors.forEach((error) => {
+        if (response && response[mutationRoot] && response[mutationRoot].errors) {
+          response[mutationRoot].errors.forEach((error) => {
             // TODO : Till the return from the backend isn't 'email' any more
             serverErrors[error.field] = `${error.messages[0]}`;
           });
-          serverErrors.rawErrors = rawErrors;
         }
 
         this.onLoading(false);
         // form to render to show server errors (When no local errors are there)
         if (serverErrors && Object.keys(serverErrors).length > 0) {
-          this.onError(serverErrors, rawErrors);
-        } else if (successCallback) {
-          successCallback(response);
+          this.onError(serverErrors);
         } else {
           this.onSuccess(response);
         }
@@ -76,22 +61,19 @@ class Wrapper extends React.Component {
         this.onError(err.message || err.toString());
       },
     });
-  };
+  }
 
   render = () => {
     const { WrappedComponent } = this.props;
 
     return (
       <WrappedComponent
-        ref={(ref) => {
-          this.wrappedComponent = ref;
-        }}
+        ref={(ref) => { this.wrappedComponent = ref; }}
         onMutationSubmit={this.submit}
-        submitMutation={this.submit}
         {...this.props}
       />
     );
-  };
+  }
 }
 
 export default function withMutation(WrappedComponent, mutation, mutationRoot) {
@@ -108,9 +90,6 @@ export default function withMutation(WrappedComponent, mutation, mutationRoot) {
 Wrapper.propTypes = {
   environment: PropTypes.shape({}).isRequired,
   mutation: PropTypes.func.isRequired,
-  mutationRoot: PropTypes.string,
+  mutationRoot: PropTypes.string.isRequired,
   WrappedComponent: PropTypes.func.isRequired,
-};
-Wrapper.defaultProps = {
-  mutationRoot: null,
 };
