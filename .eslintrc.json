@@ -1,23 +1,30 @@
 {
-    "extends": "airbnb",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parser": "babel-eslint",
     "plugins": ["emotion"],
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
     "rules": {
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
-        "no-param-reassign": 0,
-        "emotion/syntax-preference": [2, "string"],
         "linebreak-style": 0,
-        "global-require": 0
-    },
-    "env": {
-        "browser": true,
-        "node": true
+        "global-require": 0,
+        "no-console": 1
     },
     "settings": {
-        "import/resolver": {            
+        "react": {"version": "16.7.0"},
+        "import/resolver": {
             "babel-module": {
+                "alias": {
+                    "~": "./src"
+                },
                 "extensions": [".js", ".jsx"]
             }
         }

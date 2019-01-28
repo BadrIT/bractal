@@ -1,4 +1,4 @@
-import { keyframes } from 'react-emotion';
+import { keyframes } from '@emotion/core';
 import { css } from 'emotion';
 import { infereFontSize, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
 
@@ -58,8 +58,8 @@ export const Wrapper = props => css`
     `
   ) : (
     bottomRight(props)
+  ))};
 
-  ))}
   color: ${props.color || props.theme.colors.named.white};
   opacity: ${props.opacity || '0.85'};
   animation-duration: 1s;

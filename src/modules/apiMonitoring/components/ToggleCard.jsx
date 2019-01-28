@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { Label } from '~/modules/coreUI/components/basic/Labels';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { StepStatus } from '~/modules/apiMonitoring/utils/TestRunner';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import Icon from '~/modules/coreUI/components/basic/Icon';
 
 
 const getHeaderBackground = (mode) => {
@@ -127,7 +126,7 @@ export default class ToggleCard extends Component {
         backgroundColor={getHeaderBackground(this.props.mode)}
         onClick={() => this.toggleVisibility()}
       >
-        <FontAwesomeIcon icon={this.state.contentVisible ? faCaretDown : faCaretRight} />
+        <Icon className={this.state.contentVisible ? 'fa fa-caret-down' : 'fa fa-caret-right' } />
         <Spacer />
         <Label
           color={this.props.colorizeTitle ? getStatusColor(this.props.mode) : 'important'}

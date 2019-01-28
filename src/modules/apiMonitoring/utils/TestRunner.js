@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import moment from 'moment';
 
-const endPoint = 'http://portal.ayk-test.badrit.com/graphql';
+const endPoint = 'https://ayk-test-portal.badrit.com/graphiql';
 
 const globalAdditionalHeaders = {};
 

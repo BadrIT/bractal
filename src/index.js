@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import BractalCore from '~/modules/core/containers/main';
@@ -9,11 +10,13 @@ import Header from '~/modules/modulesDocs/containers/main/Header';
 import PageContent from '~/modules/modulesDocs/containers/main/PageContent';
 import SideMenu from '~/modules/modulesDocs/containers/main/SideMenu';
 
-import '~/styles/css/App.css';
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
-// Loading gloabl styles
-// eslint-disable-next-line no-unused-vars
-import fontFamily from '~/globalStyles/fontFamily';
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
 
 export const { renderApp } = BractalCore;
 BractalCore.renderApp(

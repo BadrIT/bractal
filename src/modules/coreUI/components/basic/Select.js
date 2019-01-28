@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactSelect, { createFilter } from 'react-select';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 
 const Input = styled.input`

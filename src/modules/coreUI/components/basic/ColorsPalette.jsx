@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import changeCase from 'change-case';
 import { withTheme } from 'emotion-theming';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { Box, Column, Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';

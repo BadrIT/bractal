@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 
-import 'regenerator-runtime/runtime';
+import 'regenerator-runtime/runtime'; // WORKAROUND : https://github.com/relay-tools/react-relay-network-modern/issues/28
 
 import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 

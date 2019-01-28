@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { MediaQueryProvider } from 'react-media-query-hoc';
+import { MediaQueryProvider } from 'react-media-query-hoc-with-context';
 
-import { mediaQueryMax, mediaQueryMin, mediaQueryExact } from '~/modules/core/utils/cssHelpers/cssMedia';
-
+import {
+  mediaQueryMax,
+  mediaQueryMin,
+  mediaQueryExact,
+} from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const queries = {
   largeDesktop: mediaQueryMin('largeDesktop'),
@@ -25,11 +28,8 @@ const queries = {
   xsmall: mediaQueryMax('xsmall'),
 };
 
-
 const MediaProvider = props => (
-  <MediaQueryProvider queries={queries} >
-    {props.children}
-  </MediaQueryProvider>
+  <MediaQueryProvider queries={queries}>{props.children}</MediaQueryProvider>
 );
 
 export default MediaProvider;

@@ -11,7 +11,8 @@ import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTracker
 import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';
 import AlertProvider from '~/modules/core/utils/alertHelpers/AlertProvider';
 import ModulesLoader from '~/modules/core/utils/modulesLoader';
-import RelayInitializer from '~/modules/core/utils/relayHelpers/RelayInitializer';
+import RelayProvider from '~/modules/core/utils/relayHelpers/RelayProvider';
+import MediaProvider from '~/modules/core/utils/mediaHelpers/MediaProvider';
 
 import assert from '~/modules/core/utils/jsHelpers/assert';
 
@@ -22,25 +23,27 @@ import i18nextLoader from './i18n'; // initialized i18next instance
 const portalEndPoint = process.env.REACT_APP_GRAPHQL_ENDPOINT;
 assert(portalEndPoint, "Backend endpoint isn't set correctly, call the npm build (or start), as follows : 'REACT_APP_GRAPHQL_ENDPOINT=http://portal.ayk-dev.badrit.com/graphql npm start''");
 
-const createAppRoot = (AppComponent, theme, modules, environment, i18next) => (
+const createAppRoot = (AppComponent, theme, modules, i18next) => (
   <Router>
-    <RelayInitializer.Context.Provider value={environment}>
-      <ModulesLoader.Context.Provider value={modules} >
-        <I18nextProvider i18n={i18next}>
-          <ThemeProvider theme={theme}>
-            <AlertProvider>
-              <UserInfoProvider>
+    <MediaProvider>
+      <I18nextProvider i18n={i18next}>
+        <ThemeProvider theme={theme}>
+          <AlertProvider>
+            <UserInfoProvider>
+              <RelayProvider locale={i18next.language}>
                 <ModalTrackerProvider>
                   <SideMenuTrackerProvider>
-                    { AppComponent }
+                    <ModulesLoader.Context.Provider value={modules} >
+                      { AppComponent }
+                    </ModulesLoader.Context.Provider>
                   </SideMenuTrackerProvider>
                 </ModalTrackerProvider>
-              </UserInfoProvider>
-            </AlertProvider>
-          </ThemeProvider>
-        </I18nextProvider>
-      </ModulesLoader.Context.Provider>
-    </RelayInitializer.Context.Provider>
+              </RelayProvider>
+            </UserInfoProvider>
+          </AlertProvider>
+        </ThemeProvider>
+      </I18nextProvider>
+    </MediaProvider>
   </Router>
 );
 
@@ -48,14 +51,12 @@ const createApp = (modulesConfig, AppComponent, theme = null, callback) => {
   const i18next = i18nextLoader.load((err) => {
     if (err) throw (err);
 
-    const environment = RelayInitializer.init(portalEndPoint);
     const modules = modulesConfig ? ModulesLoader.loadModules(modulesConfig) : [];
 
     const appRoot = createAppRoot(
       AppComponent,
       theme || DefaultTheme,
       modules,
-      environment,
       i18next,
     );
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import ExternalLink from '~/modules/coreUI/components/basic/ExternalLink';
 import { Image } from 'semantic-ui-react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import ValidateAndResolve from '~/modules/core/utils/jsHelpers/ValidateAndResolve';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';

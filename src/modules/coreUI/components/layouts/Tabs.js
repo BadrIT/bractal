@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Tab as InnerTab, Tabs as InnerTabs, TabList as InnerTabList, TabPanel as InnerTabPanel } from 'react-tabs';
 import withOmitedProps from '~/modules/core/utils/cssHelpers/withOmitedProps';
 

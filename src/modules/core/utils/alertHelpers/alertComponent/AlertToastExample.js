@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { css } from 'emotion';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
@@ -8,7 +8,7 @@ import ToastMessage from './ToastMessage';
 import { Wrapper, Toast, ToastBody, ToastCloseButton } from './AlertToastStyle';
 
 const Container = styled.div`
-  ${Wrapper}
+  ${Wrapper};
   ${props => !props.topFullWidth && css`
     align-self: flex-end;
     margin-right: 20px;

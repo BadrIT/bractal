@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { Header } from '~/modules/coreUI/components/basic/Labels';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';

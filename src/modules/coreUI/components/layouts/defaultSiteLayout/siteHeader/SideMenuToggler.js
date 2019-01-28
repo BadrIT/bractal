@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import withSideMenuTracker from '~/modules/core/utils/sideMenuHelpers/withSideMenuTracker';

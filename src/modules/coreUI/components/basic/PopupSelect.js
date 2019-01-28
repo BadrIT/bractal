@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import Select from 'react-select';
 import { css } from 'emotion';

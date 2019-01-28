@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import injectElementBetweenChildElements from '~/modules/core/utils/jsHelpers/injectElementBetweenChildElements';
 import { boxColorsStyles } from '~/modules/coreUI/utils/infereStyle';
 import spaceStyles from '~/modules/coreUI/utils/styleSystem';

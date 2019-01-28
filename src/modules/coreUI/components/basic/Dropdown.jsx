@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown as SemanticDropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Container } from 'semantic-ui-react';
 
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';

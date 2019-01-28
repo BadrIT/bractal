@@ -1,6 +1,6 @@
 {
   "presets": [
-    "react-app"
+    "react-app",
   ],
   "plugins": [
     [
@@ -11,7 +11,13 @@
         }
       }
     ],
+    "@babel/plugin-proposal-optional-chaining",
     "relay",
-    "emotion"
+    [
+      "emotion",
+      {
+        "autoLabel": true
+      }
+    ]
   ]
 }

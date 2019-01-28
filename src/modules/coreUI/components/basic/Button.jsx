@@ -2,7 +2,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { withTheme } from 'emotion-theming';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { css } from 'emotion';
 import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 import PropTypes from 'prop-types';
