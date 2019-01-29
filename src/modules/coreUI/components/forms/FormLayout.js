@@ -5,7 +5,8 @@ const DefaultContainer = styled.div`
   width: 100%;
 `;
 
-export default (locals) => {
+
+const FormLayout = (locals) => {
   const Container = locals.context.customInputsContainer || DefaultContainer;
 
   return (
@@ -16,3 +17,7 @@ export default (locals) => {
     </Container>
   );
 };
+
+FormLayout.displayName = 'FormLayout'
+
+export default FormLayout;

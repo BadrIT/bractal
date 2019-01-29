@@ -44,8 +44,9 @@ const RealHiddenCheckInput = styled.input`
 `;
 
 // CheckInput work for both checkbox and radio button
+const CheckIcon = <Icon className="fas fa-check" />;
 function CheckInputEl({
-  renderIcon = () => <Icon className="fas fa-check" />,
+  renderIcon = () => CheckIcon,
   checked = false,
   onClick = () => {},
   onChange = onClick,

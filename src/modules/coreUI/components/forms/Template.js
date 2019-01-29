@@ -20,59 +20,69 @@ const getGlobalAttrs = locals => ({
 
 export default {
   textbox: t.form.Form.templates.textbox.clone({
-    renderInput: locals => (
-      <TextBox
+    renderInput(locals) {
+      return  (
+        <TextBox
         {...getGlobalAttrs(locals)}
         {...locals.attrs}
         value={locals.value}
         placeholder={locals.attrs.placeholder}
         tabIndex={locals.attrs.tabIndex}
       />
-    ),
+      )
+    }
+    ,
     renderError: locals => renderError(locals),
   }),
   password: t.form.Form.templates.textbox.clone({
-    renderInput: locals => (
-      <TextBox
-        {...getGlobalAttrs(locals)}
-        {...locals.attrs}
-        value={locals.value}
-        placeholder={locals.attrs.placeholder}
-        password
-        icon="fas fa-eye fa-lg"
-        iconPosition="right"
-      />
-    ),
+    renderInput(locals){
+      return (
+        <TextBox
+          {...getGlobalAttrs(locals)}
+          {...locals.attrs}
+          value={locals.value}
+          placeholder={locals.attrs.placeholder}
+          password
+          icon="fas fa-eye fa-lg"
+          iconPosition="right"
+        />
+      )
+    },
     renderError: locals => renderError(locals),
   }),
   phoneNumber: t.form.Form.templates.textbox.clone({
-    renderInput: locals => (
-      <PhoneNumber
-        {...getGlobalAttrs(locals)}
-        {...locals.attrs}
-        value={locals.value}
-        onChange={(value) => {
-          locals.onChange(value);
-        }}
-        placeholder={locals.attrs.placeholder}
-      />
-    ),
+    renderInput(locals) {
+      return (
+        <PhoneNumber
+          {...getGlobalAttrs(locals)}
+          {...locals.attrs}
+          value={locals.value}
+          onChange={(value) => {
+            locals.onChange(value);
+          }}
+          placeholder={locals.attrs.placeholder}
+        />
+      )
+    }
+    ,
     renderError: locals => renderError(locals),
   }),
   country: t.form.Form.templates.textbox.clone({
-    renderInput: locals => (
-      <CountriesDropdown
-        {...getGlobalAttrs(locals)}
-        {...locals.attrs}
-        value={locals.value}
-        onChange={value => locals.onChange(value)}
-        placeholder={locals.attrs.placeholder}
-      />
-    ),
+    renderInput(locals){
+     return (
+        <CountriesDropdown
+          {...getGlobalAttrs(locals)}
+          {...locals.attrs}
+          value={locals.value}
+          onChange={value => locals.onChange(value)}
+          placeholder={locals.attrs.placeholder}
+        />
+      ) 
+    },
     renderError: locals => renderError(locals),
   }),
   gender: t.form.Form.templates.radio.clone({
-    renderRadios: locals => <Gender onChange={locals.onChange} />,
+  renderRadios(locals){ return <Gender onChange={locals.onChange} />},
     renderError: (locals) => {
       const customErrorTextStyle = css`
         text-align: center;
@@ -81,9 +91,8 @@ export default {
     },
   }),
   checkbox: t.form.Form.templates.checkbox.clone({
-    renderCheckbox: (locals) => {
+    renderCheckbox(locals){
       const attrs = t.form.Form.templates.checkbox.getAttrs(locals);
-
       return (
         <React.Fragment>
           <Checkbox
