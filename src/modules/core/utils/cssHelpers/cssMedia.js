@@ -1,5 +1,5 @@
 // these sizes are arbitrary and you can set them to whatever you wish
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 const QueryMode = {
   MIN: 0,

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styled from '@emotion/styled';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 
 import { infereControlMode, darken, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';

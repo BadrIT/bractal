@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';

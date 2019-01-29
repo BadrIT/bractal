@@ -1,5 +1,5 @@
 import { keyframes } from '@emotion/core';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { infereFontSize, inferePaddingSize } from '~/modules/coreUI/utils/infereStyle';
 
 export const trackProgress = keyframes`

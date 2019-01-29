@@ -1,5 +1,5 @@
 import Color from 'color';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import _ from 'lodash';
 
 import assert from '~/modules/core/utils/jsHelpers/assert';

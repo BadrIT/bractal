@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import _ from 'lodash';
 
 import { responsiveStyle } from '~/modules/coreUI/utils/infereStyle';
