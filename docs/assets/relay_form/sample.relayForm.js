@@ -8,7 +8,6 @@ import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { SectionHeader } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 import { XXXXLargeSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
-import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 
 const FormMutation = graphql`
@@ -140,4 +139,4 @@ Newsletter.propTypes = {
   updateUserInfoTempPartial: PropTypes.func.isRequired,
 };
 
-export default withUserInfo(Newsletter);
+export default Newsletter;

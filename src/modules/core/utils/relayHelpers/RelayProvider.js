@@ -21,7 +21,6 @@ import RelayContext from '~/modules/core/utils/relayHelpers/RelayContext';
 import withAlertMsg from '~/modules/core/utils/alertHelpers/withAlertContainer';
 import assert from '~/modules/core/utils/jsHelpers/assert';
 import AlertTypes from '~/modules/core/utils/alertHelpers/alertComponent/AlertTypes';
-import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 
 export const PathRedirectKeysMapper = {
   showSuccess: 'showSuccess',
@@ -147,5 +146,5 @@ RelayProvider.propTypes = PropTypes.shape({
   children: PropTypes.shape({}),
 }).isRequired;
 
-export default withRouter(withAlertMsg(withUserInfo(RelayProvider)));
+export default withRouter(withAlertMsg(RelayProvider));
 export { default as withRelayEnvironment } from './withRelayEnvironment';
