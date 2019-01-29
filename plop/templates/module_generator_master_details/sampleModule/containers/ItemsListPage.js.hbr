@@ -6,7 +6,7 @@ import {
 } from 'react-relay';
 import { Container } from 'semantic-ui-react';
 
-import { withRelayEnvironment } from '~/modules/core/utils/relayHelpers/RelayInitializer';
+import WithRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 
 import {{uiItemName}}sList from './{{uiItemName}}sList';
 
@@ -48,4 +48,4 @@ const {{uiItemName}}sListPage = ({ environment }) => (
   environment: PropTypes.shape({}).isRequired,
 };
 
-export default withRelayEnvironment({{uiItemName}}sListPage);
+export default WithRelayEnvironment({{uiItemName}}sListPage);
