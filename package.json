@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^5.3.1",
+    "@fortawesome/free-regular-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
+    "react-tooltip": "^3.8.4",
     "@babel/core": "7.1.6",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@emotion/core": "^10.0.6",
@@ -89,9 +95,11 @@
   },
   "scripts": {
     "start-internal": "node scripts/start.js",
-    "start": "REACT_APP_GRAPHQL_ENDPOINT=https://ayk-test-portal.badrit.com yarn run start-internal",
+    "start": "REACT_APP_GRAPHQL_ENDPOINT=__ENDPOINT__ yarn run start-internal",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "refetch-schema": "graphql-fetch-schema __ENDPOINT__",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql"
   },
   "eslintConfig": {
     "extends": "react-app"
