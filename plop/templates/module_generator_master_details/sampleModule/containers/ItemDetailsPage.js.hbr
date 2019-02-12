@@ -8,7 +8,7 @@ import {
 } from 'react-relay';
 import { Container, Segment } from 'semantic-ui-react';
 
-import { withRelayEnvironment } from '~/modules/core/utils/relayHelpers/RelayInitializer';
+import WithRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 
 import {{uiItemName}}Details from './{{uiItemName}}Details';
 
@@ -64,6 +64,7 @@ const {{uiItemName}}DetailsPage = ({ environment, match }) => {
 {{uiItemName}}DetailsPage.propTypes = {
   environment: PropTypes.shape({}).isRequired,
   match: PropTypes.shape({}).isRequired,
+  {{graphQLSingleItemQueryName}}: PropTypes.shape({}).isRequired
 };
 
-export default withRelayEnvironment({{uiItemName}}DetailsPage);
+export default WithRelayEnvironment({{uiItemName}}DetailsPage);

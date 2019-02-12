@@ -3,7 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import { withTheme } from 'emotion-theming';
 import styled from '@emotion/styled';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import withMedia from '~/modules/core/utils/mediaHelpers/withMedia';
 import PropTypes from 'prop-types';
 import PulseLoader from 'react-spinners/PulseLoader';

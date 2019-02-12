@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import Select from 'react-select';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 
 import { colors } from 'react-select/lib/theme';

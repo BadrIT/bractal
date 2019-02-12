@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
 import SectionHeader from '~/modules/coreUI/components/layouts/SectionHeader';

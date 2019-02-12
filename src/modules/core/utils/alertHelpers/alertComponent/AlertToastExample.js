@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import AlertTypes, { ToastTypes } from './AlertTypes';
 import ToastMessage from './ToastMessage';

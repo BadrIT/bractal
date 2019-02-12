@@ -6,7 +6,6 @@ import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { ThemeProvider } from 'emotion-theming';
-import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
 import ModalTrackerProvider from '~/modules/core/utils/modalHelpers/ModalTrackerProvider';
 import SideMenuTrackerProvider from '~/modules/core/utils/sideMenuHelpers/SideMenuTrackerProvider';
 import AlertProvider from '~/modules/core/utils/alertHelpers/AlertProvider';
@@ -29,17 +28,15 @@ const createAppRoot = (AppComponent, theme, modules, i18next) => (
       <I18nextProvider i18n={i18next}>
         <ThemeProvider theme={theme}>
           <AlertProvider>
-            <UserInfoProvider>
-              <RelayProvider locale={i18next.language}>
-                <ModalTrackerProvider>
-                  <SideMenuTrackerProvider>
-                    <ModulesLoader.Context.Provider value={modules} >
-                      { AppComponent }
-                    </ModulesLoader.Context.Provider>
-                  </SideMenuTrackerProvider>
-                </ModalTrackerProvider>
-              </RelayProvider>
-            </UserInfoProvider>
+            <RelayProvider locale={i18next.language}>
+              <ModalTrackerProvider>
+                <SideMenuTrackerProvider>
+                  <ModulesLoader.Context.Provider value={modules} >
+                    { AppComponent }
+                  </ModulesLoader.Context.Provider>
+                </SideMenuTrackerProvider>
+              </ModalTrackerProvider>
+            </RelayProvider>
           </AlertProvider>
         </ThemeProvider>
       </I18nextProvider>
